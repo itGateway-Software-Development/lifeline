@@ -1,0 +1,126 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --main-color: #40C4FF;
+    --sec-color: #FF8C00;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+
+/* ----------section header --------- */
+
+.header-container .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-container .title {
+    font-weight: bold;
+    font-size: 24px;
+    color: var(--main-color);
+}
+
+.header-container .all {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+}
+
+.header-container .all i {
+    color: var(--sec-color);
+    transform: rotate(35deg);
+}
+
+.header-container .underline {
+    border-bottom: 3px solid var(--sec-color);
+    margin-top: 10px;
+}
+
+
+/* ------ mobile menu drawer---------*/
+
+#drawer {
+    background: #E0E0E0;
+    width: auto !important;
+}
+
+#drawer .v-list {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+#drawer .v-list-item.head-menu {
+    border-bottom: 1px solid #c2c2c2;
+    min-height: 60px !important;
+}
+
+#drawer .v-list-item.head-menu .v-list-item-title {
+    align-items: center !important;
+    font-size: 20px !important;
+}
+
+#drawer .v-list-item {
+    min-height: 50px !important;
+}
+
+#drawer .v-list-item-title {
+    display: flex;
+    gap: 3px;
+    align-items: end;
+}
+
+#drawer .v-list-item-title.main-title {
+    gap: 20px;
+}
+
+#drawer .v-list-item-title i {
+    padding-bottom: 5px;
+}
+
+#drawer .v-list-item img {
+    width: 80px;
+}
+
+@media (max-width: 650px) {
+    #drawer .v-list-item img {
+        width: 70px;
+    }
+    #drawer .v-list-item.head-menu .v-list-item-title {
+        font-size: 18px !important;
+    }
+}
+
+@media (max-width: 550px) {
+    #drawer .v-list-item img {
+        width: 60px;
+    }
+    #drawer .v-list-item.head-menu .v-list-item-title {
+        font-size: 15px !important;
+    }
+}
+
+@media(max-width: 450px) {
+    #drawer .v-list-item img {
+        width: 50px;
+    }
+    #drawer .v-list-item.head-menu .v-list-item-title {
+        font-size: 13px !important;
+    }
+    #drawer .head-menu .v-list-item-title {
+        font-size: 13px !important;
+    }
+    #drawer .v-list-item-title {
+        font-size: 15px;
+    }
+}
