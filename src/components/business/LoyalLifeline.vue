@@ -10,7 +10,8 @@
                 <div class="divider"></div>
             </div>
             <ul>
-                <li>Loyal Lifeline Company Limited Co., Ltd. was established in 2010.</li>
+                <li>In 2020, Loyal Lifeline company limited was created to serve and satisfy the rising demand for medical consumables and pharmaceutical products during COVID pandemic. This also ensure that the timely distribution of the products </li>
+                <li>By utilizing the already established network of marketing and distribution of its sister companies, Loyal Lifeline company limited continue to deliver quality products, customer satisfaction, and with reliable timelines.  </li>
             </ul>
         </div>
     </div>
@@ -63,6 +64,7 @@ import { onMounted } from 'vue'
 
     .content ul li {
         margin-bottom: 15px;
+        text-align: justify;
     }
 
     @media (max-width: 1600px) {

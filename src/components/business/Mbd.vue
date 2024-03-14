@@ -11,8 +11,8 @@
                 <div class="divider"></div>
             </div>
             <ul>
-                <li>Myanmar Booster Distribution Co., Ltd. was established in 2010.</li>
-                <li>Myanmar Booster Distribution Co., Ltd. Has been taking partnership with ….. principles and marketing and distributing......products accross Myanmar </li>
+                <li>To elevate our service standards, in 2010, we have created a sister company with the name of “Myanmar Booster Distribution Company Limited” dedicated to providing even more tailored services. This expansion is geared towards offering an elevated experience to our valued clients. It distributes pharmaceutical products from (5) principles which can cover most of the prescription usage for healthcare services. </li>
+                <li>By utilizing the already established network of marketing and distribution, Myanmar Booster Distribution continue to deliver quality products, customer satisfaction, and reliable timelines.  </li>
             </ul>
         </div>
     </div>
@@ -71,6 +71,7 @@ import { onMounted } from 'vue'
 
     .content ul li {
         margin-bottom: 15px;
+        text-align: justify;
     }
 
     @media (max-width: 1600px) {

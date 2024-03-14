@@ -13,40 +13,34 @@
             </v-btn>
           </div>
           <div class="img">
-            <img src="@/assets/images/head-office1.jpg" alt="" />
+            <img src="@/assets/images/carousel/office.jpg" alt="" />
           </div>
         </div>
       </v-carousel-item>
 
       <v-carousel-item
-        :src="require('@/assets/images/carousel6.jpg')"
-        cover
-      ></v-carousel-item>
-
-      <v-carousel-item
-        :src="require('@/assets/images/carousel5.jpg')"
-        cover
-      ></v-carousel-item>
-
-      <v-carousel-item
-        :src="require('@/assets/images/carousel7.jpg')"
-        cover
-      ></v-carousel-item>
-
-      <v-carousel-item
-        :src="require('@/assets/images/carousel4.jpg')"
-        cover
-      ></v-carousel-item>
-      <v-carousel-item
-        :src="require('@/assets/images/banner.png')"
-        cover
+      cover
+      v-for="(banner, i) in banners" :key="i"
+      :src="banner.img"
       ></v-carousel-item>
     </v-carousel>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  setup() {
+    const banners = [
+      {img: require('@/assets/images/carousel/1.jpg')},
+      {img: require('@/assets/images/carousel/2.jpg')},
+      {img: require('@/assets/images/carousel/3.jpg')},
+      {img: require('@/assets/images/carousel/4.jpg')},
+      {img: require('@/assets/images/carousel/5.jpg')},
+    ];
+
+    return {banners}
+  }
+};
 </script>
 
 <style scoped>

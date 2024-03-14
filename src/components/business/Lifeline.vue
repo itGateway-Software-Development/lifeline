@@ -10,13 +10,11 @@
                 <div class="divider"></div>
             </div>
             <ul>
-                <li>Lifeline Co., Ltd. was established since 2003.</li>
-                <li>Our journey started with 1 principle, with 2 products and only 8 staffs.</li>
-                <li>Professional Doctors & Pharmacist – 13 Person.</li>
-                <li>Now, Lifeline is doing its main function through 17 principles, marketing </li>
-                <li>and distributing 162  products nationwide which are being distributed 
-                    through 8 Branch Offices, 13 Sub-distributer Offices, and currently
-                     employing  279 Members.</li>
+                <li>Lifeline Company Limited was established in 2003 with the Vision of “To be the best healthcare service provider in Myanmar”. </li>
+                <li>Initially there was only 1 principle and 2 products. But now, Lifeline Co., Ltd is currently marketing and distributing the products from 8 principles. </li>
+                <li>Although Lifeline Company is very tedious with the selection process for principles, it is to make sure that we deliver the right business partners who can supply us the products which align with our definition of quality and value. </li>
+                <li>From our establishment in a single office, we are proud to announce our growth and expansion.  </li>
+                <li>Today, our offices extend to 8 branch offices and 15 sub-distributor offices, strategically located in every states and divisions of Myanmar. These coverages prove our commitment to providing quality service and products, and we look forward to serving our customers with a greater reach and efficiency with timely manner. </li>
             </ul>
 
             <div class="img">
@@ -80,6 +78,7 @@ import { onMounted } from 'vue'
 
     .content ul li {
         margin-bottom: 15px;
+        text-align: justify;
     }
 
     .content .img {
