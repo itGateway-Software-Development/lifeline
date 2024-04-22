@@ -1,8 +1,7 @@
 <template>
     <div class="lifeline">
         <div class="banner">
-            <img src="@/assets/images/ll.png" alt="">
-            <h2>Lifeline Company Limited.</h2>
+            <img src="@/assets/images/lifeline_banner.jpg" alt="">
         </div>
         <div class="content">
             <div class="header">
@@ -39,12 +38,9 @@ import { onMounted } from 'vue'
     .banner {
         width: 100%;
         height: 270px;
-        background-image: linear-gradient(to right, rgba(38, 87, 179, 0.5), rgb(202, 177, 32, .5));
         display: flex;
         justify-content: start;
         align-items: center;
-        gap: 15px;
-        padding-left: 30px;
     }
 
     .banner h2 {
@@ -54,7 +50,9 @@ import { onMounted } from 'vue'
     }
 
     .banner img {
-        width: 30%;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 
     .content {

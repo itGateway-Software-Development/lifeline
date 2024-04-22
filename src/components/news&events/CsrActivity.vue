@@ -1,6 +1,6 @@
 <template>
   <div class="csr">
-    <img src="@/assets/images/csr-activity.webp" alt="" />
+    <img src="@/assets/images/csr.jpg" alt="" />
     <h4>Corporate Responsibility</h4>
     <span>Our commitment to corporate responsibility</span>
     <div class="para">
@@ -38,7 +38,7 @@ export default {
 <style scoped>
 .csr img {
   width: 100%;
-  height: 270px;
+  height: 300px;
   object-fit: cover;
 }
 

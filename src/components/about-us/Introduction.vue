@@ -2,7 +2,7 @@
   <div class="introduction">
     <img
       data-aos="zoom-in"
-      src="@/assets/images/introduction-banner.jpg"
+      src="@/assets/images/introduction_banner.jpg"
       alt=""
     />
     <div class="content">

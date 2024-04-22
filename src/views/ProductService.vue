@@ -13,14 +13,15 @@
           >
           <router-link
             to="/product-service/promotion"
-            :class="{ active: slug == 'all' }"
+            :class="{ active: slug == 'promotion' }"
             >Promotions</router-link
           >
         </div>
       </div>
       <div class="col-lg-9 col-md-9 col-sm-12">
         <div class="content">
-          <Catalog></Catalog>
+          <div v-if="slug == 'catalog'"><Catalog></Catalog></div>
+          <div><Promotion></Promotion></div>
         </div>
       </div>
     </div>
@@ -28,10 +29,12 @@
 </template>
 
 <script>
+import Promotion from '../components/product&service/Promotion'
 import Catalog from "../components/product&service/Catalog";
 export default {
   props: ["slug"],
-  components: { Catalog },
+  components: {
+    Promotion, Catalog },
 };
 </script>
 

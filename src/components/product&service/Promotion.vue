@@ -1,33 +1,17 @@
 <template>
   <div class="catalog-section">
     <div class="img">
-      <img src="@/assets/images/product_catalog_banner.jpg" class="shadow" alt="" />
+      <img src="@/assets/images/promotion_banner.jpg" class="shadow" alt="" />
     </div>
 
     <div class="content">
-      <h2>Product Catalog</h2>
+      <h2>Product Promotion</h2>
       <div class="divider"></div>
     </div>
 
     <div class="catalog">
       <div class="row">
-        <div
-          class="col-lg-3 col-md-4 col-sm-4 col-12 mb-5"
-          v-for="(category, i) in categories"
-          :key="i"
-        >
-          <router-link :to="'/products/' + category.id">
-            <div class="catalog-card pointer">
-              <div class="catalog-img">
-                <img
-                  :src="require('@/assets/images/category/default.jpg')"
-                  alt=""
-                />
-              </div>
-              <div class="name">{{ category.name }}</div>
-            </div>
-          </router-link>
-        </div>
+        <p class="text-center">Comming Soon</p>
       </div>
     </div>
   </div>
@@ -35,18 +19,14 @@
 
 <script>
 import { onMounted, ref } from "vue";
-import getCategory from "@/composables/getCategory";
 export default {
   setup() {
-    const { categories, error, load } = getCategory();
 
-    load();
 
     onMounted(() => {
       window.scrollTo(0, 0);
     });
 
-    return { categories };
   },
 };
 </script>

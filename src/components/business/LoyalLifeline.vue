@@ -1,7 +1,7 @@
 <template>
     <div class="loyal-lifeline">
         <div class="banner">
-            <img src="@/assets/images/loyan-lifeline.png" alt="">
+            <img src="@/assets/images/loyal_lifeline_banner.jpg" alt="">
         </div>
 
         <div class="content">
@@ -32,15 +32,14 @@ import { onMounted } from 'vue'
     .banner {
         width: 100%;
         height: 270px;
-        background-image: linear-gradient(to top, rgba(61, 105, 187, 0.5), rgba(190, 170, 57, 0.5));
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 25px;
     }
 
     .banner img {
-        width: 50%;
+        width: 100%;
+        height: 100%;
         object-fit: cover;
     }
     .content {

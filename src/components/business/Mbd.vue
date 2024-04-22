@@ -1,8 +1,7 @@
 <template>
     <div class="mbd">
         <div class="banner">
-            <img src="@/assets/images/mbd.png" alt="">
-            <h2>Myanmar Booster Distribution</h2>
+            <img src="@/assets/images/mbd_banner.jpg" alt="">
         </div>
 
         <div class="content">
@@ -33,7 +32,6 @@ import { onMounted } from 'vue'
     .banner {
         width: 100%;
         height: 270px;
-        background-image: linear-gradient(to right, rgba(38, 87, 179, 0.5), rgb(202, 177, 32, .5));
         display: flex;
         justify-content: start;
         align-items: center;
@@ -47,8 +45,9 @@ import { onMounted } from 'vue'
     }
 
     .banner img {
-        width: 50%;
-        margin-left: -30px;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
     .content {
         margin: 30px auto 20px;

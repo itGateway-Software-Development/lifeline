@@ -2,10 +2,6 @@
   <div class="career">
     <div class="img">
       <img src="@/assets/images/career.jpg" alt="" />
-      <div class="caption">
-        Join Our <br />
-        Talent Space
-      </div>
     </div>
     <div class="content">
       <div class="head shadow">
@@ -168,19 +164,9 @@ export default {
 }
 .career .img img {
   width: 100%;
-  height: 500px;
+  height: 400px;
   object-fit: cover;
   filter: brightness(0.9);
-}
-
-.career .img .caption {
-  position: absolute;
-  bottom: 20%;
-  left: 30%;
-  font-size: 42px;
-  font-style: italic;
-  font-weight: bold;
-  color: #fff;
 }
 
 .career .content .head {

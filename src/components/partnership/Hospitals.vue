@@ -1,7 +1,7 @@
 <template>
   <div class="hospital">
     <img
-      src="@/assets/images/hospital/medpark-banner.png"
+      src="@/assets/images/hospital/banner.jpg"
       class="banner"
       alt=""
     />
@@ -133,9 +133,8 @@ export default {
 <style scoped>
 .hospital img.banner {
   width: 100%;
-  height: 250px;
+  height: 300px;
   object-fit: cover;
-  filter: brightness(0.8);
 }
 
 .header {

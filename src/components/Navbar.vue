@@ -339,7 +339,7 @@
               <router-link to="/product-service/catalog"
                 >Product Catalogue</router-link
               >
-              <router-link to="/coming-soon">Promotions</router-link>
+              <router-link to="/product-service/promotion">Promotions</router-link>
             </div>
           </router-link>
           <router-link to="/service-promotion/service"

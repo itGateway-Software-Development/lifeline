@@ -2,7 +2,7 @@
   <div class="marketing-strength">
     <img
       data-aos="zoom-in"
-      src="@/assets/images/marketing-strength-banner.png"
+      src="@/assets/images/marketing-strength-banner.jpg"
       alt=""
     />
     <div class="content">
