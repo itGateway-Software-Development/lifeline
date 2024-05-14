@@ -127,7 +127,7 @@ export default {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .about-us .menu {
     display: flex;
     justify-content: center;

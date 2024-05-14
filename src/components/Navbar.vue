@@ -77,15 +77,15 @@
             Milestones</v-list-item-title
           >
         </v-list-item>
-        <v-list-item @click="navigate('/coming-soon')">
+        <v-list-item @click="navigate('/about-us/distribution-network')">
           <v-list-item-title
             ><v-icon icon="mdi-circle-small"></v-icon>Distribution
             Network</v-list-item-title
           >
         </v-list-item>
-        <v-list-item @click="navigate('/coming-soon')">
+        <v-list-item @click="navigate('/about-us/marketing-strength')">
           <v-list-item-title
-            ><v-icon icon="mdi-circle-small"></v-icon>Company
+            ><v-icon icon="mdi-circle-small"></v-icon>Marketing
             Strength</v-list-item-title
           >
         </v-list-item>
@@ -393,6 +393,15 @@
       </div>
       <div
         class="menu pointer"
+        @click="navigate('/academic_activity')"
+        :class="{ active: currentRoute == '/academic_activity' }"
+      >
+        <div>
+          <router-link to="/academic_activity">{{ $t("academic_activity") }}</router-link>
+        </div>
+      </div>
+      <div
+        class="menu pointer"
         @click="navigate('/contact-us')"
         :class="{ active: currentRoute == '/contact-us' }"
       >
@@ -455,7 +464,7 @@ export default {
 
 <style scoped>
 .nav1 {
-  padding: 10px 15%;
+  padding: 10px 14%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -501,7 +510,7 @@ export default {
 
 /* ----------------------menu navbar---------------------- */
 .nav2 {
-  padding: 23px 15%;
+  padding: 23px 14%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -515,7 +524,7 @@ export default {
 .nav2 .menu-items {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 3px;
 }
 
 .nav2 .menu {
@@ -677,11 +686,21 @@ export default {
   .nav2 .menu-items {
     gap: 5px;
   }
+
+  .nav1 {
+    padding: 10px 12%;
+  }
+  .nav2 {
+    padding: 23px 12%;
+  }
 }
 
 @media (max-width: 1680px) {
+  .nav1 {
+    padding: 10px 9%;
+  }
   .nav2 {
-    padding: 23px 13.5%;
+    padding: 23px 9%;
   }
 }
 
@@ -813,10 +832,16 @@ export default {
   }
 }
 
-@media (max-width: 1280px) {
-  .nav2 {
-    padding: 15px 8%;
+@media (max-width: 1400px) {
+  .nav1 {
+    padding: 10px 4%;
   }
+  .nav2 {
+    padding: 23px 4%;
+  }
+}
+
+@media (max-width: 1280px) {
   .nav2 .menu {
     gap: 0px;
     position: relative;
@@ -826,7 +851,7 @@ export default {
 
 @media (max-width: 1200px) {
   .nav1 {
-    padding: 10px 3%;
+    padding: 10px 1%;
     gap: 10px;
     height: 85px;
   }
@@ -849,7 +874,7 @@ export default {
 
   /* ----------------------menu navbar---------------------- */
   .nav2 {
-    padding: 15px 3%;
+    padding: 15px 1%;
     height: 35px !important;
   }
 
@@ -864,7 +889,7 @@ export default {
   }
 
   .nav2 .menu div a {
-    font-size: 12px;
+    font-size: 11px;
   }
 
   .fa-house-chimney {
@@ -880,25 +905,15 @@ export default {
 
 /* for menu bar responsive */
 @media (max-width: 1018px) {
-  .nav2 {
-    padding: 15px 1%;
-  }
-}
 
-@media (max-width: 980px) {
   .nav2 .menu {
-    gap: 1px;
-    padding: 6px 8px;
+    gap: 2px;
+    position: relative;
+    padding: 6px 6px;
   }
 
   .nav2 .menu div a {
-    font-size: 12px;
-  }
-}
-
-@media (max-width: 943px) {
-  .nav2 .menu div a {
-    font-size: 11px;
+    font-size: 10px;
   }
 }
 

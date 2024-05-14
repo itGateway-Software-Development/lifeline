@@ -1,67 +1,295 @@
 <template>
-  <div class="carousel-section">
-    <v-carousel show-arrows="hover" color="white" class="carousel">
-      <v-carousel-item>
-        <div class="head-office">
-          <div class="content">
-            <h2>STEP FORWARD</h2>
-            <v-btn append-icon="mdi-arrow-right-bold-circle-outline">
-              Check Our Profile
-              <template v-slot:append>
-                <v-icon></v-icon>
-              </template>
-            </v-btn>
+  <div class="carousel-section position-relative" @mouseover="handleHover('hover')" @mouseleave="handleHover('leave')">
+    <div class="banner-image">
+      <div class="head-office" v-if="currentImageIndex == 0">
+        <div class="content">
+          <h2>STEP FORWARD</h2>
+          <v-btn append-icon="mdi-arrow-right-bold-circle-outline">
+            Check Our Profile
+            <template v-slot:append>
+              <v-icon></v-icon>
+            </template>
+          </v-btn>
+        </div>
+        <div class="img">
+          <img src="@/assets/images/carousel/office.jpg" alt="" />
+        </div>
+      </div>
+      <img v-if="currentImageIndex > 0" :src="currentImage" alt="">
+      <div class="arrow">
+        <div class="d-flex justify-content-between">
+          <div class="prev" @click="changeImage('prev')">
+            <i class="fa-solid fa-chevron-left"></i>
           </div>
-          <div class="img">
-            <img src="@/assets/images/carousel/office.jpg" alt="" />
+          <div class="next" @click="changeImage('next')">
+            <i class="fa-solid fa-chevron-right"></i>
           </div>
         </div>
-      </v-carousel-item>
+      </div>
+    </div>
 
-      <v-carousel-item
-      cover
-      v-for="(banner, i) in banners" :key="i"
-      :src="banner.img"
-      ></v-carousel-item>
-    </v-carousel>
+    <!-- sub image slider for product  -->
+    <div class="product-slider">
+      <div class="swiper product_swiper opacity-0" :class="{'opacity-100': showProductSlider}">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" v-for="i in 17" :key="i">
+            <div class="content">
+              <img
+                :src="require(`@/assets/images/carousel/products/${i}.png`)"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination" id="swiper-paginate"></div>
+      </div>
+      <div class="d-flex justify-content-center mt-5 opacity-0" :class="{'opacity-100': showProductSlider}">
+        <router-link to="/products">See All Products</router-link>
+      </div>
+    </div>
+
+    <div class="csr-photos" v-if="showCsrPic">
+      <div class="csr-photo-group d-flex flex-column-reverse gap-2">
+        <img @click="handleCsrPhotoClick(i)" class="active" v-for="i in 5" :key="i" :src="require(`@/assets/images/carousel/csr/${i}.jpg`)" alt="">
+      </div>
+    </div>
+
   </div>
 </template>
 
 <script>
-export default {
-  setup() {
-    const banners = [
-      {img: require('@/assets/images/carousel/1.jpg')},
-      {img: require('@/assets/images/carousel/2.jpg')},
-      {img: require('@/assets/images/carousel/3.jpg')},
-      {img: require('@/assets/images/carousel/4.jpg')},
-      {img: require('@/assets/images/carousel/5.jpg')},
-    ];
+  import { onMounted, ref } from 'vue';
+  export default {
+    setup() {
+      const banners = [
+        '',
+        require('@/assets/images/carousel/1.jpg'),
+        require('@/assets/images/carousel/2.jpg'),
+        require('@/assets/images/carousel/csr/1.jpg'),
+        require('@/assets/images/carousel/4.jpg'),
+        require('@/assets/images/carousel/5.jpg'),
+      ];
 
-    return {banners}
-  }
-};
+      const csr = [
+        require('@/assets/images/carousel/csr/1.jpg'),
+        require('@/assets/images/carousel/csr/2.jpg'),
+        require('@/assets/images/carousel/csr/3.jpg'),
+        require('@/assets/images/carousel/csr/4.jpg'),
+        require('@/assets/images/carousel/csr/5.jpg'),
+      ];
+
+      const currentImageIndex = ref(0);
+      const currentImage = ref(banners[currentImageIndex.value]);
+      let duration = 5000;
+      let intervalId;
+      const product_swiper = ref(null);
+      const showProductSlider = ref(false);
+      const showCsrPic = ref(false);
+
+      const swipeImage = () => {
+        if(currentImageIndex.value < banners.length-1) {
+          currentImageIndex.value++;
+        } else {
+          currentImageIndex.value = 0;
+        }
+        
+        currentImage.value = banners[currentImageIndex.value];
+    
+        if(currentImage.value.substr(0,6) == '/img/5') {
+          showProductSlider.value = true;
+        } else {
+          showProductSlider.value = false;
+        }
+
+        if(currentImage.value.substr(0,10) == '/img/1.c61') {
+          showCsrPic.value = true;
+        } else {
+          showCsrPic.value = false;
+        }
+
+      }
+
+      const changeImage = (status) => {
+
+        if(status == 'prev') {
+          if(currentImageIndex.value == 0) {
+            currentImageIndex.value = banners.length - 1;
+            currentImage.value = banners[banners.length -1];
+          } else {
+            currentImage.value = banners[--currentImageIndex.value]
+          }
+        } else {
+          if(currentImageIndex.value == banners.length -1) {
+            currentImage.value = banners[0];
+            currentImageIndex.value = 0;
+          } else {
+            currentImage.value = banners[++currentImageIndex.value];
+          }
+        }
+
+        if(currentImage.value.substr(0,6) == '/img/5') {
+          showProductSlider.value = true;
+        } else {
+          showProductSlider.value = false;
+        }
+
+        if(currentImage.value.substr(0,10) == '/img/1.c61') {
+          showCsrPic.value = true;
+        } else {
+          showCsrPic.value = false;
+        }
+        console.log(currentImage.value);
+        console.log(currentImageIndex.value);
+        clearInterval(intervalId);
+        intervalId = setInterval(swipeImage, duration);
+      }
+
+      const handleHover = (status) => {
+        if (status == 'hover') {
+          clearInterval(intervalId); 
+        } else {
+          intervalId = setInterval(swipeImage, duration);
+        }
+      };
+
+      const handleCsrPhotoClick = (index) => {
+        currentImage.value = csr[--index];
+      }
+
+      onMounted(() => {
+        intervalId = setInterval(swipeImage, duration);
+
+        product_swiper.value = new Swiper(".product_swiper", {
+          speed: 800,
+          loop: true,
+          autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+          },
+          slidesPerView: 5,
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+            type: "bullets",
+          },
+          
+          breakpoints: {
+          350: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
+          500: {
+            slidesPerView: 5,
+            spaceBetween: 10,
+          },
+          1080: {
+            slidesPerView: 4,
+            spaceBetween: 10,
+          },
+
+          1520: {
+            slidesPerView: 5,
+            spaceBetween: 2,
+          },
+        },
+        });
+      })
+
+      return {currentImage, currentImageIndex, changeImage, handleHover, product_swiper, showProductSlider, handleCsrPhotoClick, showCsrPic}
+    }
+  };
 </script>
 
 <style scoped>
 .carousel-section {
   background-color: #e9e5e5;
+  position: relative;
+  overflow: hidden;
 }
-.carousel {
-  width: 70%;
-  margin: 0 auto;
+
+.carousel-section .banner-image {
+  width: 100%;
+  height: 600px;
 }
+
+.carousel-section .banner-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.carousel-section .banner-image .arrow {
+  padding: 50px;
+  position: absolute;
+  width: 100%;
+  top: 40%;
+}
+
+.carousel-section .banner-image .arrow .prev, .carousel-section .banner-image .arrow .next {
+  background: rgb(241, 226, 226);
+  padding: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
 img {
   object-fit: contain;
+}
+
+.carousel-section .product-slider {
+  position: absolute;
+  width: 100%;
+  top: 60%;
+  padding: 0px 15%;
+}
+
+.carousel-section .product-slider img {
+  width: 220px;
+  height: 170px;
+  border-radius: 7px;
+}
+
+.carousel-section .product-slider a {
+    text-decoration: none;
+    background: var(--sec-color);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.carousel-section .csr-photos {
+  position: absolute;
+  width: 100%;
+  top: 5%;
+  left: 92%;
+}
+
+.carousel-section .csr-photos img {
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  object-fit: cover;
+  cursor:pointer;
+}
+
+.carousel-section .csr-photos img.active {
+  border: 2px solid var(--main-color);
 }
 
 .head-office {
   display: flex !important;
   align-items: center;
   justify-content: space-around;
-  gap: 15px;
+  gap: 10px;
   height: 100%;
-  background-color: #fff;
+  background-color: #e2e2e2;
+  border-bottom: 1px solid rgb(224, 224, 224);  
 }
 
 .head-office .content {
@@ -88,8 +316,8 @@ img {
 }
 
 .head-office .img {
-  width: 650px;
-  height: 350px;
+  width: 1000px;
+  height: 450px;
   border-radius: 50px !important;
   overflow: hidden;
   margin-bottom: 60px;
@@ -100,6 +328,7 @@ img {
   height: 100%;
   object-fit: cover;
 }
+
 
 @media (max-width: 1600px) {
   .carousel {
@@ -127,8 +356,20 @@ img {
   }
 
   .head-office .img {
-    width: 600px;
-    height: 300px;
+    width: 800px;
+    height: 400px;
+  }
+
+  .carousel-section .csr-photos {
+    position: absolute;
+    width: 100%;
+    top: 5%;
+    left: 91%;
+  }
+
+  .carousel-section .csr-photos img {
+    width: 90px;
+    height: 90px;
   }
 }
 
@@ -136,6 +377,11 @@ img {
   .carousel {
     width: 94%;
     height: 450px !important;
+  }
+
+  .head-office .img {
+    width: 600px;
+    height: 300px;
   }
 }
 
@@ -158,13 +404,52 @@ img {
     width: 500px;
     height: 300px;
   }
+
+  .carousel-section .csr-photos {
+    position: absolute;
+    width: 100%;
+    top: 10%;
+    left: 88%;
+  }
+
+  .carousel-section .csr-photos img {
+    width: 80px;
+    height: 80px;
+  }
 }
 
 @media (max-width: 920px) {
-  .carousel {
-    width: 100%;
-    height: 450px !important;
+
+  .carousel-section .banner-image {
+    height: 400px;
   }
+
+  .carousel-section .product-slider {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    padding: 0px 10%;
+  }
+  
+  .carousel-section .product-slider img {
+    width: 180px;
+    height: 130px;
+    object-fit: contain;
+    border-radius: 7px;
+  }
+
+  .carousel-section .csr-photos {
+    position: absolute;
+    width: 100%;
+    top: 5%;
+    left: 88%;
+  }
+  
+  .carousel-section .csr-photos img {
+    width: 60px;
+    height: 60px;
+  }
+
 }
 
 @media (max-width: 840px) {
@@ -188,6 +473,16 @@ img {
   .head-office .content button {
     margin-left: 10px;
   }
+
+  .carousel-section .banner-image .arrow {
+    padding: 20px;
+    top: 40%;
+  }
+  
+  .carousel-section .banner-image .arrow .prev, .carousel-section .banner-image .arrow .next {
+    width: 25px;
+    height: 25px;
+  }
 }
 
 @media (max-width: 700px) {
@@ -207,6 +502,20 @@ img {
   .head-office .img {
     width: 450px;
     height: 300px;
+  }
+
+  .carousel-section .product-slider {
+    position: absolute;
+    width: 100%;
+    top: 70%;
+    padding: 0px 10%;
+  }
+  
+  .carousel-section .product-slider img {
+    width: 120px;
+    height: 70px;
+    object-fit: contain;
+    border-radius: 7px;
   }
 }
 
@@ -233,6 +542,18 @@ img {
   .head-office .img {
     width: 450px;
     height: 300px;
+  }
+
+  .carousel-section .csr-photos {
+    position: absolute;
+    width: 100%;
+    top: 15%;
+    left: 88%;
+  }
+  
+  .carousel-section .csr-photos img {
+    width: 45px;
+    height: 45px;
   }
 }
 
