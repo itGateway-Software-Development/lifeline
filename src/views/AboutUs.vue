@@ -1,8 +1,8 @@
 <template>
-  <div class="about-us">
+  <div class="about-us position-relative">
     <div class="row">
       <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-        <div class="menu w-100" data-aos="flip-right">
+        <div class="menu w-100" style="position: sticky; top: 60px;" data-aos="flip-right">
           <router-link
             to="/about-us/introduction"
             :class="{ active: slug == 'introduction' }"
@@ -33,6 +33,11 @@
             :class="{ active: slug == 'marketing-strength' }"
             >Marketing Strength</router-link
           >
+          <router-link
+            to="/about-us/photo-gallery"
+            :class="{ active: slug == 'photo-gallery' }"
+            >Photo Gallery</router-link
+          >
         </div>
       </div>
       <div class="col-lg-9 col-md-9 col-sm-12">
@@ -45,6 +50,7 @@
             <DistributionNetwork />
           </div>
           <div v-if="slug == 'marketing-strength'"><MarketingStrength /></div>
+          <div v-if="slug == 'photo-gallery'"><PhotoGallery></PhotoGallery></div>
         </div>
       </div>
     </div>
@@ -52,6 +58,7 @@
 </template>
 
 <script>
+import PhotoGallery from '../components/about-us/PhotoGallery'
 import MarketingStrength from "../components/about-us/MarketingStrength";
 import DistributionNetwork from "../components/about-us/DistributionNetwork";
 import CompanyMilestone from "../components/about-us/CompanyMilestone";
@@ -61,6 +68,7 @@ import { onMounted } from "vue";
 import Introduction from "../components/about-us/Introduction";
 export default {
   components: {
+    PhotoGallery,
     MarketingStrength,
     DistributionNetwork,
     CompanyMilestone,

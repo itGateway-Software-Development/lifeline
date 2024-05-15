@@ -89,6 +89,11 @@
             Strength</v-list-item-title
           >
         </v-list-item>
+        <v-list-item @click="navigate('/about-us/photo-gallery')">
+          <v-list-item-title
+            ><v-icon icon="mdi-circle-small"></v-icon>Photo Gallery</v-list-item-title
+          >
+        </v-list-item>
       </v-list-group>
 
       <v-list-group value="Business">
@@ -287,6 +292,9 @@
           >
           <router-link to="/about-us/marketing-strength"
             >Marketing Strength</router-link
+          >
+          <router-link to="/about-us/photo-gallery"
+            >Photo Gallery</router-link
           >
         </div>
       </div>
