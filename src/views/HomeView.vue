@@ -1,10 +1,10 @@
 <template>
-  <div class="home">
+  <Loading v-if="isLoading"></Loading>
+  <div class="home" v-else>
     <Carousel></Carousel>
     <Welcome></Welcome>
     <Activity></Activity>
 
-    <Loading v-if="isLoading"></Loading>
   </div>
 </template>
 
