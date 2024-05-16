@@ -8,6 +8,8 @@ import store from "./store";
 import "./css/style.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import ToastPlugin from 'vue-toast-notification';
+import 'vue-toast-notification/dist/theme-bootstrap.css';
 
 import "vuetify/styles";
 import { createVuetify } from "vuetify";
@@ -44,4 +46,4 @@ const i18n = createI18n({
   },
 });
 
-createApp(App).use(store).use(vuetify).use(i18n).use(router).mount("#app");
+createApp(App).use(store).use(ToastPlugin).use(vuetify).use(i18n).use(router).mount("#app");
