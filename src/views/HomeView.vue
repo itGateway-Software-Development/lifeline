@@ -1,6 +1,5 @@
 <template>
-  <Loading v-if="isLoading"></Loading>
-  <div class="home" v-else>
+  <div class="home">
     <Carousel></Carousel>
     <Welcome></Welcome>
     <Activity></Activity>
@@ -9,7 +8,6 @@
 </template>
 
 <script>
-import Loading from '../components/Loading'
 import Activity from "../components/Activity";
 import Welcome from "../components/Welcome";
 import Carousel from "../components/Carousel";
@@ -18,22 +16,13 @@ import { onMounted, ref } from 'vue';
 
 export default {
   components: {
-    Loading,
     Activity,
     Welcome,
     Carousel,
   },
   name: "HomeView",
   setup() {
-    const isLoading = ref(true);
 
-    onMounted(() => {
-      window.addEventListener('load', () => {
-        isLoading.value = false;
-      })
-    })
-
-    return {isLoading}
   }
 };
 </script>
