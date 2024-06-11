@@ -168,7 +168,7 @@
           <v-list-item @click="navigate('/product-service/catalog')">
             <v-list-item-title>
               <v-icon icon="mdi-circle-small"></v-icon> Product
-              Catalogue</v-list-item-title
+              Groups</v-list-item-title
             >
           </v-list-item>
           <v-list-item @click="navigate('/coming-soon')">
@@ -345,7 +345,7 @@
             ><i class="fa-solid fa-minus text-secondary"></i>
             <div class="subMenu text-center">
               <router-link to="/product-service/catalog"
-                >Product Catalogue</router-link
+                >Product Groups</router-link
               >
               <router-link to="/product-service/promotion">Promotions</router-link>
             </div>

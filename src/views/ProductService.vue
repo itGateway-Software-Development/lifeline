@@ -2,14 +2,14 @@
   <div class="product-service">
     <div class="row">
       <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-        <div class="menu w-100">
+        <div class="menu w-100" style="position: sticky; top: 50px;">
           <router-link
             to="/product-service/catalog"
             :class="{ active: slug == 'catalog' }"
-            >Products Catalog</router-link
+            >Products Groups</router-link
           >
           <router-link to="/products" :class="{ active: slug == 'ceo-message' }"
-            >Products</router-link
+            >All Products</router-link
           >
           <router-link
             to="/product-service/promotion"
@@ -21,7 +21,7 @@
       <div class="col-lg-9 col-md-9 col-sm-12">
         <div class="content">
           <div v-if="slug == 'catalog'"><Catalog></Catalog></div>
-          <div><Promotion></Promotion></div>
+          <div v-else><Promotion></Promotion></div>
         </div>
       </div>
     </div>

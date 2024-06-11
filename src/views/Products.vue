@@ -8,11 +8,11 @@
     </div>
     <div class="row">
       <div class="col-lg-3 col-md-12 col-sm-12 pe-0">
-        <div class="menu w-100">
+        <div class="menu w-100 position-sticky overflow-y-scroll" style="top: 50px; height: 800px;">
           <router-link
             to="/product-service/catalog"
             :class="{ active: slug == 'catalog' }"
-            >Products Catalog</router-link
+            >Products Groups</router-link
           >
           <router-link
             to="#"
@@ -23,8 +23,8 @@
           <a
             v-for="(category, i) in categories"
             :key="i"
-            :class="{ active: slug == category.name }"
-            @click="handleCategory(category.name)"
+            :class="{ active: slug == category.name && category.id == category_id }"
+            @click="handleCategory(category.id)"
             class="pointer"
             >{{ category.name }}</a
           >
@@ -37,7 +37,7 @@
           </div>
 
           <div class="search">
-            <input type="text" placeholder="search" class="input" />
+            <input type="text" placeholder="search" class="input"  v-model="keyword" @input="search"  />
             <input type="button" value="Search" class="button" />
           </div>
         </div>
@@ -76,21 +76,24 @@
 <script>
 import Loading from "../components/Loading";
 import { onMounted, onUpdated, ref, watch } from "vue";
-import { useStore } from "vuex";
-import { useRouter } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import getProducts from "@/composables/getProducts";
 import getCategory from "@/composables/getCategory";
+import axios from 'axios';
+import api from "@/services/api";
 
 export default {
   components: { Loading },
   setup() {
-    const store = useStore();
     const router = useRouter();
+    const route = useRoute();
     const filteredProducts = ref([]);
     const allProducts = ref([]);
     const currentRoute = ref("");
     const slug = ref("all");
+    const keyword = ref('');
     let isLoading = ref(true);
+    const category_id = ref(0);
 
     router.afterEach((to) => {
       currentRoute.value = to.path;
@@ -110,18 +113,26 @@ export default {
       handleCategory(event.target.value);
     };
 
-    const handleCategory = (name) => {
-      if (name == "all") {
+    const handleCategory = (id) => {
+      if (id == "all") {
         filteredProducts.value = allProducts.value;
         window.scrollTo(0, 50);
         slug.value = "all";
       } else {
-        let data = allProducts.value.filter((item) => item.category == name);
+        let data = allProducts.value.filter((item) => item.category_id == id);
+        let category = categories.value.find(category => category.id == id);
         filteredProducts.value = data;
         window.scrollTo(0, 50);
-        slug.value = name;
+        slug.value = category.name;
+        category_id.value = category.id;
       }
     };
+
+    const search = async() => {
+      let response = await axios.get(api.getProducts+"?keyword="+keyword.value);
+
+        filteredProducts.value = response.data.products;
+    }
 
     onMounted(async () => {
       window.scrollTo(0, 0);
@@ -144,8 +155,11 @@ export default {
       categorySelect,
       handleCategory,
       slug,
+      category_id,
       products,
       isLoading,
+      keyword, 
+      search
     };
   },
 };

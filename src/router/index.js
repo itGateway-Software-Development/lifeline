@@ -26,6 +26,11 @@ const routes = [
     props: true,
   },
   {
+    path: "/groups/:id",
+    component: () => import("@/views/Group.vue"),
+    props: true,
+  },
+  {
     path: "/products",
     name: "Products",
     component: () => import("@/views/Products.vue"),

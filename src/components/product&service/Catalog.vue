@@ -5,7 +5,7 @@
     </div>
 
     <div class="content">
-      <h2>Product Catalog</h2>
+      <h2>Product Groups</h2>
       <div class="divider"></div>
     </div>
 
@@ -13,10 +13,10 @@
       <div class="row">
         <div
           class="col-lg-3 col-md-4 col-sm-4 col-12 mb-5"
-          v-for="(category, i) in categories"
+          v-for="(group, i) in groups"
           :key="i"
         >
-          <router-link :to="'/products/' + category.id">
+          <router-link :to="'/groups/'+ group.id">
             <div class="catalog-card pointer">
               <div class="catalog-img">
                 <img
@@ -24,7 +24,7 @@
                   alt=""
                 />
               </div>
-              <div class="name">{{ category.name }}</div>
+              <div class="name">{{ group.name }}</div>
             </div>
           </router-link>
         </div>
@@ -35,10 +35,10 @@
 
 <script>
 import { onMounted, ref } from "vue";
-import getCategory from "@/composables/getCategory";
+import getGroups from "@/composables/getGroups";
 export default {
   setup() {
-    const { categories, error, load } = getCategory();
+    const { groups, error, load } = getGroups();
 
     load();
 
@@ -46,7 +46,7 @@ export default {
       window.scrollTo(0, 0);
     });
 
-    return { categories };
+    return { groups };
   },
 };
 </script>
