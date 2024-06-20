@@ -1,12 +1,15 @@
 <template>
     <div class="photo-gallery">
+        <div v-if="isLoading">
+            <Loading />
+        </div>
         <h2>Lifeline's Photo Gallery</h2>
         <div class="d-flex justify-content-end align-items-center gap-3 year-row">
             <h3 class="text-end me-3">Best Momeries</h3>
             <div class="w-25">
                 <v-select
                     label="Choose Year"
-                    :items="['All','2024', '2023', '2022', '2021', '2020', '2019']"
+                    :items="['All',...years]"
                     variant="underlined"
                     class="year-select"
                     v-model="selectedYear"
@@ -15,9 +18,11 @@
             <i class="fa-solid fa-magnifying-glass fs-5 text-end"></i>
         </div>
         <div class="photo-view">
-            <div class="row mt-5">
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4"  v-for="(photo,i) in filteredPhotos" :key="i">
-                    <img class="w-100" :src="photo.img" alt="">
+            <div class="row ms-1 mt-5">
+                <div class="col-12 col-sm-6 pe-0 col-lg-4 mb-3" v-for="(photo,i) in photo_array" :key="i">
+                    <div class="border w-100" style="height: 300px;">
+                        <img class="w-100 h-100" style="object-fit:cover;" :src="photo.original_url" alt="">
+                    </div>
                 </div>
             </div>
         </div>
@@ -25,76 +30,60 @@
 </template>
 
 <script>
+import Loading from '../Loading'
 import { onMounted, ref, watch } from 'vue';
+import getPhotoGallery from "@/composables/getPhotoGallery";
+
     export default {
+  components: { Loading },
         setup() {
-            const photos = [
-                {
-                    img: require('@/assets/images/photo_gallery/1.png'),
-                    year: '2024'
-                },
-                {
-                    img: require('@/assets/images/photo_gallery/2.png'),
-                    year: '2024'
-                },
-                {
-                    img: require('@/assets/images/photo_gallery/3.png'),
-                    year: '2024'
-                },
-                {
-                    img: require('@/assets/images/photo_gallery/4.png'),
-                    year: '2023'
-                },
-                {
-                    img: require('@/assets/images/photo_gallery/5.png'),
-                    year: '2023'
-                },
-                {
-                    img: require('@/assets/images/photo_gallery/6.png'),
-                    year: '2023'
-                },
-                {
-                    img: require('@/assets/images/photo_gallery/7.png'),
-                    year: '2022'
-                },
-                {
-                    img: require('@/assets/images/photo_gallery/8.png'),
-                    year: '2022'
-                },
-                {
-                    img: require('@/assets/images/photo_gallery/9.png'),
-                    year: '2022'
-                },
-                {
-                    img: require('@/assets/images/photo_gallery/10.png'),
-                    year: '2021'
-                },
-                {
-                    img: require('@/assets/images/photo_gallery/11.png'),
-                    year: '2021'
-                },
-            ];
 
             const selectedYear = ref('All');
             const filteredPhotos = ref([]);
+            let photo_array = ref([]);
+            let isLoading = ref(true);
+
+            const {photo_gallery, years, error, load} = getPhotoGallery();
+
+            const loadPhotos = async() => {
+                await load();
+                filterProduct();
+            }
 
             const filterProduct = () => {
                 if(selectedYear.value == 'All') {
-                    filteredPhotos.value = photos;
+                    filteredPhotos.value = photo_gallery.value.map(photo => photo.media);
+
+                    photo_array.value = [];
+                    for(const gallery of filteredPhotos.value) {
+                        for(const media of gallery) {
+                            photo_array.value.push(media)
+                        }
+                    }
                 } else {
-                    filteredPhotos.value = photos.filter(photo => photo.year == selectedYear.value);
+                    filteredPhotos.value = photo_gallery.value.filter(photo => photo.date == selectedYear.value);
+
+                    photo_array.value = [];
+                    for(const key in filteredPhotos.value) {
+                        for(const photo of filteredPhotos.value[key].media) {
+                            photo_array.value.push(photo)
+                        }
+                    }
                 }
             }
 
             watch(selectedYear, () => {
                 filterProduct();
             })
-
-            onMounted(() => {
-                filteredPhotos.value = photos;
+            
+            onMounted(async () => {
+                await loadPhotos();
+                if(!error.value) {
+                    isLoading.value = false;
+                }
             })
 
-            return {filteredPhotos, selectedYear}
+            return {photo_array, selectedYear, years, isLoading}
         }
     }
 </script>
@@ -128,4 +117,5 @@ import { onMounted, ref, watch } from 'vue';
         object-fit: cover;
         cursor: pointer;
     }
+
 </style>

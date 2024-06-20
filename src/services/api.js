@@ -6,6 +6,7 @@ let api = {
   getGroup: url + "groups/",
   getCategories: url + "categories",
   getProducts: url + "products",
+  getPhotoGallery: url + "photo-gallery"
 };
 
 export default api;
