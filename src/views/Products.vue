@@ -48,22 +48,7 @@
               v-for="(product, i) in filteredProducts"
               :key="i"
             >
-              <div class="product-card">
-                <img :src="product.image" alt="" />
-                <div class="divider"></div>
-                <div class="ingredient">
-                  <span
-                    class="rounded-pill"
-                    v-for="(ingre, i) in product.ingredients"
-                    :key="i"
-                    >{{ ingre }}</span
-                  >
-                </div>
-                <h2>{{ product.name }}</h2>
-                <div class="btn">
-                  <button>Detail</button>
-                </div>
-              </div>
+              <ProductCard :product="product"/>
             </div>
           </div>
           <div v-else class="no-product">No Products</div>
@@ -74,6 +59,7 @@
 </template>
 
 <script>
+import ProductCard from '../components/injection/ProductCard'
 import Loading from "../components/Loading";
 import { onMounted, onUpdated, ref, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
@@ -83,7 +69,8 @@ import axios from 'axios';
 import api from "@/services/api";
 
 export default {
-  components: { Loading },
+  components: {
+    ProductCard, Loading },
   setup() {
     const router = useRouter();
     const route = useRoute();
@@ -240,60 +227,7 @@ export default {
   outline: none;
 }
 
-.product-card {
-  background-color: #eee;
-  border-radius: 5px;
-  padding: 0 0 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
 
-.product-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: contain;
-  margin: 20px auto;
-}
-
-.product-card .divider {
-  width: 100%;
-  height: 1px;
-  background: var(--main-color);
-  margin: -10px 0 15px;
-}
-
-.ingredient {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.ingredient span {
-  background: var(--sec-color);
-  color: #fff;
-  padding: 0px 15px;
-  font-size: 12px;
-}
-
-.product-card h2 {
-  margin: 10px auto 0px;
-  font-weight: bold;
-  font-size: 24px;
-  text-align: center;
-}
-
-.product-card .btn {
-  display: flex;
-  justify-content: center;
-}
-.product-card button {
-  border: 2px solid var(--main-color);
-  padding: 3px 15px;
-  border-radius: 5px;
-}
 
 .no-product {
   text-align: center;
