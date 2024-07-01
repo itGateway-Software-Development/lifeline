@@ -10,10 +10,8 @@
             >{{ ingre }}</span
           >
         </div>
-        <h2>{{ product.name }}</h2>
-        <div class="btn">
-          <router-link :to="`/product/${product.id}`">Detail</router-link>
-        </div>
+        <h2 class="mb-2">{{ product.name }}</h2>
+        <router-link :to="`/product/${product.id}`">Detail</router-link>
       </div>
 </template>
 
@@ -69,14 +67,12 @@
     text-align: center;
   }
   
-  .product-card .btn {
-    display: flex;
-    justify-content: center;
-  }
   .product-card a {
     border: 2px solid var(--main-color);
     padding: 3px 15px;
     border-radius: 5px;
     text-decoration: none;
   }
+
+
 </style>
