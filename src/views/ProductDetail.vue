@@ -70,7 +70,7 @@
                             <div class="d-flex align-items-start gap-2">
                                 <b>:</b>
                                 <div>
-                                    <span> {{ product.dose }} </span>
+                                    <span v-html="product.dose"></span>
                                 </div>
                             </div>
                         </div>
