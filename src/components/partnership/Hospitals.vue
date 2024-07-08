@@ -54,6 +54,62 @@ export default {
     const router = useRouter();
     const hospitals = [
       {
+        name: "Samitivej",
+        title: "Samitivej Hospital",
+        content:
+          "Samitivej Hospitals is a premier healthcare group in Thailand, offering internationally accredited care with a focus on patient-centered service.  ",
+        img: require("@/assets/images/hospital/Samitivej.jpg"),
+        logo: require("@/assets/images/hospital/Samitivej-logo.png"),
+      },
+      {
+        name: "Ruamjairak",
+        title: "Ruamjairak Hospital",
+        content:
+          "Established in late 2022, Ruamjairak Hospital @ Sukhumvit 62 is a modern multi-disciplinary general hospital in Bangkok, Thailand.  ",
+        img: require("@/assets/images/hospital/Ruamjairak.jpg"),
+        logo: require("@/assets/images/hospital/Ruamjairak-logo.svg"),
+      },
+      {
+        name: "Praram_9",
+        title: "Praram 9 Hospital",
+        content:
+          "Praram 9 Hospital has been delivering excellence in healthcare for over two decades. They boast a comprehensive range of specialties with a focus on innovative and up-to-date medical services.  ",
+        img: require("@/assets/images/hospital/Praram-9.jpg"),
+        logo: require("@/assets/images/hospital/Praram-9-logo.webp"),
+      },
+      {
+        name: "Ladprao",
+        title: "Ladprao General Hospital",
+        content:
+          "Established in 1990 by a consortium of medical professionals, Ladprao General Hospital has become a trusted healthcare provider in Bangkok, Thailand.",
+        img: require("@/assets/images/hospital/Ladprao.jpeg"),
+        logo: require("@/assets/images/hospital/Ladprao-logo.png"),
+      },
+      {
+        name: "Kasemrad",
+        title: "Kasemrad International Hospital",
+        content:
+          "Kasemrad International Hospital - Rattanatibeth has been serving the community with comprehensive healthcare,  since 1992.  ",
+        img: require("@/assets/images/hospital/Kasemrad.jpg"),
+        logo: require("@/assets/images/hospital/Kasemrad-logo.jpg"),
+      },
+      {
+        name: "Bumrungrad ",
+        title: "Bumrungrad International Hospital",
+        content:
+          "Established in 1980, Bumrungrad International Hospital is a highly regarded private medical center located in Bangkok, Thailand.   ",
+        img: require("@/assets/images/hospital/Bumrungrad.png"),
+        logo: require("@/assets/images/hospital/Bumrungrad-logo.webp"),
+      },
+      {
+        name: "baac",
+        title: "Bangkok Anti-Aging Center",
+        content:
+          "Seeking a holistic approach to wellness and rejuvenation? Look no further than the Bangkok Anti-Aging Center (BAAC).This integrative medical center in Bangkok, Thailand, specializes to serve health-conscious individuals focused on preventing and reversing the signs of aging.Utilizing a personalized approach, BAAC prioritizes identifying the root cause of health concerns rather than just treating symptoms.  ",
+        img: require("@/assets/images/hospital/BAAC.png"),
+        logo: require("@/assets/images/hospital/baac-logo.png"),
+      },
+      {
         name: "Vejthani",
         title: "Vejthani Hospital",
         content:
@@ -180,6 +236,7 @@ export default {
   top: 0%;
   right: 0%;
   width: 85px;
+  height: 45px;
   display: flex;
   align-items: start;
   justify-content: start;

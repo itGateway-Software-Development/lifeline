@@ -2,7 +2,7 @@
   <div class="partnership" :class="{ hospital: slug == 'hospitals' }">
     <div class="row">
       <div class="col-lg-2 col-md-2 col-sm-12 p-0">
-        <div class="menu w-100">
+        <div class="menu w-100" style="position: sticky; top: 60px;">
           <router-link
             to="/partnership/principles"
             :class="{ active: slug == 'principles' }"

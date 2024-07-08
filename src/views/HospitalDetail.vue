@@ -16,6 +16,13 @@
                     <div v-if="slug == 'Thonburi'"><Thonburi></Thonburi></div>
                     <div v-if="slug == 'Vimut'"><Vimut></Vimut></div>
                     <div v-if="slug == 'PatRangsit'"><PatRangsit></PatRangsit></div>
+                    <div v-if="slug == 'baac'"><Baac></Baac></div>
+                    <div v-if="slug == 'Bumrungrad'"><Bumrungrad></Bumrungrad></div>
+                    <div v-if="slug == 'Kasemrad'"><Kasemrad></Kasemrad></div>
+                    <div v-if="slug == 'Ladprao'"><Ladprao></Ladprao></div>
+                    <div v-if="slug == 'Praram_9'"><Praram_9></Praram_9></div>
+                    <div v-if="slug == 'Ruamjairak'"><Ruamjairak></Ruamjairak></div>
+                    <div v-if="slug == 'Samitivej'"><Samitivej></Samitivej></div>
                 </div>
             </div>
         </div>
@@ -23,7 +30,14 @@
 </template>
 
 <script>
-    import PatRangsit from '../components/hospitals/PatRangsit'
+    import Samitivej from '../components/hospitals/Samitivej'
+import Ruamjairak from '../components/hospitals/Ruamjairak'
+import Praram_9 from '../components/hospitals/Praram_9'
+import Ladprao from '../components/hospitals/Ladprao'
+import Kasemrad from '../components/hospitals/Kasemrad'
+import Bumrungrad from '../components/hospitals/Bumrungrad'
+import Baac from '../components/hospitals/Baac'
+import PatRangsit from '../components/hospitals/PatRangsit'
 import Vimut from '../components/hospitals/Vimut'
 import Thonburi from '../components/hospitals/Thonburi'
 import Paolo from '../components/hospitals/Paolo'
@@ -33,6 +47,13 @@ import Phyathai1 from '../components/hospitals/Phyathai1'
 import Medpark from '../components/hospitals/Medpark'
 export default {
   components: {
+    Samitivej,
+    Ruamjairak,
+    Praram_9,
+    Ladprao,
+    Kasemrad,
+    Bumrungrad,
+    Baac,
     PatRangsit,
     Vimut,
     Thonburi,
