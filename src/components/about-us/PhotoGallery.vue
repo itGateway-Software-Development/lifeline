@@ -8,6 +8,17 @@
             <h3 class="text-end me-3">Best Momeries</h3>
             <div class="w-25">
                 <v-select
+                    label="Choose Title"
+                    :items="titles"
+                    item-title="name"
+                    item-value="value"
+                    variant="underlined"
+                    class="year-select"
+                    v-model="selectedTitle"
+                ></v-select>
+            </div>
+            <div class="w-25">
+                <v-select
                     label="Choose Year"
                     :items="['All',...years]"
                     variant="underlined"
@@ -39,9 +50,18 @@ import getPhotoGallery from "@/composables/getPhotoGallery";
         setup() {
 
             const selectedYear = ref('All');
+            const selectedTitle = ref('all');
             const filteredPhotos = ref([]);
             let photo_array = ref([]);
             let isLoading = ref(true);
+
+            const titles = [
+                {name: 'All', value: 'all'},
+                {name: 'Donation', value: 'donation'},
+                {name: 'Soft Skill Traning', value: 'soft_skill_training'},
+                {name: 'Activities', value: 'activities'},
+                {name: 'Events', value: 'events'},
+            ]
 
             const {photo_gallery, years, error, load} = getPhotoGallery();
 
@@ -51,7 +71,7 @@ import getPhotoGallery from "@/composables/getPhotoGallery";
             }
 
             const filterProduct = () => {
-                if(selectedYear.value == 'All') {
+                if(selectedTitle.value == 'all' && selectedYear.value == 'All') {
                     filteredPhotos.value = photo_gallery.value.map(photo => photo.media);
 
                     photo_array.value = [];
@@ -60,7 +80,7 @@ import getPhotoGallery from "@/composables/getPhotoGallery";
                             photo_array.value.push(media)
                         }
                     }
-                } else {
+                } else if(selectedTitle.value == 'all' && selectedYear.value != 'All') {
                     filteredPhotos.value = photo_gallery.value.filter(photo => photo.date == selectedYear.value);
 
                     photo_array.value = [];
@@ -69,10 +89,53 @@ import getPhotoGallery from "@/composables/getPhotoGallery";
                             photo_array.value.push(photo)
                         }
                     }
+                } else if(selectedTitle.value != 'all' && selectedYear.value == 'All') {
+                    filteredPhotos.value = photo_gallery.value.filter(photo => photo.title == selectedTitle.value);
+
+                    photo_array.value = [];
+                    for(const key in filteredPhotos.value) {
+                        for(const photo of filteredPhotos.value[key].media) {
+                            photo_array.value.push(photo)
+                        }
+                    }
+                } else if(selectedTitle.value != 'all' && selectedYear.value != 'All') {
+                    filteredPhotos.value = photo_gallery.value.filter(photo => photo.title == selectedTitle.value && photo.date == selectedYear.value);
+
+                    photo_array.value = [];
+                    for(const key in filteredPhotos.value) {
+                        for(const photo of filteredPhotos.value[key].media) {
+                            photo_array.value.push(photo)
+                        }
+                    }
                 }
+
+
+                // if(selectedYear.value == 'All') {
+                //     filteredPhotos.value = photo_gallery.value.map(photo => photo.media);
+
+                //     photo_array.value = [];
+                //     for(const gallery of filteredPhotos.value) {
+                //         for(const media of gallery) {
+                //             photo_array.value.push(media)
+                //         }
+                //     }
+                // } else {
+                //     filteredPhotos.value = photo_gallery.value.filter(photo => photo.date == selectedYear.value);
+
+                //     photo_array.value = [];
+                //     for(const key in filteredPhotos.value) {
+                //         for(const photo of filteredPhotos.value[key].media) {
+                //             photo_array.value.push(photo)
+                //         }
+                //     }
+                // }
             }
 
             watch(selectedYear, () => {
+                filterProduct();
+            })
+
+            watch(selectedTitle, () => {
                 filterProduct();
             })
             
@@ -83,7 +146,7 @@ import getPhotoGallery from "@/composables/getPhotoGallery";
                 }
             })
 
-            return {photo_array, selectedYear, years, isLoading}
+            return {photo_array,titles,  selectedYear, selectedTitle, years, isLoading}
         }
     }
 </script>
