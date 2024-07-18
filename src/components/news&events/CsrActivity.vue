@@ -1,5 +1,8 @@
 <template>
   <div class="csr">
+    <div v-if="isLoading">
+      <Loading />
+  </div>
     <img src="@/assets/images/csr.jpg" alt="" />
     <h4>Corporate Responsibility</h4>
     <span>Our commitment to corporate responsibility</span>
@@ -12,25 +15,79 @@
       building a better future and making a meaningful difference. Join us in
       our CSR journey for a more inclusive and sustainable world.
     </div>
-    <div class="header">
-      <h4>Activities</h4>
-      <div class="divider"></div>
+    <div class="header d-flex justify-content-between align-items-center">
+      <div class="d-flex flex-column ">
+        <h4>Activities</h4>
+        <div class="divider"></div>
+      </div>
+      <div class="d-flex justify-content-end align-items-center gap-3 year-row mt-3">
+        <div style="width: 200px;">
+            <v-select
+                label="Choose Year"
+                :items="['All',...years]"
+                variant="underlined"
+                class="year-select"
+                v-model="selectedYear"
+            ></v-select>
+        </div>
+        <i class="fa-solid fa-magnifying-glass fs-5 text-end"></i>
     </div>
-    <div class="content">
-      <div class="csr-card pointer" v-for="i in 6" :key="i">
-        <img :src="require(`@/assets/images/csr/csr${i}.png`)" alt="" />
+    </div>
+    <div class="csr-row row ">
+      <div class="pointer col-12 col-sm-6 col-md-4 mb-3" v-for="(csr, index) in filteredDatas" :key="index">
+        <div class="">
+          <router-link :to="`/csr-detail/${csr.id}`">
+            <img class="mb-2 w-100" :src="csr.media[0].original_url" alt="">
+            <span>{{csr.date}}</span>
+            <h5 class="text-dark" style="margin-top: -5px;">{{csr.title}}</h5>
+          </router-link>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { onMounted } from "vue";
+import getCsr from "@/composables/getCsr";
+import { onMounted, ref, watch } from "vue";
+import Loading from '../Loading'
+
 export default {
+  components: { Loading },
+
   setup() {
-    onMounted(() => {
+    let selectedYear = ref('All');
+    let filteredDatas = ref([]);
+    let isLoading = ref(true);
+
+    const {csr, years, error, load} = getCsr();
+    
+    const loadData = async() => {
+      await load();
+      filter();
+    }
+
+    const filter = () => {
+      if(selectedYear.value == 'All') {
+        filteredDatas.value = csr.value;
+      } else {
+        filteredDatas.value = csr.value.filter(data => data.date == selectedYear.value);
+      }
+    }
+
+    watch(selectedYear, () => {
+      filter();
+    })
+
+    onMounted(async() => {
       scrollTo(0, 0);
+      await loadData();
+      if(!error.value) {
+          isLoading.value = false;
+      }
     });
+
+    return {filteredDatas, selectedYear, years, isLoading}
   },
 };
 </script>
@@ -71,32 +128,12 @@ export default {
   background-color: var(--sec-color);
 }
 
-.content {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+.csr-row {
   margin-top: 40px;
 }
 
-.csr-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-  width: 30%;
-  border-radius: 7px;
-  transition: 0.5s;
-}
-
-.csr-card:hover {
-  transform: scale(1.1);
-}
-
-.csr-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
+.csr-row a {
+  text-decoration: none;
 }
 
 @media (max-width: 1600px) {

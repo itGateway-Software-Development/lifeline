@@ -1,8 +1,8 @@
 <template>
   <div class="news-events">
     <div class="row">
-      <div class="col-lg-2 col-md-3 col-sm-12 p-0">
-        <div class="menu w-100">
+      <div class="col-lg-2 col-md-3 col-sm-12 p-0" >
+        <div class="menu w-100" style="position:sticky; top: 50px;">
           <router-link
             to="/news-events/csr-activities"
             :class="{ active: slug == 'csr-activities' }"

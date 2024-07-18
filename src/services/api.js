@@ -7,7 +7,9 @@ let api = {
   getCategories: url + "categories",
   getProducts: url + "products",
   getProduct: url + "products/",
-  getPhotoGallery: url + "photo-gallery"
+  getPhotoGallery: url + "photo-gallery",
+  getCsr: url + "csr-activities",
+  getCsrDetail: url+ "csr-activities/"
 };
 
 export default api;

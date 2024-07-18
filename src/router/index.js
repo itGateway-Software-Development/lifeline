@@ -67,6 +67,12 @@ const routes = [
     props: true,
   },
   {
+    path: "/csr-detail/:id",
+    name: "CSR Detail",
+    component: () => import("@/views/CsrDetail.vue"),
+    props: true,
+  },
+  {
     path: "/news-detail/:id",
     name: "NewsDetail",
     component: () => import("@/views/NewsDetail.vue"),
