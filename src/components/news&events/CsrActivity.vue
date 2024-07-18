@@ -34,12 +34,12 @@
     </div>
     </div>
     <div class="csr-row row ">
-      <div class="pointer col-12 col-sm-6 col-md-4 mb-3" v-for="(csr, index) in filteredDatas" :key="index">
+      <div class="pointer col-12 col-sm-6 col-md-4 mb-5" v-for="(csr, index) in filteredDatas" :key="index">
         <div class="">
           <router-link :to="`/csr-detail/${csr.id}`">
             <img class="mb-2 w-100" :src="csr.media[0].original_url" alt="">
             <span>{{csr.date}}</span>
-            <h5 class="text-dark" style="margin-top: -5px;">{{csr.title}}</h5>
+            <h6 class="text-dark" style="margin-top: -5px;">{{csr.title}}</h6>
           </router-link>
         </div>
       </div>

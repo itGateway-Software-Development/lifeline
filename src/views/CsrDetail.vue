@@ -20,6 +20,7 @@
 
 <script>
 import getCsrDetail from '@/composables/getCsrDetail';
+import { onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 
     export default {
@@ -33,6 +34,10 @@ import { useRouter } from 'vue-router';
             const goback = () => {
                 router.back();
             }
+
+            onMounted(() => {
+                scrollTo(0,0)
+            })
 
             return {csr, goback}
         }
