@@ -15,10 +15,6 @@
                 <li>From our establishment in a single office, we are proud to announce our growth and expansion.  </li>
                 <li>Today, our offices extend to 8 branch offices and 15 sub-distributor offices, strategically located in every states and divisions of Myanmar. These coverages prove our commitment to providing quality service and products, and we look forward to serving our customers with a greater reach and efficiency with timely manner. </li>
             </ul>
-
-            <div class="img">
-                <img src="@/assets/images/lifeline-group.jpg" alt="">
-            </div>
         </div>
     </div>
 </template>

@@ -1,7 +1,7 @@
 <template>
   <div class="milestone">
     <div class="img">
-      <img data-aos="zoom-in" src="@/assets/images/milestone.png" alt="" />
+      <img data-aos="zoom-in" src="@/assets/images/milestone.jpg" alt="" />
     </div>
 
     <div class="header">
@@ -42,14 +42,14 @@ export default {
 <style scoped>
 .img {
   width: 100%;
-  height: 300px;
+  height: 600px;
   background: #f8f6f6;
 }
 
 .img img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   background: transparent;
 }
 

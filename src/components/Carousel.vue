@@ -50,10 +50,15 @@
 
       <div class="csr-photos" v-if="showCsrPic">
         <div class="csr-photo-group d-flex flex-column-reverse gap-2">
-          <img @click="handleCsrPhotoClick(i)" class="active" v-for="i in 5" :key="i" :src="require(`@/assets/images/carousel/csr/${i}.jpg`)" alt="">
+          <img @click="handleCsrPhotoClick(i)" class="active" v-for="i in 7" :key="i" :src="require(`@/assets/images/carousel/csr/${i}.jpg`)" alt="">
         </div>
       </div>
 
+      <div class="csr-photos" v-if="showAnniversaryPic">
+        <div class="csr-photo-group d-flex flex-column-reverse gap-2">
+          <img @click="handleAnniversayPhotoClick(i)" class="active" v-for="i in 5" :key="i" :src="require(`@/assets/images/carousel/20_anniversary/${i}.jpg`)" alt="">
+        </div>
+      </div>
     </div>
   </template>
 
@@ -76,15 +81,26 @@
           require('@/assets/images/carousel/csr/3.jpg'),
           require('@/assets/images/carousel/csr/4.jpg'),
           require('@/assets/images/carousel/csr/5.jpg'),
+          require('@/assets/images/carousel/csr/6.jpg'),
+          require('@/assets/images/carousel/csr/7.jpg'),
         ];
+
+        const anniversary = [
+          require('@/assets/images/carousel/20_anniversary/1.jpg'),
+          require('@/assets/images/carousel/20_anniversary/2.jpg'),
+          require('@/assets/images/carousel/20_anniversary/3.jpg'),
+          require('@/assets/images/carousel/20_anniversary/4.jpg'),
+          require('@/assets/images/carousel/20_anniversary/5.jpg'),
+        ]
 
         const currentImageIndex = ref(0);
         const currentImage = ref(banners[currentImageIndex.value]);
-        let duration = 5000;
+        let duration = 10000;
         let intervalId;
         const product_swiper = ref(null);
         const showProductSlider = ref(false);
         const showCsrPic = ref(false);
+        const showAnniversaryPic = ref(false);
 
         const swipeImage = () => {
           if(currentImageIndex.value < banners.length-1) {
@@ -100,11 +116,16 @@
           } else {
             showProductSlider.value = false;
           }
-
           if(currentImage.value.substr(0,10) == '/img/1.c61') {
             showCsrPic.value = true;
           } else {
             showCsrPic.value = false;
+          }
+
+          if(currentImage.value.substr(0,10) == '/img/4.9a6') {
+            showAnniversaryPic.value = true;
+          } else {
+            showAnniversaryPic.value = false;
           }
 
         }
@@ -139,6 +160,12 @@
             showCsrPic.value = false;
           }
 
+          if(currentImage.value.substr(0,10) == '/img/4.9a6') {
+            showAnniversaryPic.value = true;
+          } else {
+            showAnniversaryPic.value = false;
+          }
+
           clearInterval(intervalId);
           intervalId = setInterval(swipeImage, duration);
         }
@@ -150,6 +177,10 @@
             intervalId = setInterval(swipeImage, duration);
           }
         };
+
+        const handleAnniversayPhotoClick = (index) => {
+          currentImage.value = anniversary[--index];
+        }
 
         const handleCsrPhotoClick = (index) => {
           currentImage.value = csr[--index];
@@ -177,11 +208,11 @@
                   slidesPerView: 3,
                 },
                 1000: {
-                  slidesPerView: 3,
+                  slidesPerView: 4,
                 },
 
                 1520: {
-                  slidesPerView: 4,
+                  slidesPerView: 5,
                   spaceBetween: 2,
                 },
               },
@@ -195,7 +226,7 @@
           intervalId = setInterval(swipeImage, duration);
         })
 
-        return {currentImage, currentImageIndex, changeImage, handleHover, product_swiper, showProductSlider, handleCsrPhotoClick, showCsrPic}
+        return {currentImage, currentImageIndex, changeImage, handleHover, product_swiper, showProductSlider, handleCsrPhotoClick, showCsrPic, showAnniversaryPic, handleAnniversayPhotoClick}
       }
     };
   </script>
@@ -235,6 +266,7 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    z-index: 99;
   }
 
   img {
@@ -253,7 +285,7 @@
   }
 
   .carousel-section .product-slider img {
-    width: 220px;
+    width: 160px;
     height: 250px;
     border-radius: 7px;
   }
@@ -271,12 +303,13 @@
     position: absolute;
     width: 100%;
     top: 5%;
-    left: 92%;
+    left: 90%;
+    z-index: 0;
   }
 
   .carousel-section .csr-photos img {
-    width: 100px;
-    height: 100px;
+    width: 70px;
+    height: 70px;
     border-radius: 100%;
     object-fit: cover;
     cursor:pointer;
@@ -368,12 +401,18 @@
       position: absolute;
       width: 100%;
       top: 5%;
-      left: 91%;
+      left: 88%;
     }
 
-    .carousel-section .csr-photos img {
-      width: 90px;
-      height: 90px;
+  }
+
+  @media (max-width: 1420px) {
+    .carousel-section .csr-photos {
+      position: absolute;
+      width: 100%;
+      top: 5%;
+      left: 85%;
+      z-index: 0;
     }
   }
 
@@ -412,13 +451,8 @@
     .carousel-section .csr-photos {
       position: absolute;
       width: 100%;
-      top: 10%;
-      left: 88%;
-    }
-
-    .carousel-section .csr-photos img {
-      width: 80px;
-      height: 80px;
+      top: 5%;
+      left: 81%;
     }
   }
 
@@ -440,7 +474,7 @@
     }
     
     .carousel-section .product-slider img {
-      width: 200px;
+      width: 150px;
       height: 170px;
       object-fit: contain;
       border-radius: 7px;
@@ -449,13 +483,13 @@
     .carousel-section .csr-photos {
       position: absolute;
       width: 100%;
-      top: 5%;
-      left: 88%;
+      top: 3%;
+      left: 82%;
     }
     
     .carousel-section .csr-photos img {
-      width: 60px;
-      height: 60px;
+      width: 45px;
+      height: 45px;
     }
 
   }
@@ -524,7 +558,7 @@
     }
     
     .carousel-section .product-slider img {
-      width: 150px;
+      width: 140px;
       height: 120px;
       object-fit: contain;
       border-radius: 7px;
@@ -559,14 +593,11 @@
     .carousel-section .csr-photos {
       position: absolute;
       width: 100%;
-      top: 15%;
-      left: 88%;
+      top: 3%;
+      left: 73%;
     }
     
-    .carousel-section .csr-photos img {
-      width: 100px;
-      height: 100px;
-    }
+
   }
 
   @media (max-width: 480px) {

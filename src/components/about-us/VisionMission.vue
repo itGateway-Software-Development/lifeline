@@ -2,17 +2,12 @@
   <div class="vision-mission">
     <div>
       <div class="heading-container">
-        <div class="line">
-          <div data-aos="fade-right" class="first-line"></div>
-          <div data-aos="fade-right" class="second-line"></div>
-        </div>
         <div class="unity-image">
           <div class="bg"></div>
-          <img data-aos="fade-left" src="@/assets/images/unity.webp" alt="" />
+          <img data-aos="fade-left" src="@/assets/images/vision_mission_samll.jpg" alt="" />
         </div>
       </div>
       <div class="header">
-        <h2>Our Vision And Mission</h2>
       </div>
     </div>
     <div class="content">
@@ -57,9 +52,10 @@ export default {
 }
 .header {
   width: 100%;
-  height: 250px;
+  height: 350px;
   background-image: url("@/assets/images/vision-mission.jpg");
   background-size: cover;
+  background-position: bottom;
   z-index: 0;
   display: flex;
   align-items: center;
@@ -75,42 +71,20 @@ export default {
   width: 250px;
   height: 200px;
   position: absolute;
-  right: 5%;
-  margin-top: 200px;
+  right: 0;
+  margin-top: 300px;
   z-index: 2;
 }
 
-.unity-image .bg {
-  width: 120px;
-  height: 100px;
-  background: var(--sec-color);
-}
+
 .unity-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  margin-top: -75px;
-  margin-left: 25px;
+  margin-top: -15px;
+  border-top-left-radius: 80px;
 }
 
-.heading-container .line {
-  position: absolute;
-  top: 155%;
-  left: 55%;
-  z-index: 9999;
-  margin-top: 320px;
-}
-
-.heading-container .first-line,
-.second-line {
-  width: 250px;
-  height: 2px;
-  background: var(--sec-color);
-}
-
-.second-line {
-  margin: 30px 0 0 -30px;
-}
 
 .content {
   margin-top: 170px;

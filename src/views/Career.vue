@@ -56,11 +56,11 @@
                       </div>
                       <div class="modal-body position-relative">
                         <div class="file-import">
-                          <h6 class="mb-3 fw-bold text-success">Apply Here</h6>
+                          <!-- <h6 class="mb-3 fw-bold text-success">Apply Here</h6>
                           <v-file-input
                             label="Please import your cv"
                             chips
-                          ></v-file-input>
+                          ></v-file-input> -->
                         </div>
                         <div class="row mb-3">
                           <div class="col-6 col-md-4 col-md-2">
@@ -88,12 +88,15 @@
                         </div>
                         <hr>
                         <div class="row mb-3">
-                          <h6 class="fw-bold">Job Descriptin</h6>
-                          <div v-html="jdData ? jdData.job_description : ''"></div>
+                          <h6 class="fw-bold">Job Description</h6>
+                          <div v-html="jdData ? jdData.job_description : '-'"></div>
                         </div>
                         <div class="row mb-3">
                           <h6 class="fw-bold">Requirements</h6>
                           <div v-html="jdData ? jdData.requirements : ''"></div>
+                        </div>
+                        <div class="row mb-3">
+                          <div v-html="jdData ? jdData.note : ''"></div>
                         </div>
                       </div>
                       <div class="modal-footer">
@@ -140,257 +143,126 @@ export default {
     const vacancies = [
       {
         id: 1,
-        position: 'Senior HR',
-        department: 'HR',
+        position: 'Warehouse Supervisor',
+        department: 'Admin',
         location: 'Yangon',
-        job_info: 'We offer an open vacancy for the HR department.',
+        job_info: 'We offer an open vacancy for the Admin department.',
         posts: 2,
-        job_description: `
-          <ul>
-            <li>Ensure Attendance</li>
-            <li>Manage HR Policies</li>
-            <li>Oversee Recruitment Processes</li>
-          </ul>
-        `,
+        job_description: null,
         requirements: `
           <ul>
-            <li>Bachelor's Degree in Human Resources or related field</li>
-            <li>5+ years of experience in HR management</li>
-            <li>Excellent communication skills</li>
+            <li>တက္ကသိုလ်မှ ဘွဲ့တစ်ခု ရရှိထားသူဖြစ်ရမည်။ </li>
+            <li>English စာ အခြေခံကောင်းမွန်ရမည်။ </li>
+            <li>Computer ကိုကျွမ်းကျင်စွာအသုံးပြုနိုင်သူဖြစ်ရမည်။  </li>
+            <li>သက်ဆိုင်ရာလုပ်ငန်း အတွေ့အကြုံရှိသူ ဦးစားပေးမည်။    </li>
+            <li>စာရင်းဇယားများနှင့်ပတ်သက်၍ ကျွမ်းကျင်စွာလုပ်ကိုင်နိုင်သူဖြစ်ရမည်။   </li>
+            <li>လုပ်ငန်းအပေါ်တွင် အချိန်ပေးဆောင်ရွက်နိုင်သူဖြစ်ရမည်။ </li>
+            <li>မိမိ Team Member များအား ကောင်းမွန်စွာ စီမံအုပ်ချုပ်နိုင်သူဖြစ်ရမည်။ </li>
+            <li>လိုအပ်ပါက နယ်ခရီးသွားလာနိုင်သူဖြစ်ရမည်။  </li>
+            <li>ဆက်ဆံရေးပြေပြစ်ကောင်းမွန်၍ လုပ်ငန်းအပေါ်တွင် စိတ်ဝင်စားသူ ဖြစ်ရမည်။</li>
           </ul>
         `,
+        note: `
+        <p>
+          စိတ်ပါဝင်စား၍ လျှောက်ထားလိုပါက အောက်ပါပေးထားသော လိပ်စာသို့ လူကိုယ်တိုင် လာရောက်၍ဖြစ်စေ၊ Email (သို့မဟုတ်) Viber Phone Number များသို့ဖြစ်စေ မျှော်မှန်းလစာနှင့်အတူ ဤကြော်ငြာပါသည့်နေ့မှ (၁၄) ရက်အတွင်းလျှောက်ထားနိုင်ပါသည်။ 
+        </p>
+        <ul>
+          <li>Address - အမှတ် (၁၃)၊ လှိုင်မြင့်မိုရ်လမ်းသွယ်(၇)၊ (၁၀)ရပ်ကွက်၊ လှိုင်မြိုနယ်၊ ရန်ကုန်တိုင်းဒေသကြီး။  </li>
+          <li>Email - contact@lifelinemyanmar.com</li>
+          <li>Viber - 09977875949</li>
+        </ul>
+        `
       },
       {
         id: 2,
-        position: 'Software Developer',
-        department: 'IT',
-        location: 'Mandalay',
-        job_info: 'Join our IT team to develop and maintain software applications.',
+        position: 'Warehouse Staff',
+        department: 'Admin',
+        location: 'Yangon',
+        job_info: 'We offer an open vacancy for the Admin department.',
         posts: 3,
-        job_description: `
-          <ul>
-            <li>Develop new software applications</li>
-            <li>Maintain and improve existing codebases</li>
-            <li>Collaborate with cross-functional teams</li>
-          </ul>
-        `,
+        job_description: null,
         requirements: `
           <ul>
-            <li>Bachelor's Degree in Computer Science or related field</li>
-            <li>3+ years of experience in software development</li>
-            <li>Proficiency in JavaScript, HTML, CSS</li>
+            <li>တက္ကသိုလ်ဝင်တန်းအောင်မြင်ပြီးသူဖြစ်ရမည်။ </li>
+            <li>ရိုးသားကြိုးစားသူ ဖြစ်ရမည်။  </li>
+            <li>အတွေ့အကြုံရှိသူ ဦးစားပေးမည်  </li>
+            <li>စာရင်းဇယားများနှင့်ပတ်သက်၍ ကျွမ်းကျင်စွာလုပ်ကိုင်နိုင်သူဖြစ်ရမည်။   </li>
+            <li>လုပ်ငန်းအပေါ်တွင် အချိန်ပေးဆောင်ရွက်နိုင်သူဖြစ်ရမည်။  </li>
+            <li>လိုအပ်ပါက နယ်ခရီးသွားလာနိုင်သူဖြစ်ရမည်။   </li>
+            <li>မိမိ Team Member များအား ကောင်းမွန်စွာ စီမံအုပ်ချုပ်နိုင်သူဖြစ်ရမည်။ </li>
+            <li>လိုအပ်ပါက နယ်ခရီးသွားလာနိုင်သူဖြစ်ရမည်။  </li>
+            <li>ပေါင်းသင်းဆက်ဆံရေးကောင်းမွန်ပြီး Team Work ဖြင့် လုပ်ဆောင်နိုင်သူဖြစ်ရမည်။ </li>
           </ul>
         `,
+        note: `
+          <p>
+            စိတ်ပါဝင်စား၍ လျှောက်ထားလိုပါက အောက်ပါပေးထားသော လိပ်စာသို့ လူကိုယ်တိုင် လာရောက်၍ဖြစ်စေ၊ Email (သို့မဟုတ်) Viber Phone Number များသို့ဖြစ်စေ မျှော်မှန်းလစာနှင့်အတူ ဤကြော်ငြာပါသည့်နေ့မှ (၁၄) ရက်အတွင်းလျှောက်ထားနိုင်ပါသည်။ 
+          </p>
+          <ul>
+            <li>Address - အမှတ် (၁၃)၊ လှိုင်မြင့်မိုရ်လမ်းသွယ်(၇)၊ (၁၀)ရပ်ကွက်၊ လှိုင်မြိုနယ်၊ ရန်ကုန်တိုင်းဒေသကြီး။  </li>
+            <li>Email - contact@lifelinemyanmar.com</li>
+            <li>Viber - 09977875949</li>
+          </ul>
+        `
       },
       {
         id: 3,
-        position: 'Marketing Specialist',
-        department: 'Marketing',
-        location: 'Naypyidaw',
-        job_info: 'We are looking for a creative Marketing Specialist to join our team.',
-        job_description: `
-          <ul>
-            <li>Develop marketing strategies</li>
-            <li>Manage social media accounts</li>
-            <li>Create content for various platforms</li>
-          </ul>
-        `,
+        position: 'Operation Supervisor',
+        department: 'Admin',
+        location: 'Yangon',
+        job_info: 'We offer an open vacancy for the Admin department.',
+        posts: 2,
+        job_description: null,
         requirements: `
           <ul>
-            <li>Bachelor's Degree in Marketing or related field</li>
-            <li>2+ years of experience in marketing</li>
-            <li>Strong analytical and communication skills</li>
+            <li>တက္ကသိုလ်မှ ဘွဲ့တစ်ခု ရရှိထားသူဖြစ်ရမည်။ </li>
+            <li>English စာ အခြေခံကောင်းမွန်ရမည်။  </li>
+            <li>Computer ကိုကျွမ်းကျင်စွာအသုံးပြုနိုင်သူဖြစ်ရမည်။ (Excel/Word)  </li>
+            <li>သက်ဆိုင်ရာလုပ်ငန်း အတွေ့အကြုံရှိသူ ဦးစားပေးမည်။    </li>
+            <li>လုပ်ငန်းအပေါ်တွင် အချိန်ပေးဆောင်ရွက်နိုင်သူဖြစ်ရမည်။ </li>
+            <li>မိမိ Team Member များအား ကောင်းမွန်စွာ စီမံအုပ်ချုပ်နိုင်သူဖြစ်ရမည်။   </li>
+            <li>လိုအပ်ပါက နယ်ခရီးသွားလာနိုင်သူဖြစ်ရမည်။ </li>
+            <li>ဆက်ဆံရေးပြေပြစ်ကောင်းမွန်၍ လုပ်ငန်းအပေါ်တွင် စိတ်ဝင်စားသူ ဖြစ်ရမည်။  </li>
           </ul>
         `,
+        note: `
+          <p>
+            စိတ်ပါဝင်စား၍ လျှောက်ထားလိုပါက အောက်ပါပေးထားသော လိပ်စာသို့ လူကိုယ်တိုင် လာရောက်၍ဖြစ်စေ၊ Email (သို့မဟုတ်) Viber Phone Number များသို့ဖြစ်စေ မျှော်မှန်းလစာနှင့်အတူ ဤကြော်ငြာပါသည့်နေ့မှ (၁၄) ရက်အတွင်းလျှောက်ထားနိုင်ပါသည်။ 
+          </p>
+          <ul>
+            <li>Address - အမှတ် (၁၃)၊ လှိုင်မြင့်မိုရ်လမ်းသွယ်(၇)၊ (၁၀)ရပ်ကွက်၊ လှိုင်မြိုနယ်၊ ရန်ကုန်တိုင်းဒေသကြီး။  </li>
+            <li>Email - contact@lifelinemyanmar.com</li>
+            <li>Viber - 09977875949</li>
+          </ul>
+        `
       },
       {
         id: 4,
-        position: 'Sales Manager',
-        department: 'Sales',
+        position: 'Accountant ',
+        department: 'Accountant',
         location: 'Yangon',
-        job_info: 'We are seeking a dynamic Sales Manager to lead our sales team.',
-        job_description: `
-          <ul>
-            <li>Develop sales strategies</li>
-            <li>Manage sales team performance</li>
-            <li>Build and maintain customer relationships</li>
-          </ul>
-        `,
+        job_info: 'We offer an open vacancy for the Admin department.',
+        posts: 2,
+        job_description: null,
         requirements: `
           <ul>
-            <li>Bachelor's Degree in Business Administration or related field</li>
-            <li>4+ years of experience in sales management</li>
-            <li>Strong leadership skills</li>
+            <li>တက္ကသိုလ်တစ်ခုခုမှ ဘွဲ့ရရှိထားသူဖြစ်ရမည်။ </li>
+            <li>LCCI Level (1,2) ပြီးမြောက်ထားသူဖြစ်ရပါမည်။  </li>
+            <li>Microsoft Excel အား ကျွမ်းကျင်စွာ အသုံးပြုနိုင်သူဖြစ်ရမည်။  </li>
+            <li>အသင်းအဖွဲ့နှင့်ပူးပေါင်းဆောင်ရွက်နိုင်ပြီး ရေရှည်လုပ်ကိုင်သူဖြစ်ရပါမည်။  </li>
+            <li>လှိုင်သာယာမြို့နယ်တွင် အလုပ်ဆင်းနိုင်သူဖြစ်ရပါမည်။  </li>
           </ul>
         `,
-      },
-      {
-        id: 5,
-        position: 'Accountant',
-        department: 'Finance',
-        location: 'Mandalay',
-        job_info: 'We are looking for a meticulous Accountant to join our finance team.',
-        job_description: `
+        note: `
+          <p>
+            စိတ်ပါဝင်စား၍ လျှောက်ထားလိုပါက အောက်ပါပေးထားသော လိပ်စာသို့ လူကိုယ်တိုင် လာရောက်၍ဖြစ်စေ၊ Email (သို့မဟုတ်) Viber Phone Number များသို့ဖြစ်စေ မျှော်မှန်းလစာနှင့်အတူ ဤကြော်ငြာပါသည့်နေ့မှ (၁၄) ရက်အတွင်းလျှောက်ထားနိုင်ပါသည်။ 
+          </p>
           <ul>
-            <li>Manage financial transactions</li>
-            <li>Prepare financial reports</li>
-            <li>Ensure compliance with financial regulations</li>
+            <li>Address - အမှတ် (၁၃)၊ လှိုင်မြင့်မိုရ်လမ်းသွယ်(၇)၊ (၁၀)ရပ်ကွက်၊ လှိုင်မြိုနယ်၊ ရန်ကုန်တိုင်းဒေသကြီး။  </li>
+            <li>Email - contact@lifelinemyanmar.com</li>
+            <li>Viber - 09977875949</li>
           </ul>
-        `,
-        requirements: `
-          <ul>
-            <li>Bachelor's Degree in Accounting or Finance</li>
-            <li>3+ years of experience in accounting</li>
-            <li>Proficiency in accounting software</li>
-          </ul>
-        `,
-      },
-      {
-        id: 6,
-        position: 'Customer Service Representative',
-        department: 'Customer Service',
-        location: 'Naypyidaw',
-        job_info: 'We need a friendly Customer Service Representative to assist our customers.',
-        job_description: `
-          <ul>
-            <li>Handle customer inquiries</li>
-            <li>Resolve customer complaints</li>
-            <li>Provide product information</li>
-          </ul>
-        `,
-        requirements: `
-          <ul>
-            <li>High School Diploma or equivalent</li>
-            <li>1+ year of experience in customer service</li>
-            <li>Excellent communication skills</li>
-          </ul>
-        `,
-      },
-      {
-        id: 7,
-        position: 'Graphic Designer',
-        department: 'Design',
-        location: 'Yangon',
-        job_info: 'We are looking for a talented Graphic Designer to join our creative team.',
-        job_description: `
-          <ul>
-            <li>Create visual content for marketing campaigns</li>
-            <li>Design graphics for social media and websites</li>
-            <li>Collaborate with marketing and product teams</li>
-          </ul>
-        `,
-        requirements: `
-          <ul>
-            <li>Bachelor's Degree in Graphic Design or related field</li>
-            <li>2+ years of experience in graphic design</li>
-            <li>Proficiency in Adobe Creative Suite</li>
-          </ul>
-        `,
-      },
-      {
-        id: 8,
-        position: 'Project Manager',
-        department: 'Project Management',
-        location: 'Mandalay',
-        job_info: 'Join us as a Project Manager to oversee and lead project teams.',
-        job_description: `
-          <ul>
-            <li>Plan and execute projects</li>
-            <li>Manage project timelines and budgets</li>
-            <li>Coordinate with stakeholders</li>
-          </ul>
-        `,
-        requirements: `
-          <ul>
-            <li>Bachelor's Degree in Project Management or related field</li>
-            <li>4+ years of experience in project management</li>
-            <li>Strong organizational skills</li>
-          </ul>
-        `,
-      },
-      {
-        id: 9,
-        position: 'IT Support Specialist',
-        department: 'IT',
-        location: 'Naypyidaw',
-        job_info: 'We need an IT Support Specialist to provide technical assistance to our staff.',
-        job_description: `
-          <ul>
-            <li>Troubleshoot hardware and software issues</li>
-            <li>Install and configure software</li>
-            <li>Maintain IT systems</li>
-          </ul>
-        `,
-        requirements: `
-          <ul>
-            <li>Bachelor's Degree in Information Technology or related field</li>
-            <li>2+ years of experience in IT support</li>
-            <li>Strong problem-solving skills</li>
-          </ul>
-        `,
-      },
-      {
-        id: 10,
-        position: 'Content Writer',
-        department: 'Marketing',
-        location: 'Yangon',
-        job_info: 'We are looking for a creative Content Writer to produce engaging content.',
-        job_description: `
-          <ul>
-            <li>Write articles and blog posts</li>
-            <li>Create content for social media</li>
-            <li>Develop marketing copy</li>
-          </ul>
-        `,
-        requirements: `
-          <ul>
-            <li>Bachelor's Degree in English, Journalism, or related field</li>
-            <li>2+ years of experience in content writing</li>
-            <li>Excellent writing skills</li>
-          </ul>
-        `,
-      },
-      {
-        id: 11,
-        position: 'Business Analyst',
-        department: 'Business Development',
-        location: 'Mandalay',
-        job_info: 'We are seeking a skilled Business Analyst to improve our business processes.',
-        job_description: `
-          <ul>
-            <li>Analyze business requirements</li>
-            <li>Identify areas for improvement</li>
-            <li>Develop business strategies</li>
-          </ul>
-        `,
-        requirements: `
-          <ul>
-            <li>Bachelor's Degree in Business Administration or related field</li>
-            <li>3+ years of experience in business analysis</li>
-            <li>Strong analytical skills</li>
-          </ul>
-        `,
-      },
-      {
-        id: 12,
-        position: 'Data Scientist',
-        department: 'Data Analysis',
-        location: 'Naypyidaw',
-        job_info: 'We need a Data Scientist to analyze complex data sets and provide insights.',
-        job_description: `
-          <ul>
-            <li>Analyze large data sets</li>
-            <li>Develop data models</li>
-            <li>Generate business insights from data</li>
-          </ul>
-        `,
-        requirements: `
-          <ul>
-            <li>Bachelor's Degree in Data Science, Statistics, or related field</li>
-            <li>3+ years of experience in data analysis</li>
-            <li>Proficiency in data analysis tools and programming languages</li>
-          </ul>
-        `,
+        `
       },
     ];
 

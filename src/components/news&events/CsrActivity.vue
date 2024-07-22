@@ -38,7 +38,6 @@
         <div class="">
           <router-link :to="`/csr-detail/${csr.id}`">
             <img class="mb-2 w-100" :src="csr.media[0].original_url" alt="">
-            <span>{{csr.date}}</span>
             <h6 class="text-dark" style="margin-top: -5px;">{{csr.title}}</h6>
           </router-link>
         </div>

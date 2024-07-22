@@ -4,24 +4,36 @@
             <div class="row">
                 <div class="col-12 col-lg-8">
                     <div class="row">
-                        <div class="col-12 col-sm-6 col-lg-4 mb-5">
+                        <div class="col-12 col-sm-6 mb-5">
                             <div class="youtube-video">
                                 <div class="video">
                                     <iframe width="100%" height="250" src="https://www.youtube.com/embed/fFS4aDpWrd4?si=ukG8w8Ur5xBNDlVh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                                 </div>
-                                <div class="video-title">
+                                <!-- <div class="video-title">
                                     <h3>A Webinar Recording of "Critical Thinking in Medical Practice" which was delivered by Professor Chit Soe and Associate Professor Dr Kyaw Thu Yaa</h3>
+                                </div> -->
+                                <div class="view-yt">
+                                    <a href="https://www.youtube.com/watch?v=fFS4aDpWrd4" target="_blank">
+                                        View Full Video
+                                        <i class="fa-solid fa-arrow-right"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-sm-6 col-lg-4 mb-5" v-for="i in 20" :key="i">
+                        <div class="col-12 col-sm-6 mb-5" v-for="i in 5" :key="i">
                             <div class="youtube-video">
                                 <div class="video">
                                     <img height="250" src="@/assets/images/youtube.jpg" alt="">
                                 </div>
-                                <div class="video-title">
-                                    <h3>A Webinar Recording of "Critical Thinking in Medical Practice" which was delivered by Professor Chit Soe and Associate Professor Dr Kyaw Thu Yaa</h3>
+                                <div class="view-yt mt-1">
+                                    <a href="https://www.youtube.com/@academic.lifelinemyanmar4836" target="_blank">
+                                        View Full Video
+                                        <i class="fa-solid fa-arrow-right"></i>
+                                    </a>
                                 </div>
+                                <!-- <div class="video-title">
+                                    <h3>A Webinar Recording of "Critical Thinking in Medical Practice" which was delivered by Professor Chit Soe and Associate Professor Dr Kyaw Thu Yaa</h3>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -82,6 +94,17 @@
     .academic .youtube-video .video img {
         width: 100%;
         border-radius: 10px;
+    }
+
+    .academic .youtube-video .view-yt a {
+        text-decoration: none;
+        color: var(--main-color);
+        transition: .5s ease;
+    }
+
+    .academic .youtube-video .view-yt a:hover {
+        color: var(--sec-color);
+        margin-left: 10px;
     }
 
     .academic .youtube-video .video-title h3 {

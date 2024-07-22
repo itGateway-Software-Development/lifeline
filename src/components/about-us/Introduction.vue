@@ -34,20 +34,6 @@
         Myanmar.
       </p>
     </div>
-    <div class="company-img">
-      <img
-        data-aos="fade-right"
-        src="@/assets/images/head-office1.jpg"
-        alt=""
-        class="img1"
-      />
-      <img
-        data-aos="fade-left"
-        src="@/assets/images/head-office2.jpg"
-        alt=""
-        class="img2"
-      />
-    </div>
   </div>
 </template>
 
@@ -80,21 +66,6 @@ export default {};
   line-height: 30px;
 }
 
-.company-img {
-  margin: 50px auto 30px;
-  text-align: right;
-}
-
-.company-img .img1 {
-  width: 60%;
-  float: left;
-}
-
-.company-img .img2 {
-  width: 50%;
-  margin-top: -120px;
-}
-
 @media (max-width: 1600px) {
   .introduction img {
     width: 100%;
@@ -117,22 +88,6 @@ export default {};
   .para p {
     line-height: 30px;
     font-size: 14px;
-  }
-
-  .company-img {
-    margin: 20px auto 10px;
-  }
-
-  .company-img .img1 {
-    width: 60%;
-    height: 250px;
-    float: left;
-  }
-
-  .company-img .img2 {
-    width: 50%;
-    height: 250px;
-    margin-top: -100px;
   }
 }
 </style>

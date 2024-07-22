@@ -67,7 +67,7 @@ export default {};
 .marketing-strength img {
   width: 100%;
   height: 350px;
-  object-fit: cover;
+  object-fit: fill;
 }
 
 .content {
@@ -100,7 +100,6 @@ export default {};
   .marketing-strength img {
     width: 100%;
     height: 270px;
-    object-fit: cover;
   }
 
   .content {
