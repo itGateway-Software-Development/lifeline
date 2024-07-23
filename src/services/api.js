@@ -9,7 +9,9 @@ let api = {
   getProduct: url + "products/",
   getPhotoGallery: url + "photo-gallery",
   getCsr: url + "csr-activities",
-  getCsrDetail: url+ "csr-activities/"
+  getCsrDetail: url+ "csr-activities/",
+  getNews: url+"news-events",
+  getNewsDetail: url+"news-events/"
 };
 
 export default api;

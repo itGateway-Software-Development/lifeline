@@ -8,19 +8,15 @@
     <div class="content">
       <div
         class="news-card pointer"
-        v-for="i in 5"
-        :key="i"
-        @click="goDetail(i)"
+        v-for="news in new_events"
+        :key="news.id"
+        @click="goDetail(news.id)"
       >
-        <img :src="require(`@/assets/images/news/news${i}.png`)" alt="" />
+        <img :src="news.media[0]" alt="" />
         <div class="news-text">
-          <h3>Humana makes it easy to find the best Medicare</h3>
-          <div class="date">20 - 02 - 2023</div>
-          <p>
-            Lifeline supports the Medicare Provider and Supplier enrollment
-            process by allowing users to securely and electronically submit and
-            manage Medicare enrollment ..
-          </p>
+          <h3>{{news.title}}</h3>
+          <div class="date mb-2"> <i class="fa-regular fa-calendar-check"></i> {{news.date}}</div>
+          <p class="news-content" v-html="news.content"></p>
         </div>
       </div>
     </div>
@@ -28,6 +24,7 @@
 </template>
 
 <script>
+import getNews from "@/composables/getNews";
 import { onMounted } from "vue";
 import { useRouter } from "vue-router";
 export default {
@@ -35,11 +32,14 @@ export default {
     const router = useRouter();
     const goDetail = (id) => router.push("/news-detail/" + id);
 
+    const {new_events, error, load} = getNews();
+    load();
+
     onMounted(() => {
       window.scrollTo(0, 0);
     });
 
-    return { goDetail };
+    return { goDetail, new_events };
   },
 };
 </script>
@@ -103,6 +103,10 @@ export default {
 
 .news-card p {
   font-size: 14px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
 }
 
 @media (max-width: 1600px) {

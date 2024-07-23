@@ -12,13 +12,13 @@
     <div class="catalog">
       <div class="row">
         <div
-          class="col-lg-3 col-md-4 col-sm-4 col-12 mb-5"
+          class="col-lg-3 col-md-4 col-sm-4 col-6 mb-5"
           v-for="(group, i) in groups"
           :key="i"
         >
           <router-link :to="'/groups/'+ group.id">
-            <div class="catalog-card pointer">
-              <div class="catalog-img">
+            <div class="catalog-card d-flex flex-column align-items-center pointer">
+              <div class="catalog-img ">
                 <img
                   :src="group.photo"
                   alt=""
@@ -82,9 +82,11 @@ export default {
   align-items: center;
   padding: 15px;
   border-radius: 10px 10px 0 0;
+  background: rgb(153, 153, 211);
+  border-radius: 100%;
+  width: 150px;
+  height: 150px;
 }
-
-
 
 .catalog .catalog-card:hover {
   background: #f2f2f2;
@@ -92,9 +94,8 @@ export default {
 }
 
 .catalog .catalog-card img {
-  width: 130px;
-  height: 130px;
-  border-radius: 100%;
+  width: 90px;
+  height: 90px;
   object-fit: cover;
 }
 
