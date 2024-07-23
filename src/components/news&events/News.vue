@@ -93,8 +93,12 @@ export default {
 
 .news-card h3 {
   font-weight: bold;
-  font-size: 20px;
+  font-size: 18px;
   color: var(--main-color);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }
 
 .news-card .date {
