@@ -12,7 +12,6 @@ let getGroups = () => {
       if (response.status === 404) {
         throw new Error("page not found");
       }
-
       groups.value = response.data.groups;
     } catch (err) {
       error.value = err;

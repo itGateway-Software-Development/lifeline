@@ -20,7 +20,7 @@
             <div class="catalog-card pointer">
               <div class="catalog-img">
                 <img
-                  :src="require('@/assets/images/category/default.jpg')"
+                  :src="group.photo"
                   alt=""
                 />
               </div>
