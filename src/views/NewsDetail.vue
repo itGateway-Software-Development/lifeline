@@ -12,7 +12,7 @@
                     <div class="date"> <i class="fa-regular fa-calendar-check"></i> {{new_events.date}}</div>
                     <p v-html="new_events.content"></p>
                     <div class="img border p-2 border-3 rounded row">
-                       <div class="col-12 col-md-6 mb-3" v-for="(img, i) in new_events.media" :key="i">
+                       <div class="col-12 col-md-6 col-lg-4 mb-3" v-for="(img, i) in new_events.media" :key="i">
                         <img class="new-detail-img" :src="img" alt="">
                        </div>
                     </div>
