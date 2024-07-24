@@ -3,7 +3,7 @@
         <div v-if="isLoading">
             <Loading />
         </div>
-        <h2>Lifeline's Photo Gallery</h2>
+        <h2>Lifeline's Photo Gallery </h2>
         <div class="d-flex justify-content-end align-items-center gap-3 year-row">
             <h3 class="text-end me-3">Best Momeries</h3>
             <div class="w-25">
@@ -17,7 +17,7 @@
                     v-model="selectedTitle"
                 ></v-select>
             </div>
-            <div class="w-25">
+            <!-- <div class="w-25">
                 <v-select
                     label="Choose Year"
                     :items="['All',...years]"
@@ -25,7 +25,7 @@
                     class="year-select"
                     v-model="selectedYear"
                 ></v-select>
-            </div>
+            </div> -->
             <i class="fa-solid fa-magnifying-glass fs-5 text-end"></i>
         </div>
         <div class="photo-view">
@@ -46,10 +46,11 @@ import { onMounted, ref, watch } from 'vue';
 import getPhotoGallery from "@/composables/getPhotoGallery";
 
     export default {
-  components: { Loading },
-        setup() {
+        components: { Loading },
+        props: ['selectYear'],
+        setup(props) {
 
-            const selectedYear = ref('All');
+            const selectedYear = ref(props.selectYear);
             const selectedTitle = ref('all');
             const filteredPhotos = ref([]);
             let photo_array = ref([]);
@@ -58,8 +59,8 @@ import getPhotoGallery from "@/composables/getPhotoGallery";
             const titles = [
                 {name: 'All', value: 'all'},
                 {name: 'Donation', value: 'donation'},
-                {name: 'Soft Skill Traning', value: 'soft_skill_training'},
-                {name: 'Activities', value: 'activities'},
+                {name: 'CSR', value: 'csr'},
+                {name: 'Academic Activities', value: 'academic_acitivity'},
                 {name: 'Events', value: 'events'},
             ]
 
@@ -108,35 +109,21 @@ import getPhotoGallery from "@/composables/getPhotoGallery";
                         }
                     }
                 }
-
-
-                // if(selectedYear.value == 'All') {
-                //     filteredPhotos.value = photo_gallery.value.map(photo => photo.media);
-
-                //     photo_array.value = [];
-                //     for(const gallery of filteredPhotos.value) {
-                //         for(const media of gallery) {
-                //             photo_array.value.push(media)
-                //         }
-                //     }
-                // } else {
-                //     filteredPhotos.value = photo_gallery.value.filter(photo => photo.date == selectedYear.value);
-
-                //     photo_array.value = [];
-                //     for(const key in filteredPhotos.value) {
-                //         for(const photo of filteredPhotos.value[key].media) {
-                //             photo_array.value.push(photo)
-                //         }
-                //     }
-                // }
             }
 
-            watch(selectedYear, () => {
-                filterProduct();
-            })
+            watch(
+                () => props.selectYear,
+                (newValue) => {
+                    if (newValue !== selectedYear.value) {
+                    selectedYear.value = newValue;
+                    filterProduct();
+                    }
+                }
+            );
 
             watch(selectedTitle, () => {
                 filterProduct();
+                console.log(selectedYear.value);
             })
             
             onMounted(async () => {

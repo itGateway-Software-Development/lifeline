@@ -63,7 +63,7 @@ export default {
 .map {
   position: relative;
   overflow: hidden;
-  background-image: url('@/assets/images/background.png');
+  background-image: url('@/assets/images/background.jpg');
 }
 
 .map-info {

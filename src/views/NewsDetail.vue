@@ -75,7 +75,6 @@ import { onMounted } from 'vue'
 
 .content img {
     width: 600px;
-    height: 440px;
     object-fit: cover;
 }
 

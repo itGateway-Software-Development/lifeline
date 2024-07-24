@@ -2,7 +2,7 @@
   <div class="about-us position-relative">
     <div class="row">
       <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-        <div class="menu w-100" style="position: sticky; top: 60px;" data-aos="flip-right">
+        <div class="menu w-100" data-aos="flip-right">
           <router-link
             to="/about-us/introduction"
             :class="{ active: slug == 'introduction' }"
@@ -39,6 +39,44 @@
             >Photo Gallery</router-link
           >
         </div>
+        <div v-if="slug == 'photo-gallery'" class="menu w-75 mt-5" style="position: sticky; top: 60px;" data-aos="flip-right">
+          <router-link
+            to="#"
+            :class="{ active: selectYear == 'All' }"
+            @click="chooseYear('All')"
+            >All</router-link
+          >
+          <router-link
+            to="#"
+            :class="{ active: selectYear == '2024' }"
+            @click="chooseYear('2024')"
+            >2024</router-link
+          >
+          <router-link
+            to="#"
+            :class="{ active: selectYear == '2023' }"
+            @click="chooseYear('2023')"
+            >2023</router-link
+          >
+          <router-link
+            to="#"
+            :class="{ active: selectYear == '2022' }"
+            @click="chooseYear('2022')"
+            >2022</router-link
+          >
+          <router-link
+            to="#"
+            :class="{ active: selectYear == '2021' }"
+            @click="chooseYear('2021')"
+            >2021</router-link
+          >
+          <router-link
+            to="#"
+            :class="{ active: selectYear == '2020' }"
+            @click="chooseYear('2020')"
+            >2020</router-link
+          >
+        </div>
       </div>
       <div class="col-lg-9 col-md-9 col-sm-12">
         <div class="content">
@@ -50,7 +88,7 @@
             <DistributionNetwork />
           </div>
           <div v-if="slug == 'marketing-strength'"><MarketingStrength /></div>
-          <div v-if="slug == 'photo-gallery'"><PhotoGallery></PhotoGallery></div>
+          <div v-if="slug == 'photo-gallery'"><PhotoGallery :selectYear="selectYear"></PhotoGallery></div>
         </div>
       </div>
     </div>
@@ -64,7 +102,7 @@ import DistributionNetwork from "../components/about-us/DistributionNetwork";
 import CompanyMilestone from "../components/about-us/CompanyMilestone";
 import VisionMission from "../components/about-us/VisionMission";
 import CeoMessage from "../components/about-us/CeoMessage";
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 import Introduction from "../components/about-us/Introduction";
 export default {
   components: {
@@ -78,9 +116,17 @@ export default {
   },
   props: ["slug"],
   setup() {
+    const selectYear = ref('All');
+
+    const chooseYear = (year) => {
+      selectYear.value = year;
+    }
+
     onMounted(() => {
       window.scrollTo(0, 0);
     });
+
+    return {selectYear, chooseYear}
   },
 };
 </script>

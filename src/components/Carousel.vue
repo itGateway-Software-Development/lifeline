@@ -1,21 +1,7 @@
   <template>
     <div class="carousel-section position-relative" @mouseover="handleHover('hover')" @mouseleave="handleHover('leave')">
       <div class="banner-image">
-        <div class="head-office" v-if="currentImageIndex == 0">
-          <div class="content">
-            <h2>STEP FORWARD</h2>
-            <v-btn append-icon="mdi-arrow-right-bold-circle-outline">
-              Check Our Profile
-              <template v-slot:append>
-                <v-icon></v-icon>
-              </template>
-            </v-btn>
-          </div>
-          <div class="img">
-            <img src="@/assets/images/carousel/office.jpg" alt="" />
-          </div>
-        </div>
-        <img v-if="currentImageIndex > 0" :src="currentImage" alt="">
+        <img :src="currentImage" alt="">
         <div class="arrow">
           <div class="d-flex justify-content-between">
             <div class="prev" @click="changeImage('prev')">
@@ -27,7 +13,6 @@
           </div>
         </div>
       </div>
-
       <!-- sub image slider for product  -->
       <div class="product-slider">
         <div class="swiper product_swiper opacity-0" :class="{'opacity-100': showProductSlider}">
@@ -67,7 +52,7 @@
     export default {
       setup() {
         const banners = [
-          '',
+          require('@/assets/images/carousel/main_banner.png'),
           require('@/assets/images/carousel/1.jpg'),
           require('@/assets/images/carousel/2.jpg'),
           require('@/assets/images/carousel/csr/1.jpg'),
@@ -240,7 +225,7 @@
 
   .carousel-section .banner-image {
     width: 100%;
-    height: 600px;
+    height: 700px;
   }
 
   .carousel-section .banner-image img {

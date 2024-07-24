@@ -6,15 +6,6 @@
     <img src="@/assets/images/csr.jpg" alt="" />
     <h4>Corporate Responsibility</h4>
     <span>Our commitment to corporate responsibility</span>
-    <div class="para">
-      We prioritize Corporate Social Responsibility (CSR) and actively engage in
-      initiatives that create a positive impact. Through strategic partnerships
-      and community-driven projects, we address social and environmental
-      challenges. Our focus areas include education, healthcare, environmental
-      sustainability, and community development. Together, we are committed to
-      building a better future and making a meaningful difference. Join us in
-      our CSR journey for a more inclusive and sustainable world.
-    </div>
     <div class="header d-flex justify-content-between align-items-center">
       <div class="d-flex flex-column ">
         <h4>Activities</h4>
@@ -109,13 +100,6 @@ export default {
   letter-spacing: 1px;
 }
 
-.para {
-  margin: 30px 100px 20px;
-  background-color: rgb(0, 120, 189);
-  padding: 30px 40px;
-  text-align: center;
-  color: #fff;
-}
 
 .header {
   margin: 30px 0 15px;
@@ -151,12 +135,6 @@ export default {
     font-size: 14px;
   }
 
-  .para {
-    margin: 30px 100px 20px;
-    padding: 30px 40px;
-    font-size: 15px;
-  }
-
   .header {
     margin: 30px 0 10px;
   }
@@ -184,13 +162,6 @@ export default {
   }
 }
 
-@media (max-width: 1200px) {
-  .para {
-    margin: 30px 80px 20px;
-    padding: 30px 40px;
-    font-size: 15px;
-  }
-}
 
 @media (max-width: 999px) {
   .para {
@@ -205,11 +176,6 @@ export default {
 }
 
 @media (max-width: 600px) {
-  .para {
-    margin: 30px 0px 20px;
-    padding: 30px 40px;
-    font-size: 14px;
-  }
 
   .content {
     justify-content: center;
