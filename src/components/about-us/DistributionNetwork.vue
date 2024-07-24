@@ -9,7 +9,7 @@
     </div>
     <div class="para">
       <p data-aos="flip-up">
-        We have 9 Branch offices and 9 Sub-distributor offices in nearly every
+        We have 6 Branch offices and 15 Sub-distributor offices in nearly every
         state and division of Myanmar.
       </p>
       <p data-aos="flip-up">
@@ -63,7 +63,8 @@ export default {
 .map {
   position: relative;
   overflow: hidden;
-  background-image: url('@/assets/images/background.jpg');
+  background-image: url('@/assets/images/background.png');
+  background-position: left;
 }
 
 .map-info {

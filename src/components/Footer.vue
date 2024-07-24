@@ -22,8 +22,7 @@
                                 <i class="fa-solid fa-phone-volume"></i>
                             </div>
                             <div class="col-lg-9 address ms-3">
-                                +959 - 2343423442 <br>
-                                +959 - 4432325902
+                                +959 - 940077555<br>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -31,7 +30,7 @@
                                 <i class="fa-solid fa-envelope"></i>
                             </div>
                             <div class="col-lg-9 address ms-3">
-                                inquiry@lifelinemyanmar.com
+                                contact@lifelinemyanmar.com
                             </div>
                         </div>
                     </div>
