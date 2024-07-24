@@ -13,9 +13,10 @@
                     <p v-html="new_events.content"></p>
                     <div class="img border p-2 border-3 rounded row">
                        <div class="col-12 col-md-6 col-lg-4 mb-3" v-for="(img, i) in new_events.media" :key="i">
-                        <img class="new-detail-img" :src="img" alt="">
+                        <img class="new-detail-img" :src="img" alt="" data-bs-toggle="modal" data-bs-target="#picModal" @click="sendUrl(img)">
                        </div>
                     </div>
+                    <Modal :url="url" />
                 </div>
             </div>
         </div>
@@ -23,19 +24,26 @@
 </template>
 
 <script>
+import Modal from '../components/usable/Modal'
 import getNewsDetail from '@/composables/getNewsDetail';
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
     export default {
+  components: { Modal },
         props: ['id'],
         setup(props) {
             const {new_events, error, load} = getNewsDetail();
             load(props.id)
 
+            const url = ref('');
+            const sendUrl = (pic_url) => {
+                url.value = pic_url;
+            }
+
             onMounted(() => {
                 window.scrollTo(0,0)
             })
 
-            return {new_events}
+            return {new_events, url, sendUrl}
         }
     }
 </script>

@@ -11,22 +11,31 @@
 
             <div class="car-detail-photos row  border border-5 py-2">
                 <div class="col-12 col-sm-6 col-lg-4 mb-3" v-for="(img, index) in csr.media" :key="index">
-                    <img class="w-100" :src="img.original_url" alt="" />
+                    <img class="w-100" :src="img.original_url" alt="" data-bs-toggle="modal" data-bs-target="#picModal" @click="sendUrl(img.original_url)" />
                 </div>
             </div>
+            <Modal :url="url" />
         </div>
     </div>
 </template>
 
 <script>
+import Modal from '../components/usable/Modal'
 import getCsrDetail from '@/composables/getCsrDetail';
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
 
     export default {
+  components: { Modal },
         props: ['id'],
         setup(props) {
             const router = useRouter();
+
+            const url = ref('');
+
+            const sendUrl = (pic_url) => {
+                url.value = pic_url;
+            }
 
             const {csr, error, load}  = getCsrDetail();
             load(props.id)
@@ -39,7 +48,7 @@ import { useRouter } from 'vue-router';
                 scrollTo(0,0)
             })
 
-            return {csr, goback}
+            return {csr, goback, url, sendUrl}
         }
     }
 </script>

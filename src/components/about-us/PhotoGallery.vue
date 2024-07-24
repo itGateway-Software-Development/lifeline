@@ -17,36 +17,29 @@
                     v-model="selectedTitle"
                 ></v-select>
             </div>
-            <!-- <div class="w-25">
-                <v-select
-                    label="Choose Year"
-                    :items="['All',...years]"
-                    variant="underlined"
-                    class="year-select"
-                    v-model="selectedYear"
-                ></v-select>
-            </div> -->
             <i class="fa-solid fa-magnifying-glass fs-5 text-end"></i>
         </div>
         <div class="photo-view">
             <div class="row ms-1 mt-5">
                 <div class="col-12 col-sm-6 pe-0 col-lg-4 mb-3" v-for="(photo,i) in photo_array" :key="i">
                     <div class="border w-100" style="height: 300px;">
-                        <img class="w-100 h-100" style="object-fit:cover;" :src="photo.original_url" alt="">
+                        <img class="w-100 h-100" style="object-fit:cover;" @click="sendUrl(photo.original_url)" :src="photo.original_url" alt="" data-bs-toggle="modal" data-bs-target="#picModal">
                     </div>
                 </div>
             </div>
+            <Modal :url="url" />
         </div>
     </div>
 </template>
 
 <script>
+import Modal from '../usable/Modal'
 import Loading from '../Loading'
 import { onMounted, ref, watch } from 'vue';
 import getPhotoGallery from "@/composables/getPhotoGallery";
 
     export default {
-        components: { Loading },
+        components: {Modal, Loading },
         props: ['selectYear'],
         setup(props) {
 
@@ -55,6 +48,7 @@ import getPhotoGallery from "@/composables/getPhotoGallery";
             const filteredPhotos = ref([]);
             let photo_array = ref([]);
             let isLoading = ref(true);
+            const url = ref('');
 
             const titles = [
                 {name: 'All', value: 'all'},
@@ -69,6 +63,10 @@ import getPhotoGallery from "@/composables/getPhotoGallery";
             const loadPhotos = async() => {
                 await load();
                 filterProduct();
+            }
+
+            const sendUrl = (img_url) => {
+                url.value = img_url;
             }
 
             const filterProduct = () => {
@@ -133,7 +131,7 @@ import getPhotoGallery from "@/composables/getPhotoGallery";
                 }
             })
 
-            return {photo_array,titles,  selectedYear, selectedTitle, years, isLoading}
+            return {photo_array,titles,  selectedYear, selectedTitle, years, isLoading, url, sendUrl}
         }
     }
 </script>
