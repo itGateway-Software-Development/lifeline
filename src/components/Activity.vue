@@ -4,10 +4,10 @@
       <div class="d-flex flex-row ">
         <div class="swiper">
           <div class="swiper-wrapper">
-            <div class="swiper-slide" v-for="i in 6" :key="i">
+            <div class="swiper-slide" v-for="(url, index) in photos" :key="index">
               <div class="content">
                 <img
-                  :src="require(`@/assets/images/csr/csr${i}.png`)"
+                  :src="url"
                   alt=""
                 />
               </div>
@@ -20,11 +20,15 @@
 </template>
 
 <script>
+import getActivityPhotos from "@/composables/getActivityPhotos";
 import { onMounted, ref } from "vue";
 export default {
   setup() {
     const tab = ref("option-1");
     const swiper = ref(null);
+
+    const {photos, error, load} = getActivityPhotos();
+    load();
 
     onMounted(() => {
       swiper.value = new Swiper(".swiper", {
@@ -58,7 +62,7 @@ export default {
       });
     });
 
-    return { tab };
+    return { tab, photos };
   },
 };
 </script>

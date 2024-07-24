@@ -14,6 +14,7 @@ let api = {
   getNewsDetail: url+"news-events/",
   getServices: url+"services",
   getPromotions: url+"promotions",
+  getActivityPhotos: url+"get-csr-photos",
 };
 
 export default api;
