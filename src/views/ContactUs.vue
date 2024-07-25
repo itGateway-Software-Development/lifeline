@@ -62,8 +62,7 @@
             <i class="fa-solid fa-square-phone"></i>
           </div>
           <p>
-            +959 - 2343423442<br />
-            +959 - 4432325902
+            +959 - 940077555<br />
           </p>
 
           <p></p>
@@ -72,7 +71,7 @@
           <div class="address-icon">
             <i class="fa-solid fa-envelope"></i>
           </div>
-          <p class="text-center">inquiry@lifelinemyanmar.com</p>
+          <p class="text-center">contact@lifelinemyanmar.com</p>
           <p>&nbsp;</p>
         </div>
         <div class="map">
