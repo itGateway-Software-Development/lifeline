@@ -85,8 +85,8 @@
         </v-list-item>
         <v-list-item @click="navigate('/about-us/marketing-strength')">
           <v-list-item-title
-            ><v-icon icon="mdi-circle-small"></v-icon>Marketing
-            Strength</v-list-item-title
+            ><v-icon icon="mdi-circle-small"></v-icon>
+            Our Strength</v-list-item-title
           >
         </v-list-item>
         <v-list-item @click="navigate('/about-us/photo-gallery')">
@@ -291,7 +291,7 @@
             >Distribution Network</router-link
           >
           <router-link to="/about-us/marketing-strength"
-            >Marketing Strength</router-link
+            >Our Strength</router-link
           >
           <router-link to="/about-us/photo-gallery"
             >Photo Gallery</router-link

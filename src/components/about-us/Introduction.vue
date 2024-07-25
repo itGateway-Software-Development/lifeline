@@ -16,8 +16,7 @@
         Company Limited.
       </p>
       <p data-aos="flip-up">
-        Lifeline Co., Ltd was established in 2003, making it one of the most
-        senior pharmaceutical company in Myanmar.
+        Lifeline Co., Ltd was established since 2003, making it one of the reputable company in Myanmar.
       </p>
       <p data-aos="flip-up">
         It is owned solely by the Myanmar Nationals, founded with the vision of

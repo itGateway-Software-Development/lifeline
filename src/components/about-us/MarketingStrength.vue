@@ -6,12 +6,12 @@
       alt=""
     />
     <div class="content">
-      <h2 data-aos="fade-left">Marketing Strength</h2>
+      <h2 data-aos="fade-left">Our Strength</h2>
       <div data-aos="fade-left" class="divider"></div>
     </div>
     <div class="para">
       <p data-aos="fade-right">
-        Lifeline Group of Companies possess several marketing strengths that
+        Lifeline Group of Companies possess several our strengths that
         distinguish us from other companies in the market:
       </p>
       <ol>

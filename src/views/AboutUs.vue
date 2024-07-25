@@ -31,7 +31,7 @@
           <router-link
             to="/about-us/marketing-strength"
             :class="{ active: slug == 'marketing-strength' }"
-            >Marketing Strength</router-link
+            >Our Strength</router-link
           >
           <router-link
             to="/about-us/photo-gallery"
