@@ -56,11 +56,11 @@
                       </div>
                       <div class="modal-body position-relative">
                         <div class="file-import">
-                          <!-- <h6 class="mb-3 fw-bold text-success">Apply Here</h6>
+                          <h6 class="mb-3 fw-bold text-success">Apply Here</h6>
                           <v-file-input
                             label="Please import your cv"
                             chips
-                          ></v-file-input> -->
+                          ></v-file-input>
                         </div>
                         <div class="row mb-3">
                           <div class="col-6 col-md-4 col-md-2">
@@ -94,9 +94,6 @@
                         <div class="row mb-3">
                           <h6 class="fw-bold">Requirements</h6>
                           <div v-html="jdData ? jdData.requirements : ''"></div>
-                        </div>
-                        <div class="row mb-3">
-                          <div v-html="jdData ? jdData.note : ''"></div>
                         </div>
                       </div>
                       <div class="modal-footer">
@@ -162,16 +159,6 @@ export default {
             <li>ဆက်ဆံရေးပြေပြစ်ကောင်းမွန်၍ လုပ်ငန်းအပေါ်တွင် စိတ်ဝင်စားသူ ဖြစ်ရမည်။</li>
           </ul>
         `,
-        note: `
-        <p>
-          စိတ်ပါဝင်စား၍ လျှောက်ထားလိုပါက အောက်ပါပေးထားသော လိပ်စာသို့ လူကိုယ်တိုင် လာရောက်၍ဖြစ်စေ၊ Email (သို့မဟုတ်) Viber Phone Number များသို့ဖြစ်စေ မျှော်မှန်းလစာနှင့်အတူ ဤကြော်ငြာပါသည့်နေ့မှ (၁၄) ရက်အတွင်းလျှောက်ထားနိုင်ပါသည်။ 
-        </p>
-        <ul>
-          <li>Address - အမှတ် (၁၃)၊ လှိုင်မြင့်မိုရ်လမ်းသွယ်(၇)၊ (၁၀)ရပ်ကွက်၊ လှိုင်မြိုနယ်၊ ရန်ကုန်တိုင်းဒေသကြီး။  </li>
-          <li>Email - contact@lifelinemyanmar.com</li>
-          <li>Viber - 09977875949</li>
-        </ul>
-        `
       },
       {
         id: 2,
@@ -194,16 +181,6 @@ export default {
             <li>ပေါင်းသင်းဆက်ဆံရေးကောင်းမွန်ပြီး Team Work ဖြင့် လုပ်ဆောင်နိုင်သူဖြစ်ရမည်။ </li>
           </ul>
         `,
-        note: `
-          <p>
-            စိတ်ပါဝင်စား၍ လျှောက်ထားလိုပါက အောက်ပါပေးထားသော လိပ်စာသို့ လူကိုယ်တိုင် လာရောက်၍ဖြစ်စေ၊ Email (သို့မဟုတ်) Viber Phone Number များသို့ဖြစ်စေ မျှော်မှန်းလစာနှင့်အတူ ဤကြော်ငြာပါသည့်နေ့မှ (၁၄) ရက်အတွင်းလျှောက်ထားနိုင်ပါသည်။ 
-          </p>
-          <ul>
-            <li>Address - အမှတ် (၁၃)၊ လှိုင်မြင့်မိုရ်လမ်းသွယ်(၇)၊ (၁၀)ရပ်ကွက်၊ လှိုင်မြိုနယ်၊ ရန်ကုန်တိုင်းဒေသကြီး။  </li>
-            <li>Email - contact@lifelinemyanmar.com</li>
-            <li>Viber - 09977875949</li>
-          </ul>
-        `
       },
       {
         id: 3,
@@ -225,16 +202,6 @@ export default {
             <li>ဆက်ဆံရေးပြေပြစ်ကောင်းမွန်၍ လုပ်ငန်းအပေါ်တွင် စိတ်ဝင်စားသူ ဖြစ်ရမည်။  </li>
           </ul>
         `,
-        note: `
-          <p>
-            စိတ်ပါဝင်စား၍ လျှောက်ထားလိုပါက အောက်ပါပေးထားသော လိပ်စာသို့ လူကိုယ်တိုင် လာရောက်၍ဖြစ်စေ၊ Email (သို့မဟုတ်) Viber Phone Number များသို့ဖြစ်စေ မျှော်မှန်းလစာနှင့်အတူ ဤကြော်ငြာပါသည့်နေ့မှ (၁၄) ရက်အတွင်းလျှောက်ထားနိုင်ပါသည်။ 
-          </p>
-          <ul>
-            <li>Address - အမှတ် (၁၃)၊ လှိုင်မြင့်မိုရ်လမ်းသွယ်(၇)၊ (၁၀)ရပ်ကွက်၊ လှိုင်မြိုနယ်၊ ရန်ကုန်တိုင်းဒေသကြီး။  </li>
-            <li>Email - contact@lifelinemyanmar.com</li>
-            <li>Viber - 09977875949</li>
-          </ul>
-        `
       },
       {
         id: 4,
@@ -253,16 +220,6 @@ export default {
             <li>လှိုင်သာယာမြို့နယ်တွင် အလုပ်ဆင်းနိုင်သူဖြစ်ရပါမည်။  </li>
           </ul>
         `,
-        note: `
-          <p>
-            စိတ်ပါဝင်စား၍ လျှောက်ထားလိုပါက အောက်ပါပေးထားသော လိပ်စာသို့ လူကိုယ်တိုင် လာရောက်၍ဖြစ်စေ၊ Email (သို့မဟုတ်) Viber Phone Number များသို့ဖြစ်စေ မျှော်မှန်းလစာနှင့်အတူ ဤကြော်ငြာပါသည့်နေ့မှ (၁၄) ရက်အတွင်းလျှောက်ထားနိုင်ပါသည်။ 
-          </p>
-          <ul>
-            <li>Address - အမှတ် (၁၃)၊ လှိုင်မြင့်မိုရ်လမ်းသွယ်(၇)၊ (၁၀)ရပ်ကွက်၊ လှိုင်မြိုနယ်၊ ရန်ကုန်တိုင်းဒေသကြီး။  </li>
-            <li>Email - contact@lifelinemyanmar.com</li>
-            <li>Viber - 09977875949</li>
-          </ul>
-        `
       },
     ];
 
@@ -392,6 +349,10 @@ export default {
   top: 10px;
   right: 30px;
   width: 30%;
+}
+
+.career #jdModal {
+  z-index: 9999 !important;
 }
 
 @media (max-width: 1600px) {
