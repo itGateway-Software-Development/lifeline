@@ -144,9 +144,9 @@ export default {
       {
         id: 1,
         position: 'Warehouse Supervisor',
-        department: 'Admin',
+        department: 'Store',
         location: 'Yangon',
-        job_info: 'We offer an open vacancy for the Admin department.',
+        job_info: 'We offer an open vacancy for the Store department.',
         posts: 2,
         job_description: null,
         requirements: `
@@ -176,9 +176,9 @@ export default {
       {
         id: 2,
         position: 'Warehouse Staff',
-        department: 'Admin',
+        department: 'Store',
         location: 'Yangon',
-        job_info: 'We offer an open vacancy for the Admin department.',
+        job_info: 'We offer an open vacancy for the Store department.',
         posts: 3,
         job_description: null,
         requirements: `
@@ -208,9 +208,9 @@ export default {
       {
         id: 3,
         position: 'Operation Supervisor',
-        department: 'Admin',
+        department: 'Operation',
         location: 'Yangon',
-        job_info: 'We offer an open vacancy for the Admin department.',
+        job_info: 'We offer an open vacancy for the Operation department.',
         posts: 2,
         job_description: null,
         requirements: `
@@ -239,9 +239,9 @@ export default {
       {
         id: 4,
         position: 'Accountant ',
-        department: 'Accountant',
+        department: 'Account',
         location: 'Yangon',
-        job_info: 'We offer an open vacancy for the Admin department.',
+        job_info: 'We offer an open vacancy for the Account department.',
         posts: 2,
         job_description: null,
         requirements: `
