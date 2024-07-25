@@ -57,7 +57,7 @@
           require('@/assets/images/carousel/2.jpg'),
           require('@/assets/images/carousel/csr/1.jpg'),
           require('@/assets/images/carousel/4.jpg'),
-          require('@/assets/images/carousel/5.png'),
+          require('@/assets/images/carousel/5.jpg'),
         ];
 
         const csr = [
