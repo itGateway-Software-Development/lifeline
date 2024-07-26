@@ -6,7 +6,7 @@
       <div class="divider"></div>
     </div>
     <div class="content">
-      <div class="principle-card pointer" v-for="i in 16" :key="i">
+      <div class="principle-card pointer" v-for="i in 13" :key="i">
         <img :src="require(`@/assets/images/principle/p${i}.png`)" alt="" />
       </div>
     </div>
