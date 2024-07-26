@@ -52,9 +52,9 @@ import getPhotoGallery from "@/composables/getPhotoGallery";
 
             const titles = [
                 {name: 'All', value: 'all'},
-                {name: 'Donation', value: 'donation'},
-                {name: 'CSR', value: 'csr'},
                 {name: 'Academic Activities', value: 'academic_acitivity'},
+                {name: 'CSR', value: 'csr'},
+                {name: 'Donation', value: 'donation'},
                 {name: 'Events', value: 'events'},
             ]
 
