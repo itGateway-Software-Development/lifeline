@@ -11,9 +11,9 @@
                                         <source :src="video.link" type='video/mp4' />
                                     </video>  
                                 </div>
-                                <!-- <div class="video-title">
-                                    <h3>A Webinar Recording of "Critical Thinking in Medical Practice" which was delivered by Professor Chit Soe and Associate Professor Dr Kyaw Thu Yaa</h3>
-                                </div> -->
+                                <div class="video-title mt-0">
+                                    <h3>{{video.title}}</h3>
+                                </div>
                                 <div class="view-yt">
                                     <a :href="video.full_link" target="_blank">
                                         View Full Video
@@ -98,7 +98,6 @@ import getAcademicActivities from '@/composables/getAcademicActivities';
     .academic .youtube-video .video-title h3 {
         font-size: 18px;
         font-weight: bold;
-        margin-top: 10px;
         overflow: hidden;
         display: -webkit-box;
         -webkit-box-orient: vertical;
