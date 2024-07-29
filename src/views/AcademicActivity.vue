@@ -8,7 +8,7 @@
                             <div class="youtube-video">
                                 <div class="video">
                                     <video controls style="width: 100%;">
-                                        <source :src="`@/assets/videos/${++index}.mp4`" type='video/mp4' />
+                                        <source :src="video.source" type='video/mp4' />
                                     </video>  
                                 </div>
                                 <!-- <div class="video-title">
@@ -76,7 +76,8 @@ import getAcademicActivities from '@/composables/getAcademicActivities';
 
             const videos = [
                 {
-                    link: 'dkfjdf',
+                    source: require('@/assets/videos/right_vs_left_sided.mp4'),
+                    link: 'https://youtu.be/2Q357urva00?si=4pnYH4-_4HIvH-E9'
                 }
             ];
 
