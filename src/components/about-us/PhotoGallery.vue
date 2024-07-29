@@ -56,7 +56,7 @@ import getPhotoGallery from "@/composables/getPhotoGallery";
                 {name: 'CSR', value: 'csr'},
                 {name: 'Donation', value: 'donation'},
                 {name: 'Events', value: 'events'},
-            ]
+            ];
 
             const {photo_gallery, years, error, load} = getPhotoGallery();
 
