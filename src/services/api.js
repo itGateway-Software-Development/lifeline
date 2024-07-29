@@ -1,5 +1,5 @@
-// const url = "https://admin.lifelinemyanmar.com/api/v1/";
-const url = "http://127.0.0.1:8000/api/v1/";
+const url = "https://admin.lifelinemyanmar.com/api/v1/";
+// const url = "http://127.0.0.1:8000/api/v1/";
 
 let api = {
   getGroups: url + "groups",
