@@ -4,18 +4,18 @@
             <div class="row">
                 <div class="col-12 col-lg-8">
                     <div class="row">
-                        <div class="col-12 col-sm-6 mb-5" v-for="(video, index) in videos" :key="index">
+                        <div class="col-12 col-sm-6 mb-5" v-for="(video, index) in academic_activities" :key="index">
                             <div class="youtube-video">
                                 <div class="video">
                                     <video controls style="width: 100%;">
-                                        <source :src="video.source" type='video/mp4' />
+                                        <source :src="video.link" type='video/mp4' />
                                     </video>  
                                 </div>
                                 <!-- <div class="video-title">
                                     <h3>A Webinar Recording of "Critical Thinking in Medical Practice" which was delivered by Professor Chit Soe and Associate Professor Dr Kyaw Thu Yaa</h3>
                                 </div> -->
                                 <div class="view-yt">
-                                    <a :href="video.link" target="_blank">
+                                    <a :href="video.full_link" target="_blank">
                                         View Full Video
                                         <i class="fa-solid fa-arrow-right"></i>
                                     </a>
@@ -74,14 +74,7 @@ import getAcademicActivities from '@/composables/getAcademicActivities';
             const {academic_activities, error, load} = getAcademicActivities();
             load();
 
-            const videos = [
-                {
-                    source: require('@/assets/videos/right_vs_left_sided.mp4'),
-                    link: 'https://youtu.be/2Q357urva00?si=4pnYH4-_4HIvH-E9'
-                }
-            ];
-
-            return {academic_activities, videos}
+            return {academic_activities}
         }
     }
 </script>
