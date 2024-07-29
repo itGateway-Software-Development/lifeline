@@ -7,7 +7,9 @@
                         <div class="col-12 col-sm-6 mb-5" v-for="(video, index) in academic_activities" :key="index">
                             <div class="youtube-video">
                                 <div class="video">
-                                    <div v-html="video.link"></div>
+                                    <video controls style="width: 100%;">
+                                        <source :src='video.link' type='video/mp4' />
+                                    </video>
                                 </div>
                                 <!-- <div class="video-title">
                                     <h3>A Webinar Recording of "Critical Thinking in Medical Practice" which was delivered by Professor Chit Soe and Associate Professor Dr Kyaw Thu Yaa</h3>
