@@ -4,16 +4,18 @@
             <div class="row">
                 <div class="col-12 col-lg-8">
                     <div class="row">
-                        <div class="col-12 col-sm-6 mb-5" v-for="(video, index) in academic_activities" :key="index">
+                        <div class="col-12 col-sm-6 mb-5" v-for="(video, index) in videos" :key="index">
                             <div class="youtube-video">
                                 <div class="video">
-                                    <div v-html="video.link"></div>
+                                    <video controls style="width: 100%;">
+                                        <source :src="`@/assets/videos/${++index}.mp4`" type='video/mp4' />
+                                    </video>  
                                 </div>
                                 <!-- <div class="video-title">
                                     <h3>A Webinar Recording of "Critical Thinking in Medical Practice" which was delivered by Professor Chit Soe and Associate Professor Dr Kyaw Thu Yaa</h3>
                                 </div> -->
                                 <div class="view-yt">
-                                    <a :href="video.full_link" target="_blank">
+                                    <a :href="video.link" target="_blank">
                                         View Full Video
                                         <i class="fa-solid fa-arrow-right"></i>
                                     </a>
@@ -72,7 +74,13 @@ import getAcademicActivities from '@/composables/getAcademicActivities';
             const {academic_activities, error, load} = getAcademicActivities();
             load();
 
-            return {academic_activities}
+            const videos = [
+                {
+                    link: 'dkfjdf',
+                }
+            ];
+
+            return {academic_activities, videos}
         }
     }
 </script>
