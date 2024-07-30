@@ -1,7 +1,7 @@
 <template>
   <nav class="nav1">
     <div class="brand pointer" @click="navigate('/')">
-      <img src="@/assets/images/ll.png" alt="" />
+      <img src="@/assets/images/logo.png" alt="" />
       <h2>LIFELINE GROUP OF COMPANIES</h2>
     </div>
 
@@ -33,7 +33,7 @@
     <v-list>
       <v-list-item @click="navigate('/')" class="head-menu">
         <v-list-item-title style="font-size: 14px; color: #50c4ff">
-          <img src="@/assets/images/ll.png" alt="" />
+          <img src="@/assets/images/logo.png" alt="" />
           <span>LIFELINE GROUP OF COMPANIES</span>
         </v-list-item-title>
       </v-list-item>
