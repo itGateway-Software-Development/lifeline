@@ -12,21 +12,21 @@
     ></v-app-bar-nav-icon>
 
     <div class="social">
-      <router-link to="#"
+      <a href="https://www.facebook.com/lifelinemyanmar" target="_blank"
         ><i style="color: #3b5998" class="fa-brands fa-facebook"></i
-      ></router-link>
-      <router-link to="#"
+      ></a>
+      <a href=""
         ><i style="color: #8f5db7" class="fa-brands fa-viber"></i
-      ></router-link>
-      <router-link to="#"
+      ></a>
+      <a href="https://www.youtube.com/@academic.lifelinemyanmar4836" target="_blank"
         ><i style="color: #cd201f" class="fa-brands fa-youtube"></i
-      ></router-link>
-      <router-link to="#"
+      ></a>
+      <a href=""
         ><i style="color: #0072b1" class="fa-brands fa-linkedin"></i
-      ></router-link>
-      <router-link to="#"
+      ></a>
+      <a href=""
         ><i style="color: #cd201f" class="fa-brands fa-instagram"></i
-      ></router-link>
+      ></a>
     </div>
   </nav>
   <v-navigation-drawer app v-model="drawer" id="drawer" temporary>

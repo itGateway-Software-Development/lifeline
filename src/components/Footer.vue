@@ -43,8 +43,9 @@
                                     <li><router-link to="/about-us/ceo-message">CEO Message</router-link></li>
                                     <li><router-link to="/about-us/vision-mission">Vision & Mission</router-link></li>
                                     <li><router-link to="/about-us/company-milestone">Company MileStone</router-link></li>
-                                    <li><router-link to="/coming-soon">Distribution Network</router-link></li>
-                                    <li><router-link to="/coming-soon">Regulatory Strength</router-link></li>
+                                    <li><router-link to="/about-us/distribution-network">Distribution Network</router-link></li>
+                                    <li><router-link to="/about-us/marketing-strength">Our Strength</router-link></li>
+                                    <li><router-link to="/about-us/photo-gallery">Photo Gallery</router-link></li>
                                 </ul>
                             </div>
                             <div class="col-lg-6">
