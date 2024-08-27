@@ -11,7 +11,7 @@
           <router-link
             to="/about-us/ceo-message"
             :class="{ active: slug == 'ceo-message' }"
-            >CEO Message</router-link
+            >MD Message</router-link
           >
           <router-link
             to="/about-us/vision-mission"

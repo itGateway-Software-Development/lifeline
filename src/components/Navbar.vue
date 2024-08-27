@@ -280,7 +280,7 @@
           <router-link to="/about-us/introduction" class="intro"
             >Introduction</router-link
           >
-          <router-link to="/about-us/ceo-message">CEO Message</router-link>
+          <router-link to="/about-us/ceo-message">MD Message</router-link>
           <router-link to="/about-us/vision-mission"
             >Vision & Mission</router-link
           >

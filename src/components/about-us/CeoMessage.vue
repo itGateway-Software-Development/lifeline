@@ -6,11 +6,11 @@
       </div>
       <div class="content">
         <h2>Dr.Mu Mu Win</h2>
-        <p>CEO</p>
+        <p>MD</p>
       </div>
     </div>
     <div class="message-header">
-      <h2 data-aos="fade-left">CEO's Message</h2>
+      <h2 data-aos="fade-left">MD's Message</h2>
       <div data-aos="fade-left" class="divider"></div>
     </div>
 
