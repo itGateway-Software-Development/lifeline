@@ -17,7 +17,7 @@
       <div class="product-slider">
         <div class="swiper product_swiper opacity-0" :class="{'opacity-100': showProductSlider}">
           <div class="swiper-wrapper">
-            <div class="swiper-slide" v-for="i in 17" :key="i">
+            <div class="swiper-slide" v-for="i in 13" :key="i">
               <div class="content">
                 <img
                   :src="require(`@/assets/images/carousel/products/${i}.png`)"
