@@ -4,16 +4,23 @@
       <img src="@/assets/images/product_catalog_banner.jpg" class="shadow" alt="" />
     </div>
 
-    <div class="content">
-      <h2>Product Groups</h2>
-      <div class="divider"></div>
+    <div class="header">
+      <div class="content">
+        <h2>Product Groups</h2>
+        <div class="divider"></div>
+      </div>
+  
+      <div class="search">
+        <input type="text" placeholder="search" class="input"  v-model="keyword" @input="search"  />
+        <input type="button" value="Search" class="button" />
+      </div>
     </div>
 
     <div class="catalog">
       <div class="row">
         <div
           class="col-lg-3 col-md-4 col-sm-4 col-6 mb-5"
-          v-for="(group, i) in groups"
+          v-for="(group, i) in filterGroups"
           :key="i"
         >
           <router-link :to="'/groups/'+ group.id">
@@ -36,17 +43,32 @@
 <script>
 import { onMounted, ref } from "vue";
 import getGroups from "@/composables/getGroups";
+import axios from "axios";
+import api from "@/services/api";
 export default {
   setup() {
     const { groups, error, load } = getGroups();
+    const keyword = ref('');
+    const filterGroups = ref([]);
 
-    load();
+    const search = async() => {
+      let response = await axios.get(api.getGroups+"?keyword="+keyword.value);
 
-    onMounted(() => {
+      filterGroups.value = response.data.groups;
+    }
+
+    onMounted(async() => {
       window.scrollTo(0, 0);
+
+      await load();
+      if (!error.value) {
+        filterGroups.value = groups.value;
+      } else {
+        console.error("Error ", error.value);
+      }
     });
 
-    return { groups };
+    return { filterGroups, keyword, search };
   },
 };
 </script>
@@ -63,7 +85,7 @@ export default {
 }
 
 .content {
-  margin: 30px auto;
+  margin: 30px 0px;
 }
 
 .content h2 {
@@ -112,6 +134,39 @@ export default {
   border-radius: 0px 0px 10px 10px;
 }
 
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.header .slug {
+  background: transparent;
+  border: 2px solid var(--main-color);
+  padding: 10px 30px;
+  border-radius: 5px;
+  font-size: 10px;
+  font-weight: bold;
+}
+.search .input {
+  width: 300px;
+  background: #ebeaea;
+  padding: 10px 20px;
+  flex-grow: 1;
+}
+
+.search .button {
+  background: var(--sec-color);
+  color: #fff;
+  font-weight: bold;
+  padding: 10px 20px;
+}
+
+.search input:focus {
+  outline: none;
+}
+
 @media (max-width: 1600px) {
   .img {
     width: 100%;
@@ -125,7 +180,7 @@ export default {
   }
 
   .content {
-    margin: 20px auto;
+    margin: 20px 0px;
   }
 
   .content h2 {
@@ -147,6 +202,28 @@ export default {
 
   .catalog-card .name {
     font-size: 12px;
+  }
+}
+
+@media (max-width: 900px) {
+  .search .input {
+    width: 200px;
+    background: #ebeaea;
+    padding:5px 20px;
+    flex-grow: 1;
+  }
+  
+  .search .button {
+    background: var(--sec-color);
+    color: #fff;
+    font-weight: bold;
+    padding:5px 20px;
+  }
+}
+
+@media (max-width: 550px) {
+  .header {
+    flex-direction: column;
   }
 }
 </style>

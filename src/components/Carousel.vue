@@ -35,7 +35,7 @@
 
       <div class="csr-photos" v-if="showCsrPic">
         <div class="csr-photo-group d-flex flex-column-reverse gap-2">
-          <img @click="handleCsrPhotoClick(i)" class="active" v-for="i in 7" :key="i" :src="require(`@/assets/images/carousel/csr/${i}.jpg`)" alt="">
+          <img @click="handleCsrPhotoClick(i)" class="active" v-for="i in 5" :key="i" :src="require(`@/assets/images/carousel/csr/${i}.jpg`)" alt="">
         </div>
       </div>
 
@@ -66,8 +66,6 @@
           require('@/assets/images/carousel/csr/3.jpg'),
           require('@/assets/images/carousel/csr/4.jpg'),
           require('@/assets/images/carousel/csr/5.jpg'),
-          require('@/assets/images/carousel/csr/6.jpg'),
-          require('@/assets/images/carousel/csr/7.jpg'),
         ];
 
         const anniversary = [
@@ -139,7 +137,7 @@
             showProductSlider.value = false;
           }
 
-          if(currentImage.value.substr(0,10) == '/img/1.c61') {
+          if(currentImage.value.substr(0,10) == '/img/1.1ec') {
             showCsrPic.value = true;
           } else {
             showCsrPic.value = false;

@@ -11,8 +11,13 @@
       <div class="divider"></div>
     </div>
 
+    <div class="hospital-tab d-flex gap-2">
+      <div @click="status = 'outbound'" class="inbound py-1 px-2 cursor" :class="{'bg-info border-info' : status == 'outbound'}" style="cursor: pointer; border-radius: 100px; font-size: 14px; border: 1px solid #FF8C00;">Inbound</div>
+      <div @click="status = 'inbound'" class="outbound py-1 px-2 cursor" :class="{'bg-info border-info' : status == 'inbound'}" style="cursor: pointer; border-radius: 100px; font-size: 14px; border: 1px solid #FF8C00;">Outbound</div>
+    </div>
+
     <div class="content">
-      <div class="row">
+      <div class="row" v-if="status == 'outbound'">
         <div
           class="col-lg-4 col-md-6 col-sm-6 col-12 p-0 px-2 hospital-column"
           v-for="(hospital, i) in hospitals"
@@ -42,12 +47,17 @@
           </div>
         </div>
       </div>
+      <div class="row" v-else>
+        <h4 class="text-center">
+          Comming Soon...
+        </h4>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
 export default {
   setup() {
@@ -175,13 +185,15 @@ export default {
       },
     ];
 
+    const status = ref('outbound');
+
     const viewHospital = (name) => router.push(`/hospital/${name}`);
 
     onMounted(() => {
       window.scrollTo(0, 0);
     });
 
-    return { viewHospital, hospitals };
+    return { viewHospital, hospitals, status };
   },
 };
 </script>
