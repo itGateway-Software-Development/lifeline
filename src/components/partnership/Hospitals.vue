@@ -12,8 +12,8 @@
     </div>
 
     <div class="hospital-tab d-flex gap-2">
-      <div @click="status = 'outbound'" class="inbound py-1 px-2 cursor" :class="{'bg-info border-info' : status == 'outbound'}" style="cursor: pointer; border-radius: 100px; font-size: 14px; border: 1px solid #FF8C00;">Inbound</div>
-      <div @click="status = 'inbound'" class="outbound py-1 px-2 cursor" :class="{'bg-info border-info' : status == 'inbound'}" style="cursor: pointer; border-radius: 100px; font-size: 14px; border: 1px solid #FF8C00;">Outbound</div>
+      <div @click="status = 'outbound'" class="inbound py-1 px-2 cursor" :class="{'bg-info border-info' : status == 'outbound'}" style="cursor: pointer; border-radius: 100px; font-size: 14px; border: 1px solid #FF8C00;">Outbound</div>
+      <div @click="status = 'inbound'" class="outbound py-1 px-2 cursor" :class="{'bg-info border-info' : status == 'inbound'}" style="cursor: pointer; border-radius: 100px; font-size: 14px; border: 1px solid #FF8C00;">Inbound</div>
     </div>
 
     <div class="content">
