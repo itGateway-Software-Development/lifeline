@@ -1,7 +1,7 @@
   <template>
     <div class="carousel-section position-relative" @mouseover="handleHover('hover')" @mouseleave="handleHover('leave')">
       <div class="banner-image">
-        <img :src="currentImage" alt="">
+        <img :src="currentImage" alt="" :class="{'position-bottom' : isPositionBottom}">
         <div class="arrow">
           <div class="d-flex justify-content-between">
             <div class="prev" @click="changeImage('prev')">
@@ -87,6 +87,8 @@
         const showCsrPic = ref(false);
         const showAnniversaryPic = ref(false);
 
+        const isPositionBottom = ref(false);
+
         const swipeImage = () => {
           if(currentImageIndex.value < banners.length-1) {
             currentImageIndex.value++;
@@ -151,6 +153,10 @@
             showAnniversaryPic.value = false;
           }
 
+          if(currentImage.value.substr(0,10) != '/img/7.050' ) {
+            isPositionBottom.value = false
+          } 
+
           clearInterval(intervalId);
           intervalId = setInterval(swipeImage, duration);
         }
@@ -169,6 +175,14 @@
 
         const handleCsrPhotoClick = (index) => {
           currentImage.value = csr[--index];
+          console.log(index);
+          if(currentImage.value.substr(0,10) == '/img/7.050' && index == 6) {
+            console.log('yes');
+            isPositionBottom.value = true
+          } else {
+            isPositionBottom.value = false
+          }
+          
         }
 
         watch(currentImage, () => {
@@ -211,12 +225,16 @@
           intervalId = setInterval(swipeImage, duration);
         })
 
-        return {currentImage, currentImageIndex, changeImage, handleHover, product_swiper, showProductSlider, handleCsrPhotoClick, showCsrPic, showAnniversaryPic, handleAnniversayPhotoClick}
+        return {currentImage, currentImageIndex, changeImage, handleHover, product_swiper, showProductSlider, handleCsrPhotoClick, showCsrPic, showAnniversaryPic, handleAnniversayPhotoClick, isPositionBottom}
       }
     };
   </script>
 
   <style scoped>
+  .position-bottom {
+    object-position: bottom;
+  }
+
   .carousel-section {
     background-color: #e9e5e5;
     position: relative;
