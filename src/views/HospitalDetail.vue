@@ -23,6 +23,7 @@
                     <div v-if="slug == 'Praram_9'"><Praram_9></Praram_9></div>
                     <div v-if="slug == 'Ruamjairak'"><Ruamjairak></Ruamjairak></div>
                     <div v-if="slug == 'Samitivej'"><Samitivej></Samitivej></div>
+                    <div v-if="slug == 'GrandHantha'"><GrandHantar></GrandHantar></div>
                 </div>
             </div>
         </div>
@@ -30,7 +31,8 @@
 </template>
 
 <script>
-    import Samitivej from '../components/hospitals/Samitivej'
+    import GrandHantar from '../components/hospitals/inbound/GrandHantar'
+import Samitivej from '../components/hospitals/Samitivej'
 import Ruamjairak from '../components/hospitals/Ruamjairak'
 import Praram_9 from '../components/hospitals/Praram_9'
 import Ladprao from '../components/hospitals/Ladprao'
@@ -47,6 +49,7 @@ import Phyathai1 from '../components/hospitals/Phyathai1'
 import Medpark from '../components/hospitals/Medpark'
 export default {
   components: {
+    GrandHantar,
     Samitivej,
     Ruamjairak,
     Praram_9,

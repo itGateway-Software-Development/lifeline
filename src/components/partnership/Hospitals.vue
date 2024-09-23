@@ -48,9 +48,34 @@
         </div>
       </div>
       <div class="row" v-else>
-        <h4 class="text-center">
-          Comming Soon...
-        </h4>
+        <div
+          class="col-lg-4 col-md-6 col-sm-6 col-12 p-0 px-2 hospital-column"
+          v-for="(hospital, i) in inbound_hospitals"
+          :key="i"
+        >
+          <div class="hospital-card">
+            <div class="hospital-image">
+              <img :src="hospital.img" class="hospital-img" alt="" />
+              <div class="logo">
+                <img
+                  :src="hospital.logo"
+                  :class="{
+                    small: hospital.status === 'small',
+                    medium: hospital.status == 'medium',
+                  }"
+                  alt=""
+                />
+              </div>
+            </div>
+            <div class="hospital-info">
+              <h3>{{ hospital.title }}</h3>
+              <p>{{ hospital.content.slice(0, 100) }} ...</p>
+              <router-link :to="`/hospital/${hospital.name}`"
+                >Read More</router-link
+              >
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -185,6 +210,17 @@ export default {
       },
     ];
 
+    const inbound_hospitals = [
+      {
+        name: "GrandHantha",
+        title: "Grand Hantha International Hospital ",
+        content:
+          "Grand Hantha International Hospital is a leading healthcare provider in Myanmar, offering a wide range of specialized medical services with state-of-the-art facilities.  ",
+        img: require("@/assets/images/hospital/inbound/grandhantar/image.jpg"),
+        logo: require("@/assets/images/hospital/inbound/grandhantar/logo.jpg"),
+      },
+    ]
+
     const status = ref('outbound');
 
     const viewHospital = (name) => router.push(`/hospital/${name}`);
@@ -193,7 +229,7 @@ export default {
       window.scrollTo(0, 0);
     });
 
-    return { viewHospital, hospitals, status };
+    return { viewHospital, hospitals, status, inbound_hospitals };
   },
 };
 </script>
