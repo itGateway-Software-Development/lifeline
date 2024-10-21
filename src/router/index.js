@@ -49,6 +49,11 @@ const routes = [
     props: true,
   },
   {
+    path: "/announcement",
+    name: 'Announcement',
+    component: () => import("@/views/Announcement.vue")
+  },
+  {
     path: "/partnership/:slug",
     name: "Partnership",
     component: () => import("@/views/Partnership.vue"),

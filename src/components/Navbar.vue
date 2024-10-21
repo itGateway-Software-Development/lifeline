@@ -187,7 +187,7 @@
         </v-list-item>
       </v-list-group>
 
-      <v-list-item @click="navigate('/coming-soon')">
+      <v-list-item @click="navigate('/announcement')">
         <v-list-item-title class="main-title">
           <v-icon icon="mdi-bullhorn"></v-icon> Announcement</v-list-item-title
         >
@@ -355,7 +355,7 @@
           >
         </div>
       </div>
-      <div class="menu pointer" @click="navigate('/coming-soon')">
+      <div class="menu pointer" @click="navigate('/announcement')">
         <div>
           <router-link to="/coming-soon">{{ $t("announcement") }}</router-link>
         </div>

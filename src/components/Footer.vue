@@ -30,11 +30,11 @@
                                 <i class="fa-solid fa-envelope"></i>
                             </div>
                             <div class="col-lg-9 address ms-3">
-                                contact@lifelinemyanmar.com
+                                info.hr@lifelinemyanmar.com
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-7  lifeline-link">
+                    <div class="col-lg-7 lifeline-link">
                         <div class="row">
                             <div class="col-lg-6">
                                 <h2>About Us</h2>

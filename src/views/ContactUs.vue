@@ -71,7 +71,7 @@
           <div class="address-icon">
             <i class="fa-solid fa-envelope"></i>
           </div>
-          <p class="text-center">contact@lifelinemyanmar.com</p>
+          <p class="text-center">info.hr@lifelinemyanmar.com</p>
           <p>&nbsp;</p>
         </div>
         <div class="map">
