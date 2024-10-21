@@ -15,7 +15,11 @@ let api = {
   getServices: url+"services",
   getPromotions: url+"promotions",
   getActivityPhotos: url+"get-csr-photos",
-  getAcademicActivities: url+"academic-activities"
+  getAcademicActivities: url+"academic-activities",
+  getPositions: url+"positions",
+  getLocations: url+"locations",
+  getCareers: url+"career/careers",
+  sendCV: url+"career/submit-cv",
 };
 
 export default api;

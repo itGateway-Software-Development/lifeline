@@ -10,12 +10,13 @@
     "@mdi/font": "^7.2.96",
     "aos": "^2.3.4",
     "axios": "^1.6.3",
+    "lodash": "^4.17.21",
     "vue": "^3.2.13",
     "vue-i18n": "^9.8.0",
     "vue-router": "^4.0.3",
     "vue-toast-notification": "^3.1.2",
     "vuetify": "^3.3.11",
-    "vuex": "^4.0.0"
+    "vuex": "^4.1.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-router": "~5.0.0",

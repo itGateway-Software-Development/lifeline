@@ -3,6 +3,11 @@
     <div class="img">
       <img src="@/assets/images/career.jpg" alt="" />
     </div>
+
+    <div v-if="isLoading">
+      <Loading />
+    </div>
+
     <div class="content">
       <div class="head shadow">
         <div class="d-flex select-group w-100 gap-4">
@@ -29,11 +34,13 @@
             append-inner-icon="mdi mdi-magnify"
             label="Search"
             variant="underlined"
+            v-model="keyword"
+            @input="search"
           ></v-text-field>
         </div>
       </div>
       <div class="vacancy shadow">
-        <div class="job" v-for="vacancy in filteredVacancies" :key="vacancy.id">
+        <div v-if="filteredVacancies.length > 0" class="job" v-for="(vacancy,index) in filteredVacancies" :key="vacancy.id">
           <div class="title">
             <div>
               <h2>{{vacancy.position}}</h2>
@@ -60,6 +67,8 @@
                           <v-file-input
                             label="Please import your cv"
                             chips
+                            accept="application/pdf"
+                            @change="handleFileChange"
                           ></v-file-input>
                         </div>
                         <div class="row mb-3">
@@ -98,7 +107,7 @@
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn text-white" style="background: #616161;" data-bs-dismiss="modal">Close</button>
-                        <button type="button" @click="submitCV" class="btn btn-primary text-white">Submit Your CV</button>
+                        <button type="button" @click="submitCV(vacancy.position)" class="btn btn-primary text-white">Submit Your CV</button>
                       </div>
                     </div>
                   </div>
@@ -115,17 +124,29 @@
           </div>
         </div>
        
+        <div v-else>
+          <div class="d-flex flex-column justify-content-center align-items-center gap-4" >
+            <img class="w-25" src="@/assets/images/no-data.jpg" alt="">
+            <h5>No Data Found</h5>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import getCareers from "@/composables/getCareers";
 import { onMounted, ref, watch } from "vue";
 import {useToast} from 'vue-toast-notification';
 import 'vue-toast-notification/dist/theme-sugar.css';
+import debounce from 'lodash/debounce';
+import axios from "axios";
+import api from "@/services/api";
+import Loading from "@/components/Loading";
 
 export default {
+  components: { Loading },
   setup() {
     let locations = ref([]);
     let positions = ref([]);
@@ -136,107 +157,27 @@ export default {
 
     const $toast = useToast();
     let modal = null;
+    const keyword = ref('');
+    const file = ref(null);
+    const isLoading = ref(false);
 
-    const vacancies = [
-      {
-        id: 1,
-        position: 'Warehouse Supervisor',
-        department: 'Store',
-        location: 'Yangon',
-        job_info: 'We offer an open vacancy for the Store department.',
-        posts: 2,
-        job_description: null,
-        requirements: `
-          <ul>
-            <li>တက္ကသိုလ်မှ ဘွဲ့တစ်ခု ရရှိထားသူဖြစ်ရမည်။ </li>
-            <li>English စာ အခြေခံကောင်းမွန်ရမည်။ </li>
-            <li>Computer ကိုကျွမ်းကျင်စွာအသုံးပြုနိုင်သူဖြစ်ရမည်။  </li>
-            <li>သက်ဆိုင်ရာလုပ်ငန်း အတွေ့အကြုံရှိသူ ဦးစားပေးမည်။    </li>
-            <li>စာရင်းဇယားများနှင့်ပတ်သက်၍ ကျွမ်းကျင်စွာလုပ်ကိုင်နိုင်သူဖြစ်ရမည်။   </li>
-            <li>လုပ်ငန်းအပေါ်တွင် အချိန်ပေးဆောင်ရွက်နိုင်သူဖြစ်ရမည်။ </li>
-            <li>မိမိ Team Member များအား ကောင်းမွန်စွာ စီမံအုပ်ချုပ်နိုင်သူဖြစ်ရမည်။ </li>
-            <li>လိုအပ်ပါက နယ်ခရီးသွားလာနိုင်သူဖြစ်ရမည်။  </li>
-            <li>ဆက်ဆံရေးပြေပြစ်ကောင်းမွန်၍ လုပ်ငန်းအပေါ်တွင် စိတ်ဝင်စားသူ ဖြစ်ရမည်။</li>
-          </ul>
-        `,
-      },
-      {
-        id: 2,
-        position: 'Warehouse Staff',
-        department: 'Store',
-        location: 'Yangon',
-        job_info: 'We offer an open vacancy for the Store department.',
-        posts: 3,
-        job_description: null,
-        requirements: `
-          <ul>
-            <li>တက္ကသိုလ်ဝင်တန်းအောင်မြင်ပြီးသူဖြစ်ရမည်။ </li>
-            <li>ရိုးသားကြိုးစားသူ ဖြစ်ရမည်။  </li>
-            <li>အတွေ့အကြုံရှိသူ ဦးစားပေးမည်  </li>
-            <li>စာရင်းဇယားများနှင့်ပတ်သက်၍ ကျွမ်းကျင်စွာလုပ်ကိုင်နိုင်သူဖြစ်ရမည်။   </li>
-            <li>လုပ်ငန်းအပေါ်တွင် အချိန်ပေးဆောင်ရွက်နိုင်သူဖြစ်ရမည်။  </li>
-            <li>လိုအပ်ပါက နယ်ခရီးသွားလာနိုင်သူဖြစ်ရမည်။   </li>
-            <li>မိမိ Team Member များအား ကောင်းမွန်စွာ စီမံအုပ်ချုပ်နိုင်သူဖြစ်ရမည်။ </li>
-            <li>လိုအပ်ပါက နယ်ခရီးသွားလာနိုင်သူဖြစ်ရမည်။  </li>
-            <li>ပေါင်းသင်းဆက်ဆံရေးကောင်းမွန်ပြီး Team Work ဖြင့် လုပ်ဆောင်နိုင်သူဖြစ်ရမည်။ </li>
-          </ul>
-        `,
-      },
-      {
-        id: 3,
-        position: 'Operation Supervisor',
-        department: 'Operation',
-        location: 'Yangon',
-        job_info: 'We offer an open vacancy for the Operation department.',
-        posts: 2,
-        job_description: null,
-        requirements: `
-          <ul>
-            <li>တက္ကသိုလ်မှ ဘွဲ့တစ်ခု ရရှိထားသူဖြစ်ရမည်။ </li>
-            <li>English စာ အခြေခံကောင်းမွန်ရမည်။  </li>
-            <li>Computer ကိုကျွမ်းကျင်စွာအသုံးပြုနိုင်သူဖြစ်ရမည်။ (Excel/Word)  </li>
-            <li>သက်ဆိုင်ရာလုပ်ငန်း အတွေ့အကြုံရှိသူ ဦးစားပေးမည်။    </li>
-            <li>လုပ်ငန်းအပေါ်တွင် အချိန်ပေးဆောင်ရွက်နိုင်သူဖြစ်ရမည်။ </li>
-            <li>မိမိ Team Member များအား ကောင်းမွန်စွာ စီမံအုပ်ချုပ်နိုင်သူဖြစ်ရမည်။   </li>
-            <li>လိုအပ်ပါက နယ်ခရီးသွားလာနိုင်သူဖြစ်ရမည်။ </li>
-            <li>ဆက်ဆံရေးပြေပြစ်ကောင်းမွန်၍ လုပ်ငန်းအပေါ်တွင် စိတ်ဝင်စားသူ ဖြစ်ရမည်။  </li>
-          </ul>
-        `,
-      },
-      {
-        id: 4,
-        position: 'Accountant ',
-        department: 'Account',
-        location: 'Yangon',
-        job_info: 'We offer an open vacancy for the Account department.',
-        posts: 2,
-        job_description: null,
-        requirements: `
-          <ul>
-            <li>တက္ကသိုလ်တစ်ခုခုမှ ဘွဲ့ရရှိထားသူဖြစ်ရမည်။ </li>
-            <li>LCCI Level (1,2) ပြီးမြောက်ထားသူဖြစ်ရပါမည်။  </li>
-            <li>Microsoft Excel အား ကျွမ်းကျင်စွာ အသုံးပြုနိုင်သူဖြစ်ရမည်။  </li>
-            <li>အသင်းအဖွဲ့နှင့်ပူးပေါင်းဆောင်ရွက်နိုင်ပြီး ရေရှည်လုပ်ကိုင်သူဖြစ်ရပါမည်။  </li>
-            <li>လှိုင်သာယာမြို့နယ်တွင် အလုပ်ဆင်းနိုင်သူဖြစ်ရပါမည်။  </li>
-          </ul>
-        `,
-      },
-    ];
+    let {vacancies,error, load} = getCareers();
+    
 
     const jdData = ref(null);
 
-    const setLoation = () => locations.value = ['All', ...new Set(vacancies.map(vacancy => vacancy.location))];
-    const setPosition = () => positions.value = ['All', ...new Set(vacancies.map(vacancy => vacancy.position))];
+    const setLoation = () => locations.value = ['All', ...new Set(vacancies.value.map(vacancy => vacancy.location))];
+    const setPosition = () => positions.value = ['All', ...new Set(vacancies.value.map(vacancy => vacancy.position))];
 
     const filterVacancies = () => {
       if (selectLocation.value === 'All' && selectPosition.value === 'All') {
-        filteredVacancies.value = vacancies;
+        filteredVacancies.value = vacancies.value;
       } else if (selectLocation.value === 'All' && selectPosition.value !== 'All') {
-        filteredVacancies.value = vacancies.filter(vacancy => vacancy.position === selectPosition.value);
+        filteredVacancies.value = vacancies.value.filter(vacancy => vacancy.position === selectPosition.value);
       } else if (selectLocation.value !== 'All' && selectPosition.value === 'All') {
-        filteredVacancies.value = vacancies.filter(vacancy => vacancy.location === selectLocation.value);
+        filteredVacancies.value = vacancies.value.filter(vacancy => vacancy.location === selectLocation.value);
       } else {
-        filteredVacancies.value = vacancies.filter(vacancy => 
+        filteredVacancies.value = vacancies.value.filter(vacancy => 
           vacancy.location === selectLocation.value && vacancy.position === selectPosition.value
         );
       }
@@ -248,24 +189,68 @@ export default {
       modal.show();
     }
 
-    const submitCV = () => {
+    const handleFileChange = (event) => {
+        const selectedFile = event.target.files[0];
+        if (selectedFile) {
+            file.value = selectedFile;
+        } else {
+            file.value = null;
+        }
+    };
+
+    const submitCV = async(position) => {
       if(modal) {
         modal.hide();
       }
-      $toast.success('Successfully submitted your CV! Thanks', {position: 'top-right'})
+      
+      if(!file.value) {
+        $toast.error('Please import your CV !', {position: 'top-right'})
+        return
+      }
+
+      isLoading.value = true;
+
+      try {
+        let formData = new FormData();
+        formData.append('file', file.value);
+        formData.append('position', position);
+
+        let response = await axios.post(api.sendCV, formData,  {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            }
+        });
+        
+        if(response.data.status) {
+          isLoading.value = false;
+          $toast.success(response.data.message, {position: 'top-right'})
+        } 
+      } catch (error) {
+        $toast.error('Something went wrong', {position: 'top-right'})
+      }
+      
     }
+
+    const search = debounce( async() => {
+      let response = await axios.get(api.getCareers+"?q="+keyword.value);
+      vacancies.value = response.data.careers;
+      filterVacancies();
+    }, 300)
 
     watch(([selectLocation, selectPosition]), () => {
       filterVacancies();
     })
-
-    onMounted(() => {
-      filterVacancies();
-      setLoation();
-      setPosition();
+    
+    onMounted(async () => {
+      await load()
+      if(vacancies.value) {
+        filterVacancies();
+        setLoation();
+        setPosition();
+      }
     })
 
-    return { vacancies, locations, positions, selectLocation, selectPosition, filteredVacancies, showJD, jdData, submitCV};
+    return { vacancies, locations, positions, selectLocation, selectPosition, filteredVacancies, showJD, jdData, submitCV, keyword, search, handleFileChange, isLoading};
   },
 };
 </script>
