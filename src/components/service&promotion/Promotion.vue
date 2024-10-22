@@ -58,8 +58,7 @@ import { onMounted } from 'vue'
     }
 
     .img img {
-        width: 800px;
-        height: 500px;
+        width: 90%;
         object-fit: cover;
     }
 
@@ -116,11 +115,6 @@ import { onMounted } from 'vue'
     
         .header i {
             font-size: 17px;
-        }
-        .img img {
-            width: 600px;
-            height: 400px;
-            object-fit: cover;
         }
     
         .content {
