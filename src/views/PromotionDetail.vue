@@ -57,7 +57,6 @@ export default {
         display: flex;
         flex-direction: column;
         background-color: #e5ecf1;
-        margin-top: 17px;
     }
     
     .promotion .menu a {
