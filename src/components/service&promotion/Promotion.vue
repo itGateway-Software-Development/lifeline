@@ -1,153 +1,62 @@
 <template>
-    <div class="promotion" v-if="promotions">
-        <div class="header">
-            <h2>{{promotions.title}}</h2>
-        </div>
-        <div class="img">
-            <img :src="promotions.main_img" alt="">
-        </div>
-
-        <div class="content">
-            <div v-html="promotions.content"></div>
-        </div>
-
-        <div class="promo-img">
-            <img :src="promotions.info_img" alt="">
-        </div>
+    <div class="promotion" v-if="latestPromotions.length > 0">
+        <div class="row">
+            <div
+              class="col-lg-4 col-md-6 col-sm-6 col-12 p-0 px-2 hospital-column"
+              v-for="(promotion) in latestPromotions"
+              :key="promotion.id"
+            >
+              <div class="promotion-card shadow flex flex-column align-items-center gap-3">
+                <div class="promotion-image">
+                  <img :src="promotion.main_img" class="promotion-img w-100" alt="" />
+                </div>
+                <div class="promotion-info p-3">
+                  <h3 class="fw-bold fs-5" style="height: 40px;">{{ promotion.title.slice(0, 50)  }} ...</h3>
+                  <br>
+                  <p style="height: 70px;" v-html="promotion.content.slice(0, 150) + ' ...'"></p>
+                  <br>
+                  <router-link :to="`/service-promotion/promotion/${promotion.id}`"
+                    >Read More</router-link
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
     </div>
     <h2 v-else class="fw-bold text-center">No Promotions Available !</h2>
 </template>
 
 <script>
 import getPromotions from '@/composables/getPromotions';
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
     export default {
         setup() {
+            const latestPromotions = ref([]);
             const {promotions, error, load} = getPromotions();
-            load();
-            onMounted(() => {
+            
+            onMounted(async () => {
+                await load()
+                if(promotions.value.length > 0) {
+                    latestPromotions.value = promotions.value
+                }
                 window.scrollTo(0,0)
             })
-            return {promotions};
+            return {latestPromotions};
         }
     }
 </script>
 
 <style scoped>
-    .header {
-        padding: 0 5%;
-        margin-bottom: 40px;
-    }
-    .header h2 {
-        font-size: 24px;
-        text-align: center;
-        background: #43bd86;
-        padding: 15px 10px;
-        color: #fff;
-    }
-
-    .header i {
-        color: rgb(253, 83, 83);
-        margin: 0 10px 0 5px;
-        transform: rotate(-15deg);
-    }
-    .img {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .img img {
-        width: 90%;
-        object-fit: cover;
-    }
-
-    .content {
-        margin: 40px 0 20px;
-    }
-
-    .content .promo {
-        display: flex;
-        gap: 15px;
-        margin-bottom: 15px;
-    }
-
-    .promo i {
-        color: rgb(248, 181, 10);
-        padding-top: 5px;
-    }
-
-    .promo .fa-phone, .promo .fa-plane-departure {
-        color: #0379af;
-    }
-
-    .promo span {
-        font-size: 17px;
-        line-height: 30px;
-    }
-
-    .promo ul {
-        margin-top: 10px;
-    }
-
-    .promo ul li {
-        margin-bottom: 10px;
-        font-size: 17px;
-    }
-
-    .promo-img {
-        margin-top: 50px;
-    }
-
-    .promo-img img {
-        width: 100%;
-    }
-
-    @media (max-width: 1600px) {
-        .header {
-            padding: 0 5%;
-            margin-bottom: 30px;
-        }
-        .header h2 {
-            font-size: 19px;
-            padding: 15px 0px;
-        }
-    
-        .header i {
-            font-size: 17px;
-        }
-    
-        .content {
-            margin: 30px 0 20px;
-        }
-    
-        .content .promo {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 10px;
-        }
-    
-        .promo i {
-            padding-top: 9px;
-            font-size: 14px;
-        }
-    
-        .promo span {
-            font-size: 14px;
-            line-height: 27px;
-        }
-    
-        .promo ul {
-            margin-top: 5px;
-        }
-    
-        .promo ul li {
-            margin-bottom: 5px;
-            font-size: 14px;
-        }
-    
-        .promo-img {
-            margin-top: 50px;
-        }
-    }
+.promotion-card a {
+    font-size: 13px;
+    color: #b88b10;
+    font-weight: bold;
+    text-decoration: none;
+    border-bottom: 3px solid #dbd8d8;
+    transition: 0.3s ease;
+  }
+  
+  .promotion-card a:hover {
+    border-bottom: 3px solid #b88b10;
+  }
 </style>

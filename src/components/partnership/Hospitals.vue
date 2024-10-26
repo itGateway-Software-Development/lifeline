@@ -234,7 +234,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style >
 .hospital img.banner {
   width: 100%;
   height: 300px;
