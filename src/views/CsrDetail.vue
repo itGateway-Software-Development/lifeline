@@ -8,8 +8,16 @@
             </div>
             <h4>{{csr.title}}</h4>
             <p>{{csr.content}}</p>
-
-            <div class="car-detail-photos row  border border-5 py-2">
+          </div>
+          <div class="row my-3">
+            <div class="col-12 col-sm-6 col-lg-4 mb-3" v-for="(video, index) in csr.csr_videos" :key="index">
+              <div class="video w-100">
+                <video controls style="width: 100%;">
+                    <source :src="video.full_url" type='video/mp4' />
+                </video>  
+            </div>
+          </div>
+            <div class="row  border border-5 py-2">
                 <div class="col-12 col-sm-6 col-lg-4 mb-3" v-for="(img, index) in csr.media" :key="index">
                     <img class="w-100" :src="img.original_url" alt="" data-bs-toggle="modal" data-bs-target="#picModal" @click="sendUrl(img.original_url)" />
                 </div>

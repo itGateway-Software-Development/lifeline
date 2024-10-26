@@ -11,6 +11,15 @@
                     <h2>{{new_events.title}}</h2>
                     <div class="date"> <i class="fa-regular fa-calendar-check"></i> {{new_events.date}}</div>
                     <p v-html="new_events.content"></p>
+                    <div class="row my-3">
+                        <div class="col-12 col-sm-6 col-lg-4 mb-3" v-for="(video, index) in new_events.videos" :key="index">
+                          <div class="video w-100">
+                            <video controls style="width: 100%;">
+                                <source :src="video.full_url" type='video/mp4' />
+                            </video>  
+                        </div>
+                      </div>
+                    </div>
                     <div class="img border p-2 border-3 rounded row">
                        <div class="col-12 col-md-6 col-lg-4 mb-3" v-for="(img, i) in new_events.media" :key="i">
                         <img class="new-detail-img" :src="img" alt="" data-bs-toggle="modal" data-bs-target="#picModal" @click="sendUrl(img)">
