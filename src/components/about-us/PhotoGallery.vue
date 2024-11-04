@@ -20,12 +20,16 @@
             <i class="fa-solid fa-magnifying-glass fs-5 text-end"></i>
         </div>
         <div class="photo-view">
-            <div class="row ms-1 mt-5">
+            <div class="row ms-1 mt-5" v-if="photo_array.length > 0">
                 <div class="col-12 col-sm-6 pe-0 col-lg-4 mb-3" v-for="(photo,i) in photo_array" :key="i">
                     <div class="border w-100" style="height: 300px;">
                         <img class="w-100 h-100" style="object-fit:cover;" @click="sendUrl(photo.original_url)" :src="photo.original_url" alt="" data-bs-toggle="modal" data-bs-target="#picModal">
                     </div>
                 </div>
+            </div>
+            <div v-else>
+                <hr>
+                <h3 class="text-center">No Photo Found</h3>
             </div>
             <Modal :url="url" />
         </div>

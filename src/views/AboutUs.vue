@@ -76,6 +76,30 @@
             @click="chooseYear('2020')"
             >2020</router-link
           >
+          <router-link
+            to="#"
+            :class="{ active: selectYear == '2019' }"
+            @click="chooseYear('2019')"
+            >2019</router-link
+          >
+          <router-link
+            to="#"
+            :class="{ active: selectYear == '2018' }"
+            @click="chooseYear('2018')"
+            >2018</router-link
+          >
+          <router-link
+            to="#"
+            :class="{ active: selectYear == '2017' }"
+            @click="chooseYear('2017')"
+            >2017</router-link
+          >
+          <router-link
+            to="#"
+            :class="{ active: selectYear == '2016' }"
+            @click="chooseYear('2016')"
+            >2016</router-link
+          >
         </div>
       </div>
       <div class="col-lg-9 col-md-9 col-sm-12">
