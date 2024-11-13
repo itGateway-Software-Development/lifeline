@@ -419,23 +419,25 @@
       </div>
     </div>
 
-    <v-menu transition="slide-x-transition" class="language">
-      <template v-slot:activator="{ props }">
-        <v-btn color="warning" v-bind="props" class="lang-btn">
-          <i class="fa-solid fa-globe" style="color: #000"></i>
-          <span class="text-dark ms-2">{{ language }}</span>
-        </v-btn>
-      </template>
-
-      <v-list>
-        <v-list-item class="lang-list" @click="changeLanguage('EN')">
-          <v-list-item-title>ENG</v-list-item-title>
-        </v-list-item>
-        <v-list-item class="lang-list" @click="changeLanguage('MM')">
-          <v-list-item-title>MM</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-menu>
+    <div class="language-wrapper">
+      <v-menu transition="slide-x-transition" class="language">
+        <template v-slot:activator="{ props }">
+          <v-btn color="warning" v-bind="props" class="lang-btn">
+            <i class="fa-solid fa-globe" style="color: #000"></i>
+            <span class="text-dark ms-0 ms-lg-2">{{ language }}</span>
+          </v-btn>
+        </template>
+  
+        <v-list>
+          <v-list-item class="lang-list" @click="changeLanguage('EN')">
+            <v-list-item-title>ENG</v-list-item-title>
+          </v-list-item>
+          <v-list-item class="lang-list" @click="changeLanguage('MM')">
+            <v-list-item-title>MM</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
+    </div>
   </nav>
 </template>
 
@@ -840,7 +842,7 @@ export default {
   }
 }
 
-@media (max-width: 1400px) {
+@media (max-width: 1408px) {
   .nav1 {
     padding: 10px 4%;
   }
@@ -857,7 +859,8 @@ export default {
   }
 }
 
-@media (max-width: 1200px) {
+
+@media (max-width: 1212px) {
   .nav1 {
     padding: 10px 1%;
     gap: 10px;
@@ -911,6 +914,12 @@ export default {
   }
 }
 
+@media(max-width: 1025px) {
+  .nav2 .menu div a {
+    font-size: 10px;
+  }
+}
+
 /* for menu bar responsive */
 @media (max-width: 1018px) {
 
@@ -933,13 +942,9 @@ export default {
   }
 }
 
-@media (max-width: 841px) {
-  .nav2 {
-    padding: 15px 0%;
-  }
-}
 
-@media (max-width: 880px) {
+
+@media (max-width: 894px) {
   .nav1 {
     height: 65px;
   }
@@ -956,13 +961,17 @@ export default {
     font-size: 20px;
   }
 
+  .nav2 {
+    padding: 15px 0%;
+  }
+
   .nav2 .menu {
     gap: 2px;
-    padding: 6px;
+    padding: 0px 6px;
   }
 
   .nav2 .menu div a {
-    font-size: 11px;
+    font-size: 10px;
   }
 
   .fa-house-chimney {
@@ -975,10 +984,29 @@ export default {
     font-size: 13px;
   }
 
-  .lang-btn {
-    width: 60px;
+  .nav2 .language-wrapper {
+    width: 50px !important;
+    overflow: hidden !important;
+    display: flex;
+    border-radius: 7px;
+    justify-content: center;
+  }
+
+  .nav2 .lang-btn {
+    width: 30px !important;
     height: 22px !important;
-    font-size: 12px;
+    font-size: 10px;
+  }
+
+}
+
+@media (max-width: 841px) {
+  .nav2 {
+    padding: 15px 0%;
+  }
+
+  .nav2 .menu div a {
+    font-size: 9px;
   }
 }
 

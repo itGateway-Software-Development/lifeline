@@ -1,7 +1,7 @@
   <template>
     <div class="carousel-section position-relative" @mouseover="handleHover('hover')" @mouseleave="handleHover('leave')">
       <div class="banner-image">
-        <img :src="currentImage" alt="" :class="{'position-bottom' : isPositionBottom}">
+        <img :src="currentImage" alt="" :class="{'position-bottom' : isPositionBottom, 'company-img' : currentImage == '/img/main_banner.0814bf4a.png'}">
         <div class="arrow">
           <div class="d-flex justify-content-between">
             <div class="prev" @click="changeImage('prev')">
@@ -410,13 +410,28 @@
   }
 
   @media (max-width: 1420px) {
-    .carousel-section .csr-photos {
+
+    .carousel-section .banner-image {
+      height: 500px;
+    }
+
+    carousel-section .csr-photos {
       position: absolute;
       width: 100%;
-      top: 5%;
-      left: 85%;
-      z-index: 0;
+      top: 3%;
+      left: 82%;
     }
+    
+    .carousel-section .csr-photos img {
+      width: 50px;
+      height: 50px;
+    }
+    .carousel-section .banner-image .company-img {
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+    }
+    
   }
 
   @media (max-width: 1200px) {
@@ -601,6 +616,15 @@
     }
     
 
+  }
+
+  @media(max-width: 500px) {
+    .carousel-section .banner-image .company-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 80%;
+    }
   }
 
   @media (max-width: 480px) {
