@@ -4,7 +4,7 @@
         <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="picModalLabel">Photo Viewer</h1>
+                <h1 class="modal-title fs-5" id="picModalLabel">{{title ?? ''}}</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -17,7 +17,7 @@
 
 <script>
     export default {
-        props: ['url']
+        props: ['url', 'title']
     }
 </script>
 

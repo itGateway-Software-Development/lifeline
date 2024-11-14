@@ -22,7 +22,7 @@
                     <img class="w-100" :src="img.original_url" alt="" data-bs-toggle="modal" data-bs-target="#picModal" @click="sendUrl(img.original_url)" />
                 </div>
             </div>
-            <Modal :url="url" />
+            <Modal :url="url" :title="csr.title" />
         </div>
     </div>
 </template>
