@@ -6,8 +6,10 @@
       <div class="divider"></div>
     </div>
     <div class="content">
-      <div class="principle-card pointer" v-for="i in 12" :key="i">
-        <img :src="require(`@/assets/images/principle/p${i}.png`)" alt="" />
+      <div class="principle-card pointer" v-for="principle in principles" :key="principle.name">
+        <a :href="principle.web_link" target="_blank">
+          <img :src="principle.img" alt="" />
+        </a>
       </div>
     </div>
   </div>
@@ -17,9 +19,75 @@
 import { onMounted } from "vue";
 export default {
   setup() {
+    const principles = [
+      {
+        name: 'Aqatc',
+        img: require("@/assets/images/principle/p1.png"),
+        web_link: "http://aquaticgroup.in/",
+      },
+      {
+        name: 'Baroque',
+        img: require("@/assets/images/principle/p2.png"),
+        web_link: "https://baroquepharma.com/",
+      },
+      {
+        name: 'Finecure',
+        img: require("@/assets/images/principle/p3.png"),
+        web_link: "https://www.finecurepharma.com",
+      },
+      {
+        name: 'Gufic',
+        img: require("@/assets/images/principle/p4.png"),
+        web_link: null,
+      },
+      {
+        name: 'Impact',
+        img: require("@/assets/images/principle/p5.png"),
+        web_link: 'https://impactcare.co.in/',
+      },
+      {
+        name: 'MJ',
+        img: require("@/assets/images/principle/p6.png"),
+        web_link: 'https://www.mjgroup.co.in',
+      },
+      {
+        name: 'Novell',
+        img: require("@/assets/images/principle/p7.png"),
+        web_link: 'https://www.novellpharm.com',
+      },
+      {
+        name: 'Pulse',
+        img: require("@/assets/images/principle/p8.png"),
+        web_link: 'https://pulsepharma.net',
+      },
+      {
+        name: 'Renata',
+        img: require("@/assets/images/principle/p9.png"),
+        web_link: 'https://www.renata-ltd.com',
+      },
+      {
+        name: 'S Kant',
+        img: require("@/assets/images/principle/p10.png"),
+        web_link: 'http://www.skant.com/',
+      },
+      {
+        name: 'Sydler',
+        img: require("@/assets/images/principle/p11.png"),
+        web_link: 'https://sydlerindia.com',
+      },
+      {
+        name: 'Torrent',
+        img: require("@/assets/images/principle/p12.png"),
+        web_link: 'https://www.torrentpharma.com',
+      },
+    ];
+    
     onMounted(() => {
       window.scrollTo(0, 0);
     });
+
+    return {principles};
+
   },
 };
 </script>
