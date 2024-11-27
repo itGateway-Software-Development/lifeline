@@ -38,7 +38,7 @@ export default {
       {
         name: 'Gufic',
         img: require("@/assets/images/principle/p4.png"),
-        web_link: null,
+        web_link: "https://gufic.com/",
       },
       {
         name: 'Impact',
