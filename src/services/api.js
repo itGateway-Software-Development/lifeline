@@ -20,6 +20,7 @@ let api = {
   getLocations: url+"locations",
   getCareers: url+"career/careers",
   sendCV: url+"career/submit-cv",
+  getAnnouncement: url+"announcement",
 };
 
 export default api;

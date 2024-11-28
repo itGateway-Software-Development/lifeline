@@ -20,7 +20,7 @@
             <i class="fa-solid fa-magnifying-glass fs-5 text-end"></i>
         </div>
         <div class="photo-view">
-            <div class="row ms-1 mt-5" v-if="photo_array.length > 0">
+            <div class="row ms-1 mt-5" v-if="photo_array.length > 0" ref="photoView">
                 <div class="col-12 col-sm-6 pe-0 col-lg-4 mb-3" v-for="(photo,i) in photo_array" :key="i">
                     <div class="border w-100" style="height: 300px;">
                         <img class="w-100 h-100" style="object-fit:cover;" @click="sendUrl(photo.original_url)" :src="photo.original_url" alt="" data-bs-toggle="modal" data-bs-target="#picModal">
@@ -41,6 +41,7 @@ import Modal from '../usable/Modal'
 import Loading from '../Loading'
 import { onMounted, ref, watch } from 'vue';
 import getPhotoGallery from "@/composables/getPhotoGallery";
+import { nextTick } from 'vue';
 
     export default {
         components: {Modal, Loading },
@@ -74,6 +75,8 @@ import getPhotoGallery from "@/composables/getPhotoGallery";
             }
 
             const filterProduct = () => {
+                
+
                 if(selectedTitle.value == 'all' && selectedYear.value == 'All') {
                     filteredPhotos.value = photo_gallery.value.map(photo => photo.media);
 
@@ -111,14 +114,20 @@ import getPhotoGallery from "@/composables/getPhotoGallery";
                         }
                     }
                 }
+                isLoading.value = false;
             }
 
             watch(
                 () => props.selectYear,
                 (newValue) => {
                     if (newValue !== selectedYear.value) {
-                    selectedYear.value = newValue;
-                    filterProduct();
+                        selectedYear.value = newValue;
+                        photo_array.value = [];
+                        isLoading.value = true;
+                        setTimeout(() => {
+                            filterProduct();
+                            console.log(selectedYear.value);
+                        }, 200);
                     }
                 }
             );
