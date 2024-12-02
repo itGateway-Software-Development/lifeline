@@ -246,6 +246,11 @@
           <v-icon icon="mdi-book-edit"></v-icon> Career</v-list-item-title
         >
       </v-list-item>
+      <v-list-item @click="navigate('/academic_activity')">
+        <v-list-item-title class="main-title">
+          <v-icon icon="mdi mdi-brightness-auto"></v-icon> Academic Activity</v-list-item-title
+        >
+      </v-list-item>
 
       <v-list-item @click="navigate('/contact-us')">
         <v-list-item-title class="main-title">

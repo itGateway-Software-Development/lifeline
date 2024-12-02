@@ -41,6 +41,12 @@
             <input type="button" value="Search" class="button" />
           </div>
         </div>
+        <div class="mobile-menu col-12 mb-3">
+          <select name="" id="" class="form-select" v-model="mobile_select_category" @change="handleCategory(mobile_select_category)">
+            <option value="all">All</option>
+            <option :value="category.id" v-for="(category,i) in categories" :key="i" >{{ category.name }}</option>
+          </select>
+        </div>
         <div class="content">
           <div class="row" v-if="filteredProducts.length > 0">
             <div
@@ -81,6 +87,7 @@ export default {
     const keyword = ref('');
     let isLoading = ref(true);
     const category_id = ref(0);
+    const mobile_select_category = ref('all');
 
     router.afterEach((to) => {
       currentRoute.value = to.path;
@@ -146,7 +153,8 @@ export default {
       products,
       isLoading,
       keyword, 
-      search
+      search,
+      mobile_select_category
     };
   },
 };
@@ -175,6 +183,10 @@ export default {
   display: flex;
   flex-direction: column;
   background-color: #e5ecf1;
+}
+
+.products .mobile-menu {
+  display: none;
 }
 
 .products .menu a {
@@ -317,6 +329,11 @@ export default {
 @media (max-width: 993px) {
   .products .menu {
     display: none;
+  }
+
+  .products .mobile-menu {
+    display: block;
+    padding: 0px 20px;
   }
 
   .products .slug {
