@@ -369,6 +369,12 @@
     object-fit: cover;
   }
 
+  @media(max-width: 1660px) {
+    .carousel-section .banner-image {
+      height: 600px;
+    }
+  }
+
 
   @media (max-width: 1600px) {
     .carousel {

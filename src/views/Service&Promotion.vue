@@ -59,7 +59,6 @@ export default {
 .banner-img img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
 }
 .service-promotion {
   padding: 30px 15%;
@@ -106,6 +105,9 @@ export default {
 }
 
 @media (max-width: 1200px) {
+  .banner-img {
+    padding: 0 3%;
+  }
   .service-promotion {
     padding: 30px 3%;
   }

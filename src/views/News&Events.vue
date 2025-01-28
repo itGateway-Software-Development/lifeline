@@ -16,7 +16,7 @@
         </div>
       </div>
       <div class="col-lg-10 col-md-9 col-sm-12">
-        <div class="content">
+        <div class="">
           <div v-if="slug == 'csr-activities'"><CsrActivity></CsrActivity></div>
           <div v-if="slug == 'news'"><News></News></div>
         </div>

@@ -118,7 +118,6 @@ export default {
 .catalog .catalog-card img {
   width: 90px;
   height: 90px;
-  object-fit: cover;
 }
 
 .catalog a {
@@ -176,7 +175,6 @@ export default {
   .img img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
   }
 
   .content {

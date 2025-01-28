@@ -103,7 +103,7 @@
         </div>
       </div>
       <div class="col-lg-9 col-md-9 col-sm-12">
-        <div class="content">
+        <div class="">
           <div v-if="slug == 'introduction'"><Introduction></Introduction></div>
           <div v-if="slug == 'ceo-message'"><CeoMessage></CeoMessage></div>
           <div v-if="slug == 'vision-mission'"><VisionMission /></div>

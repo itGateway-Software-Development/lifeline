@@ -16,7 +16,7 @@
         </div>
       </div>
       <div class="col-lg-10 col-md-10 col-sm-12">
-        <div class="content">
+        <div class="">
           <div v-if="slug == 'principles'"><Principle></Principle></div>
           <div v-if="slug == 'hospitals'"><Hospitals></Hospitals></div>
         </div>

@@ -25,7 +25,7 @@
     </div>
     </div>
     <div class="csr-row row ">
-      <div class="pointer col-12 col-sm-6 col-md-4 mb-5" v-for="(csr, index) in filteredDatas" :key="index">
+      <div class="pointer col-12 col-md-6 col-lg-4 mb-5" v-for="(csr, index) in filteredDatas" :key="index">
         <div class="">
           <router-link :to="`/csr-detail/${csr.id}`">
             <img class="mb-2 w-100" :src="csr.media[0].original_url" alt="">
@@ -85,8 +85,7 @@ export default {
 <style scoped>
 .csr img {
   width: 100%;
-  height: 300px;
-  object-fit: cover;
+  height: 400px;
 }
 
 .csr h4 {

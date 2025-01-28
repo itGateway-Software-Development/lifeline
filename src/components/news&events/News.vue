@@ -7,7 +7,7 @@
     </div>
     <div class="content">
       <div
-        class="news-card pointer"
+        class="news-card pointer mb-5"
         v-for="news in new_events"
         :key="news.id"
         @click="goDetail(news.id)"

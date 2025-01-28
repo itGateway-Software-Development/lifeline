@@ -238,7 +238,6 @@ export default {
 .hospital img.banner {
   width: 100%;
   height: 300px;
-  object-fit: cover;
 }
 
 .header {
@@ -335,7 +334,7 @@ export default {
   }
 
   .header {
-    margin: 20px 0 0;
+    margin-bottom: 30px !important;
   }
   .header h2 {
     font-size: 24px;

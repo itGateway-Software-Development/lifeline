@@ -79,10 +79,6 @@ import { onMounted } from 'vue'
             height: 230px;
         }
     
-        .banner img {
-            width: 40%;
-        }
-    
         .content {
             margin: 30px auto 20px;
         }

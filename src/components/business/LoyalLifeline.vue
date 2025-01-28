@@ -40,7 +40,6 @@ import { onMounted } from 'vue'
     .banner img {
         width: 100%;
         height: 100%;
-        object-fit: cover;
     }
     .content {
         margin: 30px auto 20px;
@@ -72,10 +71,7 @@ import { onMounted } from 'vue'
             height: 230px;
         }
     
-        .banner img {
-            width: 40%;
-            object-fit: cover;
-        }
+       
         .content {
             margin: 30px auto 20px;
         }
@@ -96,5 +92,6 @@ import { onMounted } from 'vue'
             font-size: 14px;
         }
     }
+
 
 </style>
