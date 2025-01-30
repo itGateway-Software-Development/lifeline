@@ -48,6 +48,12 @@
           >
           <router-link
             to="#"
+            :class="{ active: selectYear == '2025' }"
+            @click="chooseYear('2025')"
+            >2025</router-link
+          >
+          <router-link
+            to="#"
             :class="{ active: selectYear == '2024' }"
             @click="chooseYear('2024')"
             >2024</router-link
