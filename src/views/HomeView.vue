@@ -3,7 +3,6 @@
     <Carousel></Carousel>
     <Welcome></Welcome>
     <Activity></Activity>
-
   </div>
 </template>
 
