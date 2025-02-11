@@ -9,15 +9,15 @@
             <div class="col-lg-7">
                 <div class="row mt-5">
                     <div class="col-lg-5 ">
-                        <div class="row mb-3">
+                        <div class="row mb-3 align-items-start">
                             <div class="col-lg-1 ">
                                 <i class="fa-solid fa-location-dot"></i>
                             </div>
                             <div class="col-lg-9 address ms-3">
-                                No.13, HlaingMyintHmo 7 th St, Hlaing  Township, Yangon
+                                No-13, Hlaing Myin Moh 7 Street, 10 Qtr, Hlaing Township, Yangon Region, Myanmar
                             </div>
                         </div>
-                        <div class="row mb-3">
+                        <div class="row mb-3 align-items-center">
                             <div class="col-lg-1 ">
                                 <i class="fa-solid fa-phone-volume"></i>
                             </div>
@@ -25,7 +25,7 @@
                                 +959 - 940077555<br>
                             </div>
                         </div>
-                        <div class="row mb-3">
+                        <div class="row mb-3 align-items-center">
                             <div class="col-lg-1 ">
                                 <i class="fa-solid fa-envelope"></i>
                             </div>
