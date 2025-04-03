@@ -19,7 +19,11 @@
             </div>
     
             <div class="promo-img">
-                <img :src="selectedPromotion.info_img" alt="">
+                <div class="d-flex gap-3 mb-3 justify-content-end">
+                    <button @click="changeImage('prev')" class="btn btn-info"><i class="fas fa-arrow-left"></i></button>
+                    <button @click="changeImage('prev')" class="btn btn-info"><i class="fas fa-arrow-right"></i></button>
+                </div>
+                <img :src="currentImage" alt="" class="w-100 border rounded">
             </div>
         </div>
         
@@ -34,17 +38,44 @@ export default {
         setup(props) {
             const latestPromotions = ref([]);
             const selectedPromotion = ref();
+            const promotionImages = ref();
             const {promotions, error, load} = getPromotions();
+
+            const currentImageIndex = ref(0);
+            const currentImage = ref();
             
             onMounted( async () => {
                 await load();
                 if(promotions.value.length > 0) {
                     latestPromotions.value = promotions.value;
                     selectedPromotion.value = latestPromotions.value.find(p => p.id == props.id)
+                    promotionImages.value = selectedPromotion.value?.promotion_images;
+                    currentImage.value = promotionImages.value[currentImageIndex.value];
+                    
                 }
                 window.scrollTo(0,0)
             })
-            return {selectedPromotion};
+
+            const changeImage = (status) => {
+                if(status == 'prev') {
+                    if(currentImageIndex.value == 0) {
+                    currentImageIndex.value = promotionImages.value.length - 1;
+                    currentImage.value = promotionImages.value[promotionImages.value.length -1];
+                    } else {
+                    currentImage.value = promotionImages.value[--currentImageIndex.value]
+                    }
+                } else {
+                    if(currentImageIndex.value == promotionImages.value.length -1) {
+                    currentImage.value = promotionImages.value[0];
+                    currentImageIndex.value = 0;
+                    } else {
+                    currentImage.value = promotionImages.value[++currentImageIndex.value];
+                    }
+                }
+            }
+
+
+            return {selectedPromotion, currentImage, changeImage};
         }
     }
 </script>

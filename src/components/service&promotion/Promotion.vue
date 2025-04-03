@@ -2,7 +2,7 @@
     <div class="promotion" v-if="latestPromotions.length > 0">
         <div class="row">
             <div
-              class="col-lg-4 col-md-6 col-sm-6 col-12 p-0 px-2 hospital-column"
+              class="col-lg-4 col-md-6 col-sm-6 col-12 p-0 px-2 hospital-column mb-3"
               v-for="(promotion) in latestPromotions"
               :key="promotion.id"
             >
