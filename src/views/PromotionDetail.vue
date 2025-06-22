@@ -19,9 +19,9 @@
             </div>
     
             <div class="promo-img">
-                <div class="d-flex gap-3 mb-3 justify-content-end">
-                    <button @click="changeImage('prev')" class="btn btn-info"><i class="fas fa-arrow-left"></i></button>
-                    <button @click="changeImage('prev')" class="btn btn-info"><i class="fas fa-arrow-right"></i></button>
+                <div class="gap-3 mb-3  slider-button ">
+                    <button @click="changeImage('prev')" class="btn"><i class="fas fa-arrow-left"></i></button>
+                    <button @click="changeImage('prev')" class="btn"><i class="fas fa-arrow-right"></i></button>
                 </div>
                 <img :src="currentImage" alt="" class="w-100 border rounded">
             </div>
@@ -165,6 +165,24 @@ export default {
 
     .promo-img {
         margin-top: 50px;
+        position: relative;
+    }
+
+    .promo-img .slider-button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 0px 20px;
+        z-index: 9999;
+    }
+
+    .promo-img .slider-button .btn {
+        background-color: rgba(3, 120, 175, 0.4);
+        backdrop-filter: blur(10px);
     }
 
     .promo-img img {
