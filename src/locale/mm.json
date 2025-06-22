@@ -8,5 +8,13 @@
     "news-event": "သတင်းနှင့်အခမ်းအနား",
     "career": "အလုပ်အခွင့်အလမ်း",
     "contact": "ဆက်သွယ်ရန်",
-    "academic_activity": "Academic Activity"
+    "academic_activity": "Academic Activity",
+    "product": {
+        "brand_name": "ဆေးအမည်",
+        "composition": "ပါဝင်ပစ္စည်း",
+        "presentation": "ဆေးပုံစံ",
+        "group": "ဆေးအမျိုးအစား",
+        "dose": "သုံးစွဲရန်အညွှန်း",
+        "indication": "အသုံးပြုနိုင်သောရောဂါများ"
+    }
 }

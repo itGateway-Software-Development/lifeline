@@ -8,5 +8,13 @@
     "news-event": "News & Events",
     "career": "Career",
     "contact": "Contact",
-    "academic_activity": "Academic Activity"
+    "academic_activity": "Academic Activity",
+    "product": {
+        "brand_name": "Brand Name",
+        "composition": "Composition",
+        "presentation": "Presentation",
+        "group": "Group",
+        "dose": "Dose",
+        "indication": "Indication"
+    }
 }

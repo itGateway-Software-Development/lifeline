@@ -14,7 +14,7 @@
                 <div class="details mt-5 ms-0 ms-lg-5">
                     <div class="row align-items-center mb-2">
                         <div class="col-4">
-                            <h6 class="fw-bold">Brand Name</h6>
+                            <h6 class="fw-bold">{{ $t("product.brand_name") }}</h6>
                         </div>
                         <div class="col-8">
                             <div class="d-flex align-items-center gap-2">
@@ -25,7 +25,7 @@
                     </div>
                     <div class="row mb-2">
                         <div class="col-4">
-                            <h6 class="fw-bold">Composition</h6>
+                            <h6 class="fw-bold">{{ $t("product.composition") }}</h6>
                         </div>
                         <div class="col-8">
                             <div class="d-flex align-items-start gap-2">
@@ -38,50 +38,50 @@
                     </div>
                     <div class="row mb-2">
                         <div class="col-4">
-                            <h6 class="fw-bold">Presentation</h6>
+                            <h6 class="fw-bold">{{ $t("product.presentation") }}</h6>
                         </div>
                         <div class="col-8">
                             <div class="d-flex align-items-start gap-2">
                                 <b>:</b>
                                 <div>
-                                    <span> {{ product.presentation }} </span>
+                                    <span> {{ locale == 'EN' ? product.presentation : product.presentation_mm }} </span>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row mb-2">
                         <div class="col-4">
-                            <h6 class="fw-bold">Group</h6>
+                            <h6 class="fw-bold">{{ $t("product.group") }}</h6>
                         </div>
                         <div class="col-8">
                             <div class="d-flex align-items-start gap-2">
                                 <b>:</b>
                                 <div>
-                                    <span> {{ product.detail_group }} </span>
+                                    <span> {{ locale == 'EN' ? product.detail_group : product.detail_group_mm }} </span>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-4">
-                            <h6 class="fw-bold">Dose</h6>
+                            <h6 class="fw-bold">{{ $t("product.dose") }}</h6>
                         </div>
                         <div class="col-8">
                             <div class="d-flex align-items-start gap-2">
                                 <b>:</b>
                                 <div>
-                                    <span v-html="product.dose"></span>
+                                    <span v-html="locale == 'EN' ? product.dose : product.dose_mm"></span>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row mb-2">
                         <div class="col-4">
-                            <h6 class="fw-bold">Indication</h6>
+                            <h6 class="fw-bold">{{ $t("product.indication") }}</h6>
                         </div>
                         <div class="col-8">
                             <div style="margin-left: -15px;">
-                                <span v-html="product.indication"> </span>
+                                <span v-html="locale == 'EN' ? product.indication : product.indication_mm"> </span>
                             </div>
                         </div>
                     </div>
@@ -94,6 +94,8 @@
 <script>
 import getProduct from '@/composables/getProduct'
 import { useRouter } from 'vue-router';
+import store from '@/store';
+import { computed } from 'vue';
 
     export default {
         props: ['id'],
@@ -107,7 +109,9 @@ import { useRouter } from 'vue-router';
                 router.back();
             }
 
-            return {product, goback}
+            const locale = computed(() => store.state.locale)
+
+            return {product, goback, locale}
         }
     }
 </script>
