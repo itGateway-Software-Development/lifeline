@@ -4,19 +4,23 @@
       <img src="@/assets/images/map.png" alt="">
     </div>
     <div class="content">
-      <h2 data-aos="fade-left">Distribution Network</h2>
+      <h2 data-aos="fade-left">{{locale == 'EN' ? 'Distribution Network' : 'ဖြန့်ဖြူးရေး ကွန်ရက်'}}</h2>
       <div data-aos="fade-left" class="divider"></div>
     </div>
     <div class="para">
-      <p data-aos="flip-up">
+      <p data-aos="flip-up" v-if="locale == 'EN'">
         We have 6 Branch offices and 15 Sub-distributor offices in nearly every
         state and division of Myanmar.
       </p>
-      <p data-aos="flip-up">
+      <p data-aos="flip-up" v-if="locale == 'EN'">
         Our distribution network can cover all of the states and divisions of
         Myanmar ensuring comprehensive coverage and efficient reach, making us
         one of the most reliable healthcare and pharmaceutical products provider
         in Myanmar.
+      </p>
+
+      <p data-aos="flip-up" v-else>
+        ကျွန်မတို့ ကုမ္ပဏီသည် ရုံးခွဲပေါင်း (၆) ခု နှင့် ကိုယ်စားလှယ် ရုံးခွဲပေါင်း (၁၅) ခုကို မြန်မာနိုင်ငံ၏ တိုင်းဒေသကြီးနှင့် ပြည်နယ် အားလုံးနီးပါးတွင် ဖွင့်လှစ်ထားရှိပါသည်။ ကျွန်မတို့၏ ဖြန့်ဖြူးရေးကွန်ရက်သည် မြန်မာနိုင်ငံရှိ တိုင်းနှင့် ပြည်နယ်အားလုံးသို့ လွှမ်းခြုံထားကာ ထိရောက်သော ဝန်ဆောင်မှုများပေးနိုင်သောကြောင့် Lifeline Group of Companies သည် မြန်မာနိုင်ငံတွင် ယုံကြည်စိတ်ချရဆုံး ဆေးဝါးထုတ်ကုန် တင်သွင်း ဖြန့်ဖြူးရေး နှင့် ကျန်းမာရေး ဝန်ဆောင်မှုများ ပေးအပ်နေသည့် ကုမ္ပဏီတစ်ခုအဖြစ် အခိုင်အမာ ရပ်တည်လျက်ရှိပါသည်။ 
       </p>
     </div>
   </div>
@@ -24,6 +28,7 @@
 
 <script>
 import { computed, ref } from 'vue';
+import store from '@/store';
 export default {
   setup() {
     const isTaungGyi = ref(false);
@@ -32,6 +37,8 @@ export default {
     const mdybg = computed(() => isMandalay.value ? '#4DB6AC' : '#90A4AE');
     const tgbg = computed(() => isTaungGyi.value ? '#4DB6AC' : '#90A4AE');
     const ygnbg = computed(() => isYangon.value ? '#4DB6AC' : '#90A4AE');
+
+    const locale = computed(() => store.state.locale)
 
     const showNetworks = (network) => {
       if(network == 'taunggyi') {
@@ -49,7 +56,7 @@ export default {
 
     }
 
-    return {showNetworks, isTaungGyi, isYangon, isMandalay, mdybg, tgbg, ygnbg}
+    return {showNetworks, isTaungGyi, isYangon, isMandalay, mdybg, tgbg, ygnbg, locale}
   }
 };
 </script>
