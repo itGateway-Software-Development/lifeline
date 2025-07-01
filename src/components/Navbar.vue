@@ -697,31 +697,31 @@ export default {
 }
 
 /* menu responsive */
-@media (max-width: 1796px) {
+@media (max-width: 1834px) {
   .nav2 .menu-items {
     gap: 5px;
   }
 
   .nav1 {
-    padding: 10px 12%;
+    padding: 10px 10%;
   }
   .nav2 {
-    padding: 23px 12%;
+    padding: 23px 10%;
   }
 }
 
 @media (max-width: 1680px) {
   .nav1 {
-    padding: 10px 9%;
+    padding: 10px 7%;
   }
   .nav2 {
-    padding: 23px 9%;
+    padding: 23px 7%;
   }
 }
 
 @media (max-width: 1600px) {
   .nav1 {
-    padding: 10px 9%;
+    padding: 10px 7%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -748,7 +748,7 @@ export default {
 
   /* ----------------------menu navbar---------------------- */
   .nav2 {
-    padding: 15px 9%;
+    padding: 15px 7%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -847,12 +847,12 @@ export default {
   }
 }
 
-@media (max-width: 1408px) {
+@media (max-width: 1475px) {
   .nav1 {
-    padding: 10px 4%;
+    padding: 10px 2%;
   }
   .nav2 {
-    padding: 23px 4%;
+    padding: 23px 2%;
   }
 }
 
@@ -861,6 +861,12 @@ export default {
     gap: 0px;
     position: relative;
     padding: 6px 8px;
+  }
+}
+
+@media (min-width: 1212px) and (max-width: 1273px) {
+  .nav2 .menu div a {
+    font-size: 11px;
   }
 }
 
@@ -1003,6 +1009,17 @@ export default {
     font-size: 10px;
   }
 
+}
+
+
+@media (min-width: 842px) and (max-width: 1071px) {
+  .nav2 .menu div a {
+    font-size: 9px !important;
+  }
+
+  .nav2 .home i {
+    font-size: 13px !important;
+  }
 }
 
 @media (max-width: 841px) {
